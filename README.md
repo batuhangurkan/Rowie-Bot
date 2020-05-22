@@ -1,30 +1,14 @@
-# hello-express
+# Merhabalar!
 
-A server that serves a webpage, its resources, and some data
+Sizler için hazır bom boş tap taze bir altyapı yaptık.
 
+## Sizin sadece yapmanız gereken:
 
-## Your Project
-
-On the front-end,
-
-- Edit `views/index.html` to change the content of the webpage
-- `public/client.js` is the javacript that runs when you load the webpage
-- `public/style.css` is the styles for `views/index.html`
-- Drag in `assets`, like images or music, to add them to your project
-
-On the back-end,
-
-- your app starts at `server.js`
-- add frameworks and packages in `package.json`
-- safely store app secrets in `.env` (nobody can see this but you and people you invite)
-
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy.
+- `events/ready.js` dosyasını, (görevi oynuyor kısmı)
+- `ayarlar.json` dosyasını editlemek. (görevi; botun sahibi, tokeni ve prefixini orası belirliyor.)
 
 
-## Made by [Glitch](https://glitch.com/)
+## Yapımcı: Slipknot#1552 | Rakun Slip#1552
 
-**Glitch** is the friendly community where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
+## [XİR](https://discord.gg/eWmA4Ar) | [CodeBook](https://discord.gg/GP98AEn)
 
-Find out more [about Glitch](https://glitch.com/about).
-
-( ᵔ ᴥ ᵔ )
