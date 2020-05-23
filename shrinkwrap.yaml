@@ -15,6 +15,7 @@ dependencies:
   fortnitetracker-7days-stats: 3.3.1
   get-ipinfo: 1.0.0
   get-youtube-id: 1.0.1
+  google-tts-api: 0.0.4
   humanize-duration: 3.23.0
   jimp: 0.12.1
   kitsu.js: 2.0.0
@@ -1543,6 +1544,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-52mJJopsdMOJCLEwWxD8DjlOnQ8=
+  /google-tts-api/0.0.4:
+    dependencies:
+      isomorphic-fetch: 2.2.1
+    dev: false
+    resolution:
+      integrity: sha512-1fyRK4AxvtRrETxL59SwXgbY7cX3xhgOCbCaYu8BNlRZcjca0YeajA+50G7Jz3d6wpSxhxatz/lzMuomzWoNeQ==
   /got/2.9.2:
     dependencies:
       duplexify: 3.7.1
@@ -1885,6 +1892,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ErTBd++b17E8nmWII1K1uZtBgD1E8RjyvwmxlCjPHNqHMD7gmcMHOw0E8Ro/6+QT4PhHRSnnMo7bxa1vFPkwhg==
+  /isomorphic-fetch/2.2.1:
+    dependencies:
+      node-fetch: 1.7.3
+      whatwg-fetch: 3.0.0
+    dev: false
+    resolution:
+      integrity: sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=
   /isstream/0.1.2:
     dev: false
     resolution:
@@ -3516,6 +3530,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-DZvNsFpPhNBrm585kAKKYB6kofw=
+  /whatwg-fetch/3.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-9GSJUgz1D4MfyKU7KRqwOjXCXTqWdFNvEr7eUBYchQiVc744mqK/MzXPNR2WsPkmkOa4ywfg8C2n8h+13Bey1Q==
   /which-pm-runs/1.0.0:
     dev: false
     resolution:
@@ -3667,6 +3685,7 @@ specifiers:
   fortnitetracker-7days-stats: ^3.3.0
   get-ipinfo: ^1.0.0
   get-youtube-id: ^1.0.1
+  google-tts-api: ^0.0.4
   humanize-duration: ^3.23.0
   jimp: ^0.12.0
   kitsu.js: ^2.0.0
