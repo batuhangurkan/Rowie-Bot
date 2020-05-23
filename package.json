@@ -45,7 +45,8 @@
     "math-expression-evaluator": "^1.2.22",
     "user-instagram": "^2.0.8",
     "get-ipinfo": "^1.0.0",
-    "axios": "^0.19.2"
+    "axios": "^0.19.2",
+    "opgg-scrape": "^1.0.0"
   },
   "engines": {
     "node": "8.x"
