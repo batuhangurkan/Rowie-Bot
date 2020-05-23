@@ -1,15 +1,36 @@
-const chalk = require('chalk');
-const moment = require('moment');
-const Discord = require('discord.js');
-const ayarlar = require('../ayarlar.json');
+const request = require("request");
 
-var prefix = ayarlar.prefix;
+module.exports = async client => {
+  const statusList = [
+    { msg: "use !help commands list", type: "PLAYING" },
+    {
+      msg: "!yardım komutu ile tüm komutlara ulaşabilirsiniz.",
+      type: "PLAYING"
+    },
+    { msg: "BETA! 0.1 Version!", type: "PLAYING" },
+    { msg: "#EvDeKal!", type: "WATCHING" },
+    { msg: "!corona ülkeler hakkında bilgi", type: "WATCHING" },
+    { msg: `with over ${client.users.size} users`, type: "PLAYING" },
+    { msg: `over ${client.guilds.size} servers`, type: "WATCHING" }
+  ];
 
-module.exports = client => {
-  console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] BOT: Aktif, Komutlar yüklendi!`);
-  console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] BOT: ${client.user.username} ismi ile giriş yapıldı!`);
-  client.user.setStatus("online");
-  client.user.setGame(`AngelBot Online`);
-  console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] BOT: Oyun ismi ayarlandı!`);
-  console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] BOT: Şu an ` + client.channels.size + ` adet kanala, ` + client.guilds.size + ` adet sunucuya ve ` + client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString() + ` kullanıcıya hizmet veriliyor!`);
+  setInterval(async () => {
+    const index = Math.floor(Math.random() * statusList.length + 1) - 1;
+    await client.user.setActivity(statusList[index].msg, {
+      type: statusList[index].type
+    });
+  }, 5000);
+
+  /* setInterval(async () => {
+    request('https://web.tsuyobot.ga', (err, res, html) => {
+      if (err) client.logger.error(err);
+    });
+}, 28000); */
+
+  client.user.setStatus("dnd");
+  console.log("Finished setting up the bot.");
+  client.user.setStatus("dnd");
+
+  // Starts the web server/API
+  // require('../modules/web')(client);
 };
