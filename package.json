@@ -49,7 +49,9 @@
     "opgg-scrape": "^1.0.0",
     "random-puppy": "^1.1.0",
     "humanize-duration": "^3.23.0",
-    "google-tts-api": "^0.0.4"
+    "google-tts-api": "^0.0.4",
+    "node-opus": "^0.3.3",
+    "steam-provider": "^0.2.0"
   },
   "engines": {
     "node": "8.x"
