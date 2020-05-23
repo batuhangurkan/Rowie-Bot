@@ -37,7 +37,10 @@
     "simple-youtube-api": "^5.2.1",
     "superagent": "^5.2.2",
     "animequote": "^1.1.1",
-    "kitsu.js": "^2.0.0"
+    "kitsu.js": "^2.0.0",
+    "tcmb-doviz": "^1.0.5",
+    "fortnitetracker-7days-stats": "^3.3.0",
+    "request-promise-native": "^1.0.8"
   },
   "engines": {
     "node": "8.x"

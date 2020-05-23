@@ -10,6 +10,7 @@ dependencies:
   discord-economy: 1.2.2
   discord.js: 11.6.4
   express: 4.17.1
+  fortnitetracker-7days-stats: 3.3.1
   get-youtube-id: 1.0.1
   jimp: 0.12.1
   kitsu.js: 2.0.0
@@ -18,10 +19,12 @@ dependencies:
   node-superfetch: 0.1.10
   quick.db: 7.1.1
   request: 2.88.2
+  request-promise-native: 1.0.8
   simple-youtube-api: 5.2.1
   snekfetch: 4.0.4
   superagent: 5.2.2
   table: 5.4.6
+  tcmb-doviz: 1.0.5
   useful-tools: 0.2.6
   weather-js: 2.0.0
   youtube-dl: 3.0.2
@@ -1267,6 +1270,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-V8gLm+41I/8kguQ4/o1D3RIHRmhYFG4pnNyonvua+40rqcEmT4+V71yaZ3B457xbbgCsCfjSPi65u/W6vK1U5Q==
+  /fortnitetracker-7days-stats/3.3.1:
+    dependencies:
+      request: 2.88.2
+    dev: false
+    resolution:
+      integrity: sha512-7AHUtbNS8/hwpwnFKoy5IBKL7Dz2PtjSWbGrZAjUTMginvLzQW6cChwI9WqT4nOnlEreVVT20ZJXKriqy2EYbA==
   /forwarded/0.1.2:
     dev: false
     engines:
@@ -2395,6 +2404,16 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ZS5w8CpKFinUzOwW3c83oPeVXoNsrLsaCoLtJvAClH135j/R77RuymhiSErhm2lKcwSCIpmvIWSbDkIfAqKQlA==
+  /request-promise-core/1.1.3:
+    dependencies:
+      lodash: 4.17.15
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    peerDependencies:
+      request: ^2.34
+    resolution:
+      integrity: sha512-QIs2+ArIGQVp5ZYbWD5ZLCY29D5CfWizP8eWnm8FoGD1TX61veauETVQbrV60662V0oFBkrDOuaBI8XgtuyYAQ==
   /request-promise-core/1.1.3/request@2.81.0:
     dependencies:
       lodash: 4.17.15
@@ -2407,6 +2426,18 @@ packages:
       request: ^2.34
     resolution:
       integrity: sha512-QIs2+ArIGQVp5ZYbWD5ZLCY29D5CfWizP8eWnm8FoGD1TX61veauETVQbrV60662V0oFBkrDOuaBI8XgtuyYAQ==
+  /request-promise-native/1.0.8:
+    dependencies:
+      request-promise-core: 1.1.3
+      stealthy-require: 1.1.1
+      tough-cookie: 2.5.0
+    dev: false
+    engines:
+      node: '>=0.12.0'
+    peerDependencies:
+      request: ^2.34
+    resolution:
+      integrity: sha512-dapwLGqkHtwL5AEbfenuzjTYg35Jd6KPytsC2/TLkVMz8rm+tNt72MGUWT1RP/aYawMpN6HqbNGBQaRcBtjQMQ==
   /request-promise/4.2.5/request@2.81.0:
     dependencies:
       bluebird: 3.7.2
@@ -2870,6 +2901,13 @@ packages:
       node: '>=4.5'
     resolution:
       integrity: sha512-w2VwSrBoHa5BsSyH+KxEqeQBAllHhccyMFVHtGtdMpF4W7IRWfZjFiQceJPChOeTsSDVUpER2T8FA93pr0L+QA==
+  /tcmb-doviz/1.0.5:
+    dependencies:
+      snekfetch: 4.0.4
+      xml2js: 0.4.23
+    dev: false
+    resolution:
+      integrity: sha512-kpKy8P/ESMUGNs54qXT+pd1ZVeS/JwfhExE6QRFMbG8HVNKyIu0kjPa4ztUKvAw86aGj50+WgWjTO37OqYESeg==
   /timm/1.6.2:
     dev: false
     resolution:
@@ -3154,6 +3192,7 @@ specifiers:
   discord-economy: ^1.2.2
   discord.js: ^11.4.2
   express: ^4.17.1
+  fortnitetracker-7days-stats: ^3.3.0
   get-youtube-id: ^1.0.1
   jimp: ^0.12.0
   kitsu.js: ^2.0.0
@@ -3162,10 +3201,12 @@ specifiers:
   node-superfetch: ^0.1.10
   quick.db: ^7.1.1
   request: ^2.88.2
+  request-promise-native: ^1.0.8
   simple-youtube-api: ^5.2.1
   snekfetch: ^4.0.4
   superagent: ^5.2.2
   table: ^5.4.6
+  tcmb-doviz: ^1.0.5
   useful-tools: ^0.2.6
   weather-js: ^2.0.0
   youtube-dl: ^3.0.1
