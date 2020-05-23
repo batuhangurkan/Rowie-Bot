@@ -46,7 +46,9 @@
     "user-instagram": "^2.0.8",
     "get-ipinfo": "^1.0.0",
     "axios": "^0.19.2",
-    "opgg-scrape": "^1.0.0"
+    "opgg-scrape": "^1.0.0",
+    "random-puppy": "^1.1.0",
+    "humanize-duration": "^3.23.0"
   },
   "engines": {
     "node": "8.x"

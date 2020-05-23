@@ -15,6 +15,7 @@ dependencies:
   fortnitetracker-7days-stats: 3.3.1
   get-ipinfo: 1.0.0
   get-youtube-id: 1.0.1
+  humanize-duration: 3.23.0
   jimp: 0.12.1
   kitsu.js: 2.0.0
   math-expression-evaluator: 1.2.22
@@ -23,6 +24,7 @@ dependencies:
   node-superfetch: 0.1.10
   opgg-scrape: 1.0.3
   quick.db: 7.1.1
+  random-puppy: 1.1.0
   request: 2.88.2
   request-promise-native: 1.0.8
   simple-youtube-api: 5.2.1
@@ -774,6 +776,12 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-S98rKsPcuhfTcYbtF53UIJhcbgIAK533d1kJKMwsMwAIFgfd58MOyxRud3kktlzWiEkFliaJtvyZCBtud/XVEA==
+  /capture-stack-trace/1.0.1:
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha512-mYQLZnx5Qt1JgB1WEiMCf2647plpGeQ2NMR/5L0HNZzGQo4fuSPnK+wjfPnKZV0aiJDgzmWqqkV/g7JD+DW0qw==
   /caseless/0.12.0:
     dev: false
     resolution:
@@ -927,6 +935,14 @@ packages:
     dev: false
     resolution:
       integrity: sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
+  /create-error-class/3.0.2:
+    dependencies:
+      capture-stack-trace: 1.0.1
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-Br56vvlHo/FKMP1hBnHUAbyot7Y=
   /cross-spawn/4.0.2:
     dependencies:
       lru-cache: 4.1.5
@@ -1150,6 +1166,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-fmrwR04lsniq/uSr8yikThDTrM7epXHBAAjH9TbeH3rEA8tdCO7mRzB9hdmdGyJCxF8KERo9CITcm3kGuoyMhg==
+  /duplexer3/0.1.4:
+    dev: false
+    resolution:
+      integrity: sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=
   /duplexify/3.7.1:
     dependencies:
       end-of-stream: 1.4.4
@@ -1224,6 +1244,10 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
+  /eventemitter3/1.2.0:
+    dev: false
+    resolution:
+      integrity: sha1-HIaZHYFq0eUEdQ5zh0Ik7PO+xQg=
   /execa/3.2.0:
     dependencies:
       cross-spawn: 7.0.2
@@ -1473,6 +1497,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-uWjGsKBDhDJJAui/Gl3zJXmkUP4=
+  /get-stream/3.0.0:
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha1-jpQ9E1jcN1VQVOy+LtsFqhdO3hQ=
   /get-stream/5.1.0:
     dependencies:
       pump: 3.0.0
@@ -1530,6 +1560,24 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-Lh7ljqHo0gHiWuWAuW5jwV/v1O4=
+  /got/6.7.1:
+    dependencies:
+      create-error-class: 3.0.2
+      duplexer3: 0.1.4
+      get-stream: 3.0.0
+      is-redirect: 1.0.0
+      is-retry-allowed: 1.2.0
+      is-stream: 1.1.0
+      lowercase-keys: 1.0.1
+      safe-buffer: 5.2.1
+      timed-out: 4.0.1
+      unzip-response: 2.0.1
+      url-parse-lax: 1.0.0
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha1-JAzQV4WpoY5WHcG0S0HHY+8ejbA=
   /har-schema/1.0.5:
     dev: false
     engines:
@@ -1687,6 +1735,10 @@ packages:
       node: '>=8.12.0'
     resolution:
       integrity: sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
+  /humanize-duration/3.23.0:
+    dev: false
+    resolution:
+      integrity: sha512-ToVp8+w3PkP/iL5OklJn9+uW1WRuJVa0PvC6DfWlY769+UpTw5Hjr/6FP1QK/DeUklzOlvYs3faBnGUEDUXeRA==
   /iconv-lite/0.4.24:
     dependencies:
       safer-buffer: 2.1.2
@@ -1789,6 +1841,18 @@ packages:
     dev: false
     resolution:
       integrity: sha512-lw7DUp0aWXYg+CBCN+JKkcE0Q2RayZnSvnZBlwgxHBQhqt5pZNVy4Ri7H9GmmXkdu7LUthszM+Tor1u/2iBcpQ==
+  /is-redirect/1.0.0:
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-HQPd7VO9jbDzDCbk+V02/HyH3CQ=
+  /is-retry-allowed/1.2.0:
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha512-RUbUeKwvm3XG2VYamhJL1xFktgjvPzL0Hq8C+6yrWIswDy3BIXGqCxhxkc30N9jqK311gVU137K8Ei55/zVJRg==
   /is-stream/1.1.0:
     dev: false
     engines:
@@ -2647,6 +2711,16 @@ packages:
     dev: false
     resolution:
       integrity: sha512-PziF96cxYNvHcgkZkEbZ3UzhR2bXcLff96n68J1DhE/2Q2ELeGnd/Z4jtqJqZz5rfiqXvzEbCznXV8wNsOTSww==
+  /random-puppy/1.1.0:
+    dependencies:
+      eventemitter3: 1.2.0
+      got: 6.7.1
+      unique-random-array: 1.0.1
+    dev: false
+    engines:
+      node: '>=4.0.0'
+    resolution:
+      integrity: sha1-GtqjTA83bVArWdb9gifqYaRUmTs=
   /range-parser/1.2.1:
     dev: false
     engines:
@@ -3253,6 +3327,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-84sK6B03R9YoAB9B2vxlKs5nHAo=
+  /timed-out/4.0.1:
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-8y6srFoXW+ol1/q1Zas+2HQe9W8=
   /timm/1.6.2:
     dev: false
     resolution:
@@ -3327,6 +3407,20 @@ packages:
     dev: false
     resolution:
       integrity: sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+  /unique-random-array/1.0.1:
+    dependencies:
+      unique-random: 1.0.0
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha512-z9J/SV8CUIhIRROcHe9YUoAT6XthUJt0oUyLGgobiXJprDP9O9dsErNevvSaAv5BkhwFEVPn6nIEOKeNE6Ck1Q==
+  /unique-random/1.0.0:
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-zj4iTIJCzTOg53sNcYDXfmti0MQ=
   /universalify/0.1.2:
     dev: false
     engines:
@@ -3339,12 +3433,26 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=
+  /unzip-response/2.0.1:
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha1-0vD3N9FrBhXnKmk17QQhRXLVb5c=
   /uri-js/4.2.2:
     dependencies:
       punycode: 2.1.1
     dev: false
     resolution:
       integrity: sha512-KY9Frmirql91X2Qgjry0Wd4Y+YTdrdZheS8TFwvkbLWf/G5KNJDCh6pKL5OZctEW4+0Baa5idK2ZQuELRwPznQ==
+  /url-parse-lax/1.0.0:
+    dependencies:
+      prepend-http: 1.0.4
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-evjzA2Rem9eaJy56FKxovAYJ2nM=
   /useful-tools/0.2.6:
     dependencies:
       npm: 6.14.5
@@ -3559,6 +3667,7 @@ specifiers:
   fortnitetracker-7days-stats: ^3.3.0
   get-ipinfo: ^1.0.0
   get-youtube-id: ^1.0.1
+  humanize-duration: ^3.23.0
   jimp: ^0.12.0
   kitsu.js: ^2.0.0
   math-expression-evaluator: ^1.2.22
@@ -3567,6 +3676,7 @@ specifiers:
   node-superfetch: ^0.1.10
   opgg-scrape: ^1.0.0
   quick.db: ^7.1.1
+  random-puppy: ^1.1.0
   request: ^2.88.2
   request-promise-native: ^1.0.8
   simple-youtube-api: ^5.2.1
