@@ -125,3 +125,24 @@ client.on('error', e => {
 });
 
 client.login(ayarlar.token);
+
+////////////////////////////////////////////////////////////////////////
+
+client.on('message', async message => {
+  let ke = await db.fetch(`kufur_${message.guild.id}`)
+  
+  if (ke === "kapali" || ke === undefined || ke === null){
+    return;
+  } else if (ke === "acik") {
+    let küfür = ["amk", "aq", "sikerim", "AMK", "AQ", "Amk", "Aq", "orospu çocuğu", "OROSPU","Ananı Sikerim", "ananı sikerim","Amına koduğum", "Ananı sikiyim", "Amına koyim","Götünü sikiyim", "Ananın amına koyim", "götünü sikiyim", "s2ş", "sikiş","S2Ş"]
+    if (küfür.some(word => message.content.includes(word))){
+        if (!message.member.hasPermission("BAN_MEMBERS")) {
+        message.delete();
+        message.channel.send("Küfür etmek yasak!")
+        message.guild.owner.send("Sunucunuzda bir kişi küfür etti. \nKullanıcı: "+ message.author.tag +" \nMesaj: **"+ message +"** ")
+      }
+    }
+  }
+})
+
+////////////////////////////////////////////

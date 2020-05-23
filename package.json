@@ -44,7 +44,8 @@
     "are-we-there-yet": "^1.1.5",
     "math-expression-evaluator": "^1.2.22",
     "user-instagram": "^2.0.8",
-    "get-ipinfo": "^1.0.0"
+    "get-ipinfo": "^1.0.0",
+    "axios": "^0.19.2"
   },
   "engines": {
     "node": "8.x"
