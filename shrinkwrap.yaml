@@ -13,6 +13,7 @@ dependencies:
   discord.js: 11.6.4
   express: 4.17.1
   fortnitetracker-7days-stats: 3.3.1
+  generate-password: 1.5.1
   get-ipinfo: 1.0.0
   get-youtube-id: 1.0.1
   google-tts-api: 0.0.4
@@ -25,6 +26,7 @@ dependencies:
   node-opus: 0.3.3
   node-superfetch: 0.1.10
   opgg-scrape: 1.0.3
+  parse-ms: 2.1.0
   quick.db: 7.1.1
   random-puppy: 1.1.0
   request: 2.88.2
@@ -1492,6 +1494,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-LANAXHU4w51+s3sxcCLjJfsBi/c=
+  /generate-password/1.5.1:
+    dev: false
+    resolution:
+      integrity: sha512-XdsyfiF4mKoOEuzA44w9jSNav50zOurdWOV3V8DbA7SJIxR3Xm9ob14HKYTnMQOPX3ylqiJMnQF0wEa8gXZIMw==
   /get-ipinfo/1.0.0:
     dependencies:
       got: 2.9.2
@@ -2576,6 +2582,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-QhhZ+DCCit2Coi2vmAKbq5RGTRcQUOE2+REgv8vdyu7MnYx2eZztegqtTx99TZ86GTIwqiy3+4nQTWZ2tgmdCA==
+  /parse-ms/2.1.0:
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-kHt7kzLoS9VBZfUsiKjv43mr91ea+U05EyKkEtqp7vNbHxmaVuEqN7XxeEVnGrMtYOAxGrDElSi96K7EgO1zCA==
   /parse5/3.0.3:
     dependencies:
       '@types/node': 14.0.5
@@ -3749,6 +3761,7 @@ specifiers:
   discord.js: ^11.4.2
   express: ^4.17.1
   fortnitetracker-7days-stats: ^3.3.0
+  generate-password: ^1.5.0
   get-ipinfo: ^1.0.0
   get-youtube-id: ^1.0.1
   google-tts-api: ^0.0.4
@@ -3761,6 +3774,7 @@ specifiers:
   node-opus: ^0.3.3
   node-superfetch: ^0.1.10
   opgg-scrape: ^1.0.0
+  parse-ms: ^2.0.0
   quick.db: ^7.1.1
   random-puppy: ^1.1.0
   request: ^2.88.2
