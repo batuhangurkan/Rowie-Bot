@@ -42,7 +42,9 @@
     "fortnitetracker-7days-stats": "^3.3.0",
     "request-promise-native": "^1.0.8",
     "are-we-there-yet": "^1.1.5",
-    "math-expression-evaluator": "^1.2.22"
+    "math-expression-evaluator": "^1.2.22",
+    "user-instagram": "^2.0.8",
+    "get-ipinfo": "^1.0.0"
   },
   "engines": {
     "node": "8.x"
