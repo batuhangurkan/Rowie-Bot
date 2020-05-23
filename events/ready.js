@@ -27,9 +27,9 @@ module.exports = async client => {
     });
 }, 28000); */
 
-  client.user.setStatus("dnd");
+  client.user.setStatus("online");
   console.log("Finished setting up the bot.");
-  client.user.setStatus("dnd");
+  client.user.setStatus("online");
 
   // Starts the web server/API
   // require('../modules/web')(client);

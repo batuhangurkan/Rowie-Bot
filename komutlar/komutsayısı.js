@@ -5,7 +5,7 @@ exports.run = async (client, message, args, level) => {
   try {
     
     const embed = new Discord.RichEmbed()
-    .setTitle(`Rowie Bot Komut Sayısı`)
+    .setTitle(`Gults Bot Komut Sayısı`)
     .setDescription('**\nToplam**  **' + client.commands.size + '** **Komut Vardır!**')
     .setColor("#ff0000")
     .setTimestamp()
