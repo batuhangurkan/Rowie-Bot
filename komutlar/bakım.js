@@ -8,12 +8,12 @@ exports.run = (client, message, args) => {
   
   if(args[0] === 'aç') {
     if(db.fetch(`bakim`)) return message.channel.send('Bakım modu zaten açık')
-    message.channel.send('Bakım modu açıldı.')
+    message.channel.send('Bakım modu açıldı. Bundan sonra bot komutlar için kapalı olucak.')
     db.set(`bakim`, 'acik')
   }
   if(args[0] === 'kapat'){
     if(!db.fetch(`bakim`)) return message.channel.send('Bakım modu zaten kapalı.')
-    message.channel.send('Bakım modu kapatıldı.')
+    message.channel.send('Bakım modu kapatıldı. Komutlar yeniden aktif!')
     db.delete(`bakim`)
   }
   
