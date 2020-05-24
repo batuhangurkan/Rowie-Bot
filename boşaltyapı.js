@@ -379,3 +379,17 @@ client.on("message", async msg => {
   
 });
 //////////////////////////////////////////////////////////
+
+client.on("message", async m => {  
+  
+  if (m.content.toLowerCase() === `<@!${client.user.id}>`) {
+
+    const rembed = new Discord.RichEmbed()
+    .setTitle(`Botun Prefixi: ** ${ayarlar.prefix} **`)
+    .setColor("RANDOM")
+    .setFooter('Gults Bot Yapımı Batuhan Gürkana Aittir. !yardım İle Tüm Komutlara Ulaşabilirsiniz.! ', client.user.avatarURL)
+m.channel.send(rembed).then(msg => msg.delete(180000))
+
+}
+
+});
