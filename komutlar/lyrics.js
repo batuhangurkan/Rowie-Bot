@@ -1,69 +1,43 @@
+const Discord = require('discord.js')
 
-const request = require('request-promise-native');
-const db = require("quick.db");
-const api = "2e03af5532b91b920cf00f2f2c5117f8"
+exports.run = async (client, message, args) => {
+  
+    args.song = args.join(' ');
 
-exports.run = async (Bastion, message, args) => {if(db.fetch(`bakim`)) return message.channel.send('Şuanda Bakım Modu Açık. Komutlar Bakım Modunda Çalışmaz')
-  try {
-	    let song = args.slice(0).join(' ');
-    if (!song) {
+const lyric = require('../ek/lyrics')
+  
+  let yanıt = await lyric(`/song/${args.song}`);
 
-      return message.reply("**Doğru Kullanım**: !lyrics <müzik>")
-    }
-
-    let options = {
-      headers: {
-        'Accept': 'Accept: application/json'
-      },
-      url: `https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=json&q_track=${encodeURIComponent(song)}&apikey=${api}`,
-      json: true
-    };
-    let response = await request(options);
-
-    if (response.message.header.status_code === 200) {
-      message.channel.send({
-        embed: {
-          color: 0x00AE86,
-          title: `${song.toUpperCase()} - Lyrics`,
-          description: response.message.body.lyrics.lyrics_body.replace('******* Bu lyrics, ticari kullanım için DEĞİLDİR *******', `Lyricsin tamamını buradan bulabilirsin: [musixmatch.com](${response.message.body.lyrics.backlink_url} 'Musixmatch')`),
-          footer: {
-            text: `Müzik Dili: ${response.message.body.lyrics.lyrics_language_description}`
-          }
-        }
-      }).catch(e => {
-        console.log(e);
-      });
-    }
-    else if (response.message.header.status_code === 404) {
-      message.channel.send({
-        embed: {
-          color: 0x00AE86,
-          title: 'Not Found',
-          description: `**${song.toUpperCase()}** adında bir lyrics bulunamadı.\nEğer şarkı adını doğru yazdığını düşünüyorsan birde sanatçının adını ekleyerek dene.`
-        }
-      }).catch(e => {
-        console.log(e);
-      });
-    }
+  if (yanıt.error) {
+    const embed = new Discord.RichEmbed()
+    .setColor(0x36393E)
+    .setTitle('Bulunamadı.')
+    .setDescription(`**${args.song}** adında lyrics bulunamadı. Doğru şarkıyı aradığına eminsen arama terimine şarkı sahibinide ekle ve yeniden dene.`)
+    return await message.channel.send(embed);
   }
-  catch (e) {
-    if (e.response) {
-      return Bastion.emit('error', e.response.statusCode, e.response.statusMessage, message.channel);
-    }
-    console.log(e);
-  }
+const bmended = new Discord.RichEmbed()
+.setColor(0x36393E)
+.setAuthor(yanıt.artist.name, yanıt.artist.image)
+.setTitle(yanıt.name)
+.setDescription(yanıt.lyrics.length > 2048
+               ? `${yanıt.lyrics.substring(0,2045)}...`
+               : yanıt.lyrics)
+.setThumbnail(yanıt.image)
+  await message.channel.send(bmended);
 };
 
 exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: 0
+  permLevel: 0  
 };
 
 exports.help = {
   name: 'lyrics',
-  description: 'Belirtilen müziğin lyricsini gönderir.',
-  usage: 'lyrics <müzik>'
+  description: 'Belirtilen şarkının sözlerini atar.',
+  category:'Kullanıcı',
+  usage: 'lyrics [ŞARKI] [ARTIST]',
 };
-//XİR
+
+///////////////
