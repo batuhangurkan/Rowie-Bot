@@ -331,8 +331,11 @@ client.on("guildCreate", guild => {
         .setTitle("Gults Bot Bir Moderasyon Botudur.!")
         .setImage("")
         .setDescription(`**Gults** sunucunuza başarıyla eklendi. :white_check_mark: Botumuzun\n özelliklerini öğrenmek için !yardım yazabilirsiniz.\n`)
-        .addField(`:busts_in_silhouette: ${client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} kullanıcıya hizmet vermekteyim`, `https://bit.ly/xirdcsunucu`)
+        .addField(`:busts_in_silhouette: ${client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} kullanıcıya hizmet vermekteyim`)
     .addField(`:dizzy: ${client.guilds.size} Sunucuda Bulunmaktayım`)
         .setTimestamp()
     guild.owner.send(eklendim)
 });
+
+////////////////////////////////////////////////////////
+
