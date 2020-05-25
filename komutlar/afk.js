@@ -57,5 +57,6 @@ exports.conf = {
 exports.help = {
   name: "afk",
   description: "Afk Olmanızı Sağlar.",
+  kategori:'moderasyon',
   usage: "afk / afk <sebep>"
 };

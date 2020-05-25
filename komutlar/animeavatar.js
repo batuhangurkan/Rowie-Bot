@@ -27,6 +27,7 @@ module.exports.conf = {
 module.exports.help = {
   name: 'animeavatar',
   description: 'Rastgele Anime avatarı atar.',
+  kategori:'eğlence',
   usage: 'animeavatar'
 };
 //XiR

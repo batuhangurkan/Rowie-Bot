@@ -1,36 +1,30 @@
-const Discord = require('discord.js');
-const ayarlar = require('../ayarlar.json');
-const db = require("quick.db");
-var prefix = ayarlar.prefix;
-exports.run = (client, message, args) => {if(db.fetch(`bakim`)) return message.channel.send('Şuanda Bakım Modu Açık. Komutlar Bakım Modunda Çalışmaz')
-    const embedyardim = new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setAuthor(`${client.user.username} `, client.user.avatarURL) 
-      .setDescription('**!yardım** ile yardım alabilirsiniz.\n örnek komut kullanımı: **!küfür-engel aç**.\nbotu davet etmek için **!davet**')
-      .addField('** Komutlar (25)**', `Herkesin Kullanabileceği Standart Komutlar. \n` +  '`botbilgi`, `ping`, `başvuru`, `lyrics`, `istatistik`, `döviz`, `roller`, `rrenk`, `sunucubilgi`, `yapımcım`, `yaz`, `yetkililer`,`davet`,`şifre`, `havadurumu`, `öneri`, `avatar`, `bitcoin`, `seslimesaj`, `ailemiz`, `yetkilerim`, `afk`, `yetkilerim`, `seviye`, `seviyeyardım`')
-      .addField('** Eğlence (27)**',   `Herkes İçin Kullanılabilecek Eğlence Komutları. \n` + '`animeavatar`, `aşkımı-ölç`, `ateşet`, `randomhabbo`, `tokyo-ghoul`, `sinirli`, `kedi`, `köpek`, `berserk`, `mcskin`, `öp`, `sarıl`, `efkarölçer`, `emojiyaz`, `hesapla`, `yazı-banner`, `clyde`, `csgokasa`, `bjkefekt`, `gsefekt`,  `kanna`, `sonic`, `balıktut`, `8ball`, `meme`, `muzum`, `ph`')
-      .addField('** Bilgi (16)**',`Herkes İçin Kullanılıcak Bilgi Alma Komutları. \n` +  '`spotify`, `lolbilgi`, `instagram`, `youtubebilgi`, `steamfiyat`, `twitch`, `vikipedi`, `npm`, `discordbotlist`, `yılbaşı`, `diziara`, `woodie`, `google`, `corona`, `twitter`, `gifara`')
-      .addField('** Moderasyon (19)**',`Yetkililer İçin Moderasyon Komutları Bölümü . \n` +  '`küfür-engel`, `reklam-engelle`, `kick`,`mute`,`sil(gelişmiş)`, `temizle`, `votekick`, `kilit(kanal kilitler)`, `duyuru`, `ban`, `unban`, `anket`, `banlananlar`, `yavaşmod`, `ıd`, `reklamfiltresi`, `hazır-kanallar`, `panel`, `seslide-sustur`')
-      .addField('** NSFW Komutları (2)**',`+18 İçeriktir. Sadece NSFW Kanalında Bu Komutlar Çalışır. \n` +  '`nsfw`, `nsfw-gif`')
-      .addField('** Bot Sahibine Özel Komutlar (7)**',`Bot sahibinin kullanabiliceği komutlar. \n` +  '`dnd`, `idle`, `load`, `unload`, `eval`, `reboot`, `bakım` ')
-    
-     
-    .setFooter(`© ${client.user.username} ` , client.user.avatarURL)
-    .setTimestamp()
-    message.channel.send(embedyardim).catch()
-    
-//////`${client.user.username}`
-};
 
+const Discord = require('discord.js')
+const data = require('quick.db')
+
+exports.run = async (client, message, args) => {
+let prefix = '!'// botunuzun prefixi
+  
+ let kategoriler = ['genel', 'moderasyon', 'eğlence', 'yapımcı',]
+ if(!args[0]) return message.channel.send(`Komutlara Ulaşmak İçin Kategorilerden Birini Yazmalısın. Örnek: !yardım moderasyon \n${kategoriler.join(', ')}`)
+ if(!kategoriler.includes(args[0])) return message.channel.send(`**${args[0]}**, isminde bir kategorim yok.`)
+ 
+  const embed = new Discord.RichEmbed()
+  .setAuthor(message.author.username, message.author.avatarURL)
+  .setTimestamp()
+  .setColor('GOLD')
+  .setFooter(`${client.user.username}: ${client.commands.filter(c => c.help.kategori === args[0]).size} komut bulunuyor.`)
+  .setDescription(`**${args[0]}** komutları:\n\n${prefix}${client.commands.filter(c => c.help.kategori === args[0]).map(c => c.help.name).join(', '+ prefix).replace(`${prefix}yardım`, '')}`)
+message.channel.send({embed})
+
+} 
 exports.conf = {
-    enabled: true,
-    guildOnly: false,
-    aliases: ["h", "halp", "help", 'y', 'yadrım'],
-    permLevel: 0
-};
+enabled: true,
+guildOnly: false,
+aliases: [],
+permLevel: 0,
+}
 
 exports.help = {
-    name: 'yardım',
-      category: 'Yardım',
-      description: 'Yardım kategorilerini gösteir.',
-}; 
+name: 'yardım'
+};// codare
