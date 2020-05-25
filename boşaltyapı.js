@@ -393,3 +393,28 @@ m.channel.send(rembed).then(msg => msg.delete(180000))
 }
 
 });
+
+/////////////////////////////////////////////////////////////////////
+
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === '!kuş') {  //BUNU YAZINCA ALTTAKİ MESAJ GİDİCEK
+    msg.reply('O bir fransız kedisi. Hayatı ağlamakla geçer. Adıda Bahar!'); //YUKARIDAKİNİ YAZINCA BU CEVABI VERİCEK
+  }
+});
+
+///////////////////////////////////////////////////////////////////
+
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === '!gölgekuş') {  //BUNU YAZINCA ALTTAKİ MESAJ GİDİCEK
+    msg.reply('Onun adı emre yarasa gibi uçar arı gibi sokar!'); //YUKARIDAKİNİ YAZINCA BU CEVABI VERİCEK
+  }
+});
+
+///////////////////////////////////////////////////////
+
+
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === '!çekirge') {  //BUNU YAZINCA ALTTAKİ MESAJ GİDİCEK
+    msg.reply('Onun adı Dante. DÇÖnün Lideri ve Yol Gösterici bir Kral!'); //YUKARIDAKİNİ YAZINCA BU CEVABI VERİCEK
+  }
+});
