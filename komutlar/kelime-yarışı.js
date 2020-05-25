@@ -58,7 +58,7 @@ exports.run = async (client, message, args) => {
   }
 
 exports.conf = {
-  enabled: true,
+  enabled: false,
   guildOnly: false,
   aliases: ['1vs1', '1v1', 'savaş'],
   permLevel: `Yetki gerekmiyor.`
