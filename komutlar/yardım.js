@@ -1,8 +1,8 @@
 
 const Discord = require('discord.js')
 const data = require('quick.db')
-
-exports.run = async (client, message, args) => {
+const db = require("quick.db");
+exports.run = async (client, message, args) => {if(db.fetch(`bakim`)) return message.channel.send('Şuanda Bakım Modu Açık. Komutlar Bakım Modunda Çalışmaz')
 let prefix = '!'// botunuzun prefixi
   
  let kategoriler = ['genel', 'moderasyon', 'eğlence', 'bilgi', 'nsfw', 'yapımcı',]
