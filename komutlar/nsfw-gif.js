@@ -24,5 +24,6 @@ exports.conf = {
 exports.help = {
   name: 'nsfw-gif',
   description: 'nsfw Komut',
+  kategori:'nsfw',
   usage: 'nsfw-gif'
 };

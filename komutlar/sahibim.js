@@ -24,5 +24,6 @@ exports.conf = {
 exports.help = {
     name: 'yapımcım',
     description: 'Botun Yapımcısını Gösterir',
+  kategori:'moderasyon',
     usage: 'yapımcım'
 };

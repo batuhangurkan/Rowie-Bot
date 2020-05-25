@@ -25,5 +25,6 @@ description: ('Bu kanal NSFW kanalı değil!')
  exports.help = {
    name: 'hd',
    description: 'NSFW bir resim g�sterir.',
+   kategori:'nsfw',
    usage: 'hd'
  };

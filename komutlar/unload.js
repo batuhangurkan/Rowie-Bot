@@ -34,5 +34,6 @@ exports.conf = {
 exports.help = {
   name: 'unload',
   description: 'İstediğiniz bir komutu devre dışı bırakır.',
+  kategori:'moderasyon',
   usage: 'unload <komut adı>'
 };

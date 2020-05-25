@@ -23,6 +23,7 @@ module.exports.conf = {
 module.exports.help = {
   name: 'yazı-banner',
   description: 'Yazdığınız yazıyı banner olarak atar',
+  kategori:'eğlence',
   usage: 'yazıb <yazdırmak istediğiniz yazı>'
 };
 //XiR

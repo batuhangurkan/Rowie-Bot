@@ -13,5 +13,6 @@ exports.conf = {
 exports.help = {
   name: 'ping',
   description: 'Botun pingini gĂ¶sterir.',
+  kategori:'genel',
   usage: 'ping'
 };

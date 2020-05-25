@@ -350,5 +350,6 @@ exports.help = {
   name: 'seviye',
       category: 'Seviye',
   description: 'Seviyenizi ve XP\'nizi gösterir.',
+  kategori:'bilgi',
   usage: 'seviye [@kullanıcı/renk/resim] [renk kodu/resim URLsi/sıfırla]'
 };

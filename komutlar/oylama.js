@@ -60,5 +60,6 @@ exports.conf = {
 exports.help = {
   name: "oylama",
   description: "Oylama yapmanızı sağlar.",
+  kategori:'moderasyon',
   usage: ".oylama <oylamaismi>"
 };

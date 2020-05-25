@@ -27,6 +27,7 @@ exports.conf = {
 exports.help = {
   name: 'şifre', 
   description: 'Rastgele bir şifre oluşturur.**Doğru Kullanım**: !şifre <uzunluk>',
+  kategori:'genel',
   usage: 'şifre <uzunluk>'
 };
 //XiR - NOX

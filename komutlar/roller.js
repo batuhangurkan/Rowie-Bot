@@ -23,6 +23,7 @@ exports.conf = {
 exports.help = {
   name: 'roller',
   description: '',
+  kategori:'genel',
   usage: 'roller'
 };
 //XiR

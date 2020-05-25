@@ -15,6 +15,7 @@ exports.conf = {
 
 exports.help = {
   name: 'yılbaşı',
+  kategori:'bilgi',
   description: '',
 usage: ""
 };

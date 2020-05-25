@@ -25,5 +25,6 @@ exports.conf = {
 exports.help = {
   name: 'woodie', 
   description: 'Woodie the Lumberjack hakkında bilgi verir',
+  kategori:'eğlence',
   usage: 'woodie'
 };

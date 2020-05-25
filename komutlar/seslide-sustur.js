@@ -49,5 +49,6 @@ permLevel: 0,
 }
 
 exports.help = {
+  kategori:'moderasyon',
 name: 'seslide-sustur'
 }// codare

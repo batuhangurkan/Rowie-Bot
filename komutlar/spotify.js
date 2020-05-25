@@ -45,5 +45,6 @@ exports.conf = {
 exports.help = {
   name: 'spotify',
   description: '',
+  kategori:'bilgi',
   usage: 'spotify'
 };

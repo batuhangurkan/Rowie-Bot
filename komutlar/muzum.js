@@ -18,5 +18,6 @@ exports.conf = {
 exports.help = {
   name: 'muzum',
   description: 'Acaba Kaç CM',
+  kategori:'eğlence',
   usage: 'muzum'
 };

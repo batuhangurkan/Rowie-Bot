@@ -32,6 +32,7 @@ exports.run = async (client, message, args) => {if(db.fetch(`bakim`)) return mes
  exports.help = {
    name: 'seslimesaj',
    description: 'Yazdığınız mesajı sesli olarak söyler.',
+   kategori:'genel',
    usage: 'seslimesaj <mesaj>'
  };
 

@@ -33,5 +33,6 @@ exports.conf = {
 exports.help = {
   name: 'öp',
   description: 'kiss',
+  kategori:'eğlence',
   usage: 'öp'
 };

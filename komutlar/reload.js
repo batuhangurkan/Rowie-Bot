@@ -39,5 +39,6 @@ exports.conf = {
 exports.help = {
     name: 'reload',
     description: 'Belirtilen bir komutu yeniden başlatır.',
+  kategori:'yapımcı',
     usage: 'reload <komut adı>',
 }

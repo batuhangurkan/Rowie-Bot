@@ -38,7 +38,7 @@ exports.conf = {
 
 exports.help = {
   name: 'yetkililer',
-  category: 'sunucu',
+  kategori:'genel',
   description: 'Bulunduğunuz sunucudaki yetkilileri çevrimiçi, çevrımdışı/görünmez, rahatsız etmeyin ve boşta modlarında olup olmadıklarını göstererek listeler. (Yönetici yetkisine sahip kullanıcıları yetkili olarak sayar.)',
   usage: 'yetkililer'
 };

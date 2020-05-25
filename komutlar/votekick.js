@@ -71,5 +71,6 @@ exports.conf = {
 exports.help = {
   name: 'votekick',
   description: 'wasted.',
+  kategori:'moderasyon',
   usage: 'wasted'
   };

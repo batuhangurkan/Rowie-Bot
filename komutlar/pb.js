@@ -30,5 +30,6 @@ exports.conf = {
   permLevel: 0
 };
 exports.help = {
+  kategori:'eğlence',
   name: "pornhub"
 };

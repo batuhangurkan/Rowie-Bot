@@ -23,5 +23,6 @@ exports.conf = {
 exports.help = {
   name: 'sahip',
   description: 'Bütün sahip komutlarını verir.',
+  kategori:'yapımcı',
   usage: 'sahip'
 };

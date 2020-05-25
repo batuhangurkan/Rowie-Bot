@@ -32,5 +32,6 @@ exports.conf = {
 exports.help = {
   name: 'sarıl',
   description: 'sarıl',
+  kategori:'eğlence',
   usage: 'sarıl'
 };

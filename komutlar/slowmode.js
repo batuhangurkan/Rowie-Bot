@@ -31,5 +31,6 @@ exports.conf = {
 exports.help = {
   name: 'yavaşmod',
   description: 'İstediğiniz Kişiye sarılırsınız.',
+  kategori:'moderasyon',
   usage: 'sarıl'
 };

@@ -30,5 +30,6 @@ exports.conf = {
 exports.help = {
   name: 'sa-as',
   description: 'Sa As ayarlarsın.',
+  kategori:'moderasyon',
   usage: 'sa-as'
 };

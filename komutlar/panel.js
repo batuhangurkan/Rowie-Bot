@@ -94,5 +94,6 @@ exports.conf = {
 exports.help = {
   name: 'panel',
   description: 'Tüm komutları gösterir.',
+  kategori:'moderasyon',
   usage: 'panel'
 };

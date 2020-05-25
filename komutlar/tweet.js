@@ -56,5 +56,6 @@ exports.help = {
 
 
   description: 'Tweet atar (fake).',
+  kategori:'eğlence',
   usage: '<prefix>twitter mesaj'
 };

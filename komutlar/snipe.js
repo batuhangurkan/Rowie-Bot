@@ -31,6 +31,6 @@ exports.help = {
  name: 'snipe',
  description: `Son silinen mesajı size gösterir.`,
  usage: 'snipe',
- kategori: '**EĞLENCE**',
+  kategori:'moderasyon',
  permLvl: '**HERKES KULLANABİLİR**'
 };

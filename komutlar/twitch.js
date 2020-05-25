@@ -71,6 +71,7 @@ module.exports.conf = {
 module.exports.help = {
   name: 'twitch',
   description: 'Twitch Yayıncısının Yayında olup olmadığı hakkında bilgi verir',
+  kategori:'bilgi',
   usage: 'twitch <yayıncı>'
 };
 //XiR

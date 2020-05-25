@@ -36,5 +36,6 @@ exports.run = (bot, message, params) => {
  exports.help = {
    name: 'scbilgi',
    description: 'Kullanılan Yerdeki Sunucu Bilgilerini Gösterir.',
+   kategori:'bilgi',
    usage: 'scbilgi'
  };

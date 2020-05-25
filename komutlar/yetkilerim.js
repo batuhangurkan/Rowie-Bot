@@ -171,6 +171,7 @@ exports.conf = {
 exports.help = {
   name: 'yetkilerim',
   description: 'TesT Komutudur',
+  kategori:'genel',
   usage: 'yetkilerim'
 };
 //XiR

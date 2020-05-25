@@ -44,6 +44,7 @@ exports.help = {
   kategori: "komutlar",
   name: 'steamfiyat',
   description: 'Aradağınız oyunun steamdaki fiyatına bakmanızı sağlar',
+  kategori:'bilgi',
   usage: '!steamfiyat PUBG'
 };
 //XİR

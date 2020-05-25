@@ -69,5 +69,6 @@ module.exports.conf = {
 module.exports.help = {
   name: 'sayfalı-emoji',
   description: 'Sayfalı emojiler',
+  kategori:'genel',
   usage: 'sayfalı-emoji'
 };

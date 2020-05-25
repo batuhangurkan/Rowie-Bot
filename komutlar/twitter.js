@@ -83,5 +83,6 @@ exports.conf = {
 exports.help = {
   name: 'twitter',
   description: 'Twitter kullanıcı bilgi komutu',
+  kategori:'bilgi',
   usage: 'twitter <kullanıcı adı>'
 };

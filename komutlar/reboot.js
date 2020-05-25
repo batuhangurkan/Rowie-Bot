@@ -31,5 +31,6 @@ exports.conf = {
 exports.help = {
   name: 'reboot',
   description: '[Admin Komutu]',
+  kategori:'yapımcı',
   usage: 'reboot'
 };

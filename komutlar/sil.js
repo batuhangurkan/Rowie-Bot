@@ -34,6 +34,7 @@ exports.conf = {
 exports.help = {
   name: 'sil',
   description: 'Belirlenen miktarda mesajı siler.',
+  kategori:'moderasyon',
   usage: 'sil <silinicek mesaj sayısı>'
 };
 //XiR

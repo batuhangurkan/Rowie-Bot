@@ -25,5 +25,6 @@ exports.conf = {
 exports.help = {
   name: 'tokyo-ghoul',
   description: 'Rastgele anime tokyo gifi atar.',
+  kategori:'eğlence',
   usage: 'tokyo-ghoul'
 }; 

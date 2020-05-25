@@ -19,5 +19,6 @@ module.exports.conf = {
 module.exports.help = {
   name: 'rrenk',
   description: 'rastgele renk gönderir',
+  kategori:'genel',
   usage: 'rrenk'
 };

@@ -37,5 +37,6 @@ exports.conf = {
 exports.help = {
   name: 'uyar',
   description: 'İstediğiniz kişiyi uyarır.',
+  kategori:'moderasyon',
   usage: 'uyar [kullanıcı] [sebep]'
 };

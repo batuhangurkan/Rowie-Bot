@@ -44,6 +44,7 @@ module.exports.conf = {
 module.exports.help = {
   name: 'vikipedia',
   description: 'Wikipedia sitesinde arama yaparsınız',
+  kategori:'bilgi',
   usage: 'vikipedi'
 };
 //XiR

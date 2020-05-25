@@ -26,5 +26,6 @@ exports.conf = {
 exports.help = {
   name: 'seviyeyardım',
   description: 'Tüm komutları listeler. İsterseniz bir komut hakkında yardım eder..',
+  kategori:'bilgi',
   usage: 'seviyeyardım'
 };

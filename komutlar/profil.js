@@ -60,5 +60,6 @@ exports.conf = {
 exports.help = {
   name: 'profil',
   description: 'Belirlenen miktarda mesajı siler.',
+  kategori:'genel',
   usage: 'profil'
 };

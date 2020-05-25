@@ -17,5 +17,6 @@ exports.conf = {
 exports.help = {
   name: 'yaz',
   description: 'İstediğiniz şeyi bota yazdırır.',
+  kategori:'moderasyon',
   usage: 'yaz [yazdırmak istediğiniz şey]'
 };

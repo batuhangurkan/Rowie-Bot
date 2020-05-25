@@ -83,5 +83,6 @@ exports.conf = {
 exports.help = {
   name: 'npm',
   description: 'Npm modülü hakkında bilgi verir.',
+  kategori:'bilgi',
   usage: 'npm '
 };
