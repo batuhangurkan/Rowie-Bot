@@ -16,7 +16,7 @@ description: ('Bu kanal NSFW kanalı değil!')
  }
 };
  exports.conf = {
-   enabled: false,
+   enabled: true,
    guildOnly: false,
    aliases: ['nsfw'],
    permLevel: 0
