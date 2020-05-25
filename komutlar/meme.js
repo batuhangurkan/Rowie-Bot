@@ -23,7 +23,7 @@ exports.conf = {
 
 exports.help = {
   name: 'meme',
-  category: 'Fun',
+  kategori:'eğlence',
   description: 'Searches for the dankest of memes in the dankest of subreddits.',
   usage: 'meme'
 }

@@ -27,5 +27,6 @@ exports.conf = {
 exports.help = {
  name: 'mcskin',
  description: 'Belirtilen oyuncunun kostümünü gösterir.',
+  kategori:'eğlence',
  usage: 'mcbody <oyuncu>'
 };

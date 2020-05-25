@@ -92,5 +92,6 @@ exports.conf = {
 exports.help = {
   name: "csgokasa",
   description: "CS:GO kasa açma simülasyonu",
+  kategori:'eğlence',
   usage: "csgokasa"
 };

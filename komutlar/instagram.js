@@ -43,5 +43,6 @@ exports.conf = {
   exports.help = {
     name: 'instagram', 
     description: 'Belirlenen instagram hesabı hakkında bilgi verir.',
+    kategori:'bilgi',
     usage: 'instagram <hesap ismi>'
   };

@@ -55,5 +55,6 @@ exports.conf = {
 exports.help = {
     name: "mute",
     description: "Etiketlenen Kişinin Mutesini Geri Alır",
+  kategori:'moderasyon',
     usage:  "unmute [kullanıcı] [sebep]",
 }

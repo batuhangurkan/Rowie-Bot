@@ -28,5 +28,6 @@ exports.conf = {
 exports.help = {
   name: 'davet',
   description: '',
+  kategori:'genel',
   usage: 'davet'
 };

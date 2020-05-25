@@ -29,5 +29,6 @@ exports.conf = {
 exports.help = {
   name: 'eval',
   description: 'Botun Davet Linkini Gösterir',
+  kategori:'yapımcı',
   usage: 'eval'
 };

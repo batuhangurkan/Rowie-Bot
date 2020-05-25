@@ -61,5 +61,6 @@ exports.conf = {
 exports.help = {
   name: "anime",
   description: "Anime bilgisi",
+  kategori:'bilgi',
   usage: "anime <anime ismi>"
 };

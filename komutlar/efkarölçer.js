@@ -15,5 +15,6 @@ exports.conf = {
 exports.help = {
  name: 'efkarölçer',
  description: 'Efkarınızı Ölçer ',
+  kategori:'eğlence',
  usage: 'efkarölçer'
 };

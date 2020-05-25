@@ -46,6 +46,7 @@ exports.conf = {
 exports.help = {
   name: 'üyemesaj',
   description: 'Belirtilen Id deki kişiye özelden göndermek istediğiniz mesajı gönderir',
+  kategori:'moderasyon',
   usage: 'üyemesaj <ıd> <mesaj>'
 };
 //XiR

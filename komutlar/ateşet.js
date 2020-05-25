@@ -39,5 +39,6 @@ exports.conf = {
 exports.help = {
     name: 'ateşet',
     description: 'İstediğiniz kişinin kafasına sıkar.',
+  kategori:'eğlence',
     usage: 'ateşet [kullanıcı]'
 };

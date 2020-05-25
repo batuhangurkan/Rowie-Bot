@@ -255,6 +255,7 @@ exports.conf = {
 exports.help = {
   name: 'döviz',
   description: 'Güncel Döviz kurlarını gösterir.',
+  kategori:'bilgi',
   usage: 'döviz'
 };
 //XiR

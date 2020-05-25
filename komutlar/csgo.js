@@ -82,5 +82,6 @@ exports.conf = {
 exports.help = {
   name: 'csgo',
   description: 'CSGO İstatistikler',
+  kategori:'bilgi',
   usage: 'csgo'
 };

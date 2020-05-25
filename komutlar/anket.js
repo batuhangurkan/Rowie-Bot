@@ -24,5 +24,6 @@ exports.conf = {
 exports.help = {
   name: 'anket',
   description: 'Sunucuda Duyuru yapmanızı sağlar.',
+  kategori:'moderasyon',
   usage: 'anket [yazı]'
 };

@@ -63,6 +63,7 @@ exports.conf = {
 exports.help = {
         name: 'aşkımı-ölç',
         description: 'İki kullanıcı sarasındaki aşkı ölçer.',
+        kategori:'eğlence',
         usage: 'aşkımı-ölç [@Kullanıcı] [@Kullanıcı]'
 }
 //XiR

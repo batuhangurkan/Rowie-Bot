@@ -25,5 +25,6 @@ exports.conf = {
   permLevel: 0
 }
 exports.help = {
+  kategori:'yapımcı',
   name: 'bakım'
 }

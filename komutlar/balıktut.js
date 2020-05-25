@@ -20,5 +20,6 @@ exports.conf = {
 exports.help = {
   name: 'balıktut',
   description: 'Balık Tutarsın.',
+  kategori:'eğlence',
   usage: 'balıktut'
 };

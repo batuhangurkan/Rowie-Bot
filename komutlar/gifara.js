@@ -49,5 +49,6 @@ exports.conf = {
 exports.help = {
   name: 'gifara',
   description: "Mesajınızla ilgili gifleri Giphy'da aratır.",
+  kategori:'eğlence',
   usage: 'gifara <aranacak gif>'
 };

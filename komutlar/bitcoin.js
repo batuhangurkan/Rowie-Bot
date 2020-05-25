@@ -38,5 +38,6 @@ module.exports.conf = {
 module.exports.help = {
   name: 'bitcoin',
   description: 'Ülkelerin bitcoin değerlerini gösterir',
+  kategori:'bilgi',
   usage: 'bitcoin'
 };

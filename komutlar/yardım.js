@@ -5,7 +5,7 @@ const data = require('quick.db')
 exports.run = async (client, message, args) => {
 let prefix = '!'// botunuzun prefixi
   
- let kategoriler = ['genel', 'moderasyon', 'eğlence', 'yapımcı',]
+ let kategoriler = ['genel', 'moderasyon', 'eğlence', 'bilgi', 'yapımcı',]
  if(!args[0]) return message.channel.send(`Komutlara Ulaşmak İçin Kategorilerden Birini Yazmalısın. Örnek: !yardım moderasyon \n${kategoriler.join(', ')}`)
  if(!kategoriler.includes(args[0])) return message.channel.send(`**${args[0]}**, isminde bir kategorim yok.`)
  

@@ -27,5 +27,6 @@ exports.conf = {
 exports.help = {
   name: 'gs',
   description: 'gs',
+  kategori:'eğlence',
   usage: 'gs'
 };

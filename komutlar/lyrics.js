@@ -36,7 +36,7 @@ exports.conf = {
 exports.help = {
   name: 'lyrics',
   description: 'Belirtilen şarkının sözlerini atar.',
-  category:'Kullanıcı',
+  kategori:'genel',
   usage: 'lyrics [ŞARKI] [ARTIST]',
 };
 

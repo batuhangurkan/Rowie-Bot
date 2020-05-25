@@ -38,5 +38,6 @@ module.exports.conf = {
 module.exports.help = {
   name: 'banlananlar',
   description: 'Sunucundan Banlanan üyeleri gösterir.',
+  kategori:'moderasyon',
   usage: 'banlananlar'
 };

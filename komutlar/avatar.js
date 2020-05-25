@@ -30,5 +30,6 @@ exports.help = {
   name: 'avatar',
   category: 'kullanıcı',
   description: 'Belirtilen Kişinin veya Komutu Yazan Kişinin Avatarını Atar.',
+  kategori:'genel',
   usage: '!avatar <@kişi-etiket> veya !avatar'
 };

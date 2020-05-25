@@ -35,5 +35,6 @@ exports.conf = {
 exports.help = {
   name: 'duyuru',
   description: 'İstediğiniz şeyi bota yazdırır.',
+  kategori:'moderasyon',
   usage: 'duyuru [duyuru]'
 };

@@ -22,5 +22,6 @@ exports.conf = {
 exports.help = {
   name: 'load',
   description: 'Yeni eklenen komutu yükler.',
+  kategori:'yapımcı',
   usage: 'load <komut adı>'
 };

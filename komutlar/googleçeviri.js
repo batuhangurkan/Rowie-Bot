@@ -35,5 +35,6 @@ exports.conf = {
 exports.help = {
   name: 'g-çeviri',
   description: 'Bot sunucudan ayrılır.',
+  kategori:'bilgi',
   usage: 'gçevir'
 };

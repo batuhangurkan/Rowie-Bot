@@ -37,5 +37,6 @@ exports.conf = {
 };
 
 exports.help = {
+  kategori:'moderasyon',
   name: 'kick'
 };

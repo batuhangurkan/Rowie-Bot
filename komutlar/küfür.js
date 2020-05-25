@@ -26,5 +26,6 @@ exports.conf = {
 exports.help = {
   name: "küfür-engel",
   description: "Küfür engel açar yada kapatır.",
+  kategori:'moderasyon',
   usage: "küfür-engel"
 }

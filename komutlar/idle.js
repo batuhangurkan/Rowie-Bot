@@ -22,6 +22,7 @@ module.exports.conf = {
 module.exports.help = {
   name: 'idle',
   description: 'Rastgele tavşan resmi gönderir.',
+  kategori:'yapımcı',
   usage: 'idle'
 };
 //XiR

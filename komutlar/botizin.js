@@ -14,6 +14,7 @@ module.exports.conf = {
 module.exports.help = {
   name: 'perm',
   description: 'Bottaki izin seviyenizi gösterir.',
+  kategori:'genel',
   usage: 'perm'
 };
 //XiR

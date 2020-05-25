@@ -22,5 +22,6 @@ exports.conf = {
 exports.help = {
     name: 'emojiyaz',
     description: 'Emoji ile yazar.',
+  kategori:'eğlence',
     usage: 'emojiyaz'
 };

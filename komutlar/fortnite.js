@@ -51,5 +51,6 @@ exports.conf = {
 exports.help = {
   name: 'fortnite',
   description: '',
+  kategori:'eğlence',
   usage: ''
 };

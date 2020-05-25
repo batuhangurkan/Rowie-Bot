@@ -35,5 +35,6 @@ exports.conf = {
 exports.help = {
   name: 'hazır-kanallar',
   description: 'Bot İçin gerekli kanlları kurar.',
+  kategori:'moderasyon',
   usage: '!hazır-kanallar'
 };

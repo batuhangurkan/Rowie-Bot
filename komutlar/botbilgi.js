@@ -60,5 +60,6 @@ exports.conf = {
 exports.help = {
   name: "botbilgi",
   description: "Bot ile ilgili bilgi verir.",
+  kategori:'bilgi',
   usage: "botbilgi"
 };

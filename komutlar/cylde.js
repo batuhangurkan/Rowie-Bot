@@ -31,6 +31,7 @@ module.exports.conf = {
 module.exports.help = {
   name: 'clyde',
   description: 'clyde ye yazı yazdırırsınız',
+  kategori:'eğlence',
   usage: 'clyde <yazı>'
 };
 //XiR

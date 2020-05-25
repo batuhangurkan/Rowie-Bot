@@ -60,6 +60,7 @@ exports.conf = {
 exports.help = {
   name: 'korona',
   description: 'Ülkelerdeki COVID-19 vakalarını inceyelebilirsiniz',
+  kategori:'bilgi',
   usage: 'korona <ülke>'
 };
 //XiR Dev. Team

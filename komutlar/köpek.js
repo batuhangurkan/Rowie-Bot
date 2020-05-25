@@ -25,5 +25,6 @@ exports.conf = {
 exports.help = {
   name: 'köpek',
   description: 'Rastgele köpek gif atar.',
+  kategori:'eğlence',
   usage: 'köpek'
 };

@@ -55,6 +55,7 @@ exports.conf = {
 exports.help = {
   name: 'dbl',
   description: 'Discord Botları hakkında bilgi verir',
+  kategori:'bilgi',
   usage: 'dbl'
 };
 //XiR Dev. Team - MeliL

@@ -31,5 +31,6 @@ module.exports.conf = {
 module.exports.help = {
   name: 'kanna',
   description: 'anime karakterinin posterine yazı yazarsınız',
+  kategori:'eğlence',
   usage: 'kanna <yazı>'
 };

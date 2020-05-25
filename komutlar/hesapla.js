@@ -36,5 +36,6 @@ exports.conf = {
 exports.help = {
   name: 'hesapla', 
   description: 'Matematik İçin Lazım Olacak.',
+  kategori:'eğlence',
   usage: 'hesapla <işlem>'
 };

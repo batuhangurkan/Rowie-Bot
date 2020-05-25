@@ -38,5 +38,6 @@ exports.conf = {
 exports.help = {
   name: "istatistik",
   description: "Bot i",
+  kategori:'bilgi',
   usage: "istatistik"
 };

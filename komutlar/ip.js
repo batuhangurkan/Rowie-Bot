@@ -27,5 +27,6 @@ exports.conf = {
 exports.help = {
   name: "ip",
   description: "!ip ip-numarası",
+  kategori:'bilgi',
   usage: "ipbilgi"
 };

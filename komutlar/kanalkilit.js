@@ -40,5 +40,6 @@ exports.conf = {
 };
 
 exports.help = {
+  kategori:'moderasyon',
   name: 'kanalkilit'
 };// codare

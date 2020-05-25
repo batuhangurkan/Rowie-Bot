@@ -29,5 +29,6 @@ exports.conf = {
 exports.help = {
   name: 'başvuru',
   description: 'Kullanıcıyı terfi ettirir.',
+  kategori:'moderasyon',
   usage: 'başvuru [kullanıcı]'
 };

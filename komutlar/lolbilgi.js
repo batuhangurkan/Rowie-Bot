@@ -100,5 +100,6 @@ exports.conf = {
   exports.help = {
     name: 'lolbilgi',
     description: 'Lol hesabı hakkında bilgi verir.',
+    kategori:'bilgi',
     usage: 'lolbilgi (bölge) (nick)',
   };

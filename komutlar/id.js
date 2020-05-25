@@ -17,5 +17,6 @@ module.exports.conf = {
 module.exports.help = {
   name: "ıd",
   description: "Id Numaranızı gösterir.",
+  kategori:'genel',
   usage: "ıd"
 };

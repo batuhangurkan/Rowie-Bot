@@ -48,5 +48,6 @@ exports.conf = {
 exports.help = {
   name: 'kanalıkilitle',
   description: 'Kanalı istediğiniz kadar süreyle kitler.',
+  kategori:'moderasyon',
   usage: 'kanalıkilitle'
 };
