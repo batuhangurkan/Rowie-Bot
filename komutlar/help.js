@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {if(db.fetch(`bakim`)) return mes
 let prefix = '!'// botunuzun prefixi
   
  let kategoriler = ['genel', 'moderasyon', 'eğlence', 'bilgi', 'nsfw', 'yapımcı',]
- if(!args[0]) return message.channel.send(`Komutlara Ulaşmak İçin Kategorilerden Birini Yazmalısın. Örnek: !yardım moderasyon \n${kategoriler.join(', ')}`)
+ if(!args[0]) return message.channel.send(`You must write one of the categories to access the commands. Example: !help moderasyon \n${kategoriler.join(', ')}`)
  if(!kategoriler.includes(args[0])) return message.channel.send(`**${args[0]}**, isminde bir kategorim yok.`)
  
   const embed = new Discord.RichEmbed()
@@ -21,10 +21,10 @@ message.channel.send({embed})
 exports.conf = {
 enabled: true,
 guildOnly: false,
-aliases: ['help'],
+aliases: [],
 permLevel: 0,
 }
 
 exports.help = {
-name: 'yardım'
+name: 'help'
 };// codare
