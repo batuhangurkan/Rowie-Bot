@@ -17,6 +17,7 @@ const snekfetch = require('snekfetch');
 const queue = new Map();
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
+const ms = require("ms");
 
 const app = express();
 app.get("/", (request, response) => {
@@ -415,3 +416,46 @@ m.channel.send(rembed).then(msg => msg.delete(180000))
 });
 
 //////////////////////////////////////////////////////////
+
+//BOT ENGEL,anti-baskın yada anti-raid
+client.on("guildMemberAdd", async member => {// Yapımı Tamamen CodAre'den '~'Resađ Seferov✨#0809 a aitdir
+let kanal = await db.fetch(`antiraidK_${member.guild.id}`)== "anti-raid-aç"
+  if (!kanal) return;  
+  var cod = member.guild.owner
+  if (member.user.bot === true) {
+     if (db.fetch(`botizin_${member.guild.id}.${member.id}`) == "aktif") {
+    let are = new Discord.RichEmbed()
+      .setColor("RANDOM")
+      .setThumbnail(member.user.avatarURL)
+      .setDescription(`**${member.user.tag}** (${member.id}) adlı bota bir yetkili verdi eğer kaldırmak istiyorsanız **${prefix}bot-izni kaldır botun_id**.`);
+    cod.send(are);//CodAre✨
+     } else {
+       let izinverilmemişbot = new Discord.RichEmbed()
+      .setColor("RANDOM")
+      .setThumbnail(member.user.avatarURL)
+      .setDescription("**" + member.user.tag +"**" + " (" + member.id+ ") " + "adlı bot sunucuya eklendi ve banladım eğer izin vermek istiyorsanız **" + prefix + "bot-izni ver botun_id**")
+       member.ban();// Eğer sunucudan atmak istiyorsanız ban kısmını kick yapın
+       cod.send(izinverilmemişbot)
+}
+  }
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+client.on('guildMemberAdd', async(member) => {
+ let mute = member.guild.roles.find(r => r.name === "Susturuldu");
+let mutelimi = db.fetch(`muteli_${member.guild.id + member.id}`)
+let süre = db.fetch(`süre_${member.id + member.guild.id}`)
+if (!mutelimi) return;
+if (mutelimi) {
+member.addRole(mute.id)
+ 
+member.send("Muteliyken Sunucudan Çıktığın için Yeniden Mutelendin!")
+ setTimeout(function(){
+    // msg.channel.send(`<@${user.id}> Muten açıldı.`)
+db.delete(`muteli_${member.guild.id + member.id}`)
+    member.send(`<@${member.id}> Muten açıldı.`)
+    member.removeRole(mute.id);
+  }, ms(süre));
+}
+})
