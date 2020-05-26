@@ -461,17 +461,3 @@ db.delete(`muteli_${member.guild.id + member.id}`)
 })
 
 ////////////////////////////////////////////////
-
-client.on('message', async message => {
-if (message.content === '!fakekatıl') { // . yerine prefixi yaz
-  client.emit('guildMemberAdd', message.member || await message.guild.fetchMember(message.author));
-    }
-});
-
-//////////////////////////////////////////////
-
-client.on('message', async message => {
-if (message.content === '.fakeayrıl') { // . yerine prefixi yaz
-  client.emit('guildMemberRemove', message.member || await message.guild.fetchMember(message.author));
-    }
-});
