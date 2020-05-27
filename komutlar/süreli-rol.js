@@ -1,15 +1,15 @@
 const Discord = require('discord.js')
 const ms = require("ms");
 
-exports.run = async (client, message, args) => {//chimp ᵈ♡#0110
+exports.run = async (client, message, args) => {
 const mb = new Discord.RichEmbed()
 .setAuthor(client.user.username, client.user.avatarURL)
-.setFooter(`Gults`)
+.setFooter(`Codare`)
 .setTimestamp()
 
 const emb = new Discord.RichEmbed()
 .setAuthor(client.user.username, client.user.avatarURL)
-.setFooter(`Gults`)
+.setFooter(`Codare`)
 .setTimestamp()
 
 if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(mb.setDescripton(`Bu komutu kullanabilmek için yetkiniz yetersiz.`))
