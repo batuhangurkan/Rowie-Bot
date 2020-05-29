@@ -18,7 +18,7 @@ if (!sebep) return msg.reply('Sebep Belirtmedin!')
  
  
  
-  let mute = msg.guild.roles.find(r => r.name === "Susturuldu");
+  let mute = msg.guild.roles.find(r => r.name === "Muted");
          
   let mutetime = args[1]
 if(!mute){
@@ -77,5 +77,5 @@ exports.help = {
   name: "tempmute",
   description: "",
   kategori:'moderasyon',
-  usage: ""
+  usage: "tempmute"
 };
