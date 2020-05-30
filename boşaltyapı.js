@@ -443,7 +443,7 @@ let kanal = await db.fetch(`antiraidK_${member.guild.id}`)== "anti-raid-aç"
 //////////////////////////////////////////////////////////////////////////////////////////
 
 client.on('guildMemberAdd', async(member) => {
- let mute = member.guild.roles.find(r => r.name === "Susturuldu");
+ let mute = member.guild.roles.find(r => r.name === "Muted");
 let mutelimi = db.fetch(`muteli_${member.guild.id + member.id}`)
 let süre = db.fetch(`süre_${member.id + member.guild.id}`)
 if (!mutelimi) return;
