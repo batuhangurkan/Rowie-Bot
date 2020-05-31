@@ -512,3 +512,44 @@ return
 })
 
 ////////////////////////////////////////
+
+client.on('guildMemberAdd', async member => {
+  let fc = await db.fetch(`FrenzyResimsizHGBB_${member.guild.id}`)
+  let frenzychannel = client.channels.get(fc)
+  if(!frenzychannel) return
+  frenzychannel.send(`${member} Kullanıcısı Sunucuya Katıldı! **HOŞGELDİN**!`)
+})
+client.on('guildMemberRemove', async member => {
+  let fc = await db.fetch(`FrenzyResimsizHGBB_${member.guild.id}`)
+  let frenzychannel = client.channels.get(fc)
+  if(!frenzychannel) return
+  frenzychannel.send(`${member.user.username} Kullanıcısı Sunucudan Ayrıldı! **GÖRÜŞMEK ÜZERE**!`)
+})
+
+//////////////////////////////////////////////////////////////
+
+client.on('messageDelete', msg => {
+  let asd = JSON.parse(fs.readFileSync("./jsonlar/snipe.json", "utf8"));
+               asd[msg.guild.id] = {
+                mesaj: msg.content,
+                isim: msg.author.username + "#" + msg.author.discriminator
+              };
+            
+            fs.writeFile("./jsonlar/snipe.json", JSON.stringify(asd), (err) => {
+              //console.log(err)
+            })
+                
+            asd[msg.guild.id].mesaj = msg.content 
+})
+
+//////////////////////////////////////////////
+
+client.on("message", async message => {
+    if(!message.guild) return
+    if (message.member.hasPermission('MANAGE_GUILD')) return;
+    if (message.mentions.users.size >= 4) {
+      message.delete();
+      message.channel.send(`Hey ${message.author}, Lütfen Sürekli Etiket Atma`)
+        message.author.send(`Hey Dostum, Lütfen Sürekli Etiket Atma`)
+      }
+})

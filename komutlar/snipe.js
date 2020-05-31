@@ -1,36 +1,35 @@
+const Discord = require("discord.js")
+const fs = require("fs")
 
-const Discord = require('discord.js')
-const db = require('quick.db')
-
-exports.run = async (client, message, args) => {
-    const data = await db.fetch(`snipe.id.${message.guild.id}`)
-    if(!data) {
-    const snipe2 = new Discord.RichEmbed()
-  .setAuthor(client.user.username, client.user.avatarURL)
-  .setDescription(`Hiç mesaj silinmemiş.`)
-.setColor(`#f3c7e1`)
-    message.channel.send({embed: snipe2});
-          } else {
-  let kullanıcı = client.users.get(data);
-  const data2 = await db.fetch(`snipe.mesaj.${message.guild.id}`)
-  const snipe = new Discord.RichEmbed()
-  .setAuthor(kullanıcı.username, kullanıcı.avatarURL)
-  .setDescription(`En son silinen mesaj: ` + data2)
-.setColor(`#f3c7e1`)
-  message.channel.send(snipe) }
+exports.run = (bot, message) => {
+    let profil = JSON.parse(fs.readFileSync("./jsonlar/snipe.json", "utf8"));
+    if(!profil[message.guild.id]) {
+      const embed = new Discord.RichEmbed();
+      embed.setTitle(`**Snipe**`);
+      embed.setColor('RANDOM')
+      embed.addField(`Bilinmiyor!`, `\n\`\`\`Bilinmiyor!\`\`\``)
+    message.channel.send({embed: embed});
+    } else {
+      if(profil[message.guild.id]) {
+    const embed = new Discord.RichEmbed();
+      embed.setTitle(`**Snipe**`);
+      embed.setColor('RANDOM')
+      embed.addField(`${profil[message.guild.id].isim}`, `\n\`\`\`${profil[message.guild.id].mesaj}\`\`\``)
+    message.channel.send({embed: embed});
+      }
+    }
 }
 
 exports.conf = {
-	enabled: true,
-	guildOnly: false,
-	aliases: [],
-	permLevel: 0
-}
+  enabled: true,
+  guildOnly: false,
+  aliases: ['s'],
+  permLevel: 0
+};
 
 exports.help = {
- name: 'snipe',
- description: `Son silinen mesajı size gösterir.`,
- usage: 'snipe',
+  name: "snipe",
   kategori:'moderasyon',
- permLvl: '**HERKES KULLANABİLİR**'
+  description: "En son silinen mesaji gosterir.",
+  usage: "snipe"
 };
