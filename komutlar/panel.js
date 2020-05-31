@@ -1,99 +1,90 @@
-
+//CodAre
 const Discord = require('discord.js');
+const ayarlar = require('../ayarlar.json');
 const db = require('quick.db');
-exports.run = async function(client, msg, args) {if(db.fetch(`bakim`)) return msg.channel.send('Şuanda Bakım Modu Açık. Komutlar Bakım Modunda Çalışmaz')
-  let ayar = args[0];
-  if(!ayar) {
-    return msg.reply("lütfen `aç` ya da `kapat` şeklinde bir ayar giriniz.")
-  } else if(ayar == "aç") {
-    let sistem = await db.fetch(`panell_${msg.guild.id}`);
-    if(sistem || sistem == "açık") {
-      msg.reply("sistem zaten açık durumda!")
-    } else {
-      db.set(`panell_${msg.guild.id}`, "açık");
-      msg.reply("sistem açık hâle getirildi!")
-    }
-  } else if(ayar == "kapat") {
-    let sistem = await db.fetch(`panell_${msg.guild.id}`);
-    if(!sistem) {
-      msg.reply("sistem zaten kapalı durumda!")
-    } else {
-      let panelID = db.fetch(`panelParentID_${msg.guild.id}`);
-      let ch = client.channels.get(panelID);
-      if(!ch) {
-        let kanal = msg.guild.channels.find(c => c.name.startsWith(msg.guild.name))
-        if(!kanal){
-          
-        } else {
-          try{
-            kanal.delete();
-          }catch(e) {
-            msg.channel.send("Bir hata var.")
-          }
-        }
-      } else {
-        
-      }
-      ch.delete();
-      db.delete(`panelParentID_${msg.guild.id}`);
-      db.delete(`panell_${msg.guild.id}`);
-      msg.reply("sistem kapalı hâle getirildi!");
-      let toplamID = db.fetch(`toplamID_${msg.guild.id}`);
-      let kanal = client.channels.get(toplamID);
-      if(!kanal) {
-        
-      } else {
-        kanal.delete();
-        db.delete(`toplamID_${msg.guild.id}`);
-      }
-      let uyeID = db.fetch(`uyeSayıID_${msg.guild.id}`);
-      let s = client.channels.get(uyeID);
-      if(!s) {
-      
-      }
-      s.delete();
-      db.delete(`uyeSayıID_${msg.guild.id}`);
-      let botID = db.fetch(`botSayıID_${msg.guild.id}`);
-      let bb = client.channels.get(botID);
-      if(!bb) {
-        
-      }
-      bb.delete();
-      db.delete(`botSayıID_${msg.guild.id}`);
-      let idd = db.fetch(`onlSayıID_${msg.guild.id}`);
-      let idD = client.channels.get(idd);
-      console.log(idD.id)
-      idD.delete();
-      db.delete(`onlSayıID_${msg.guild.id}`)
-      let sdd = db.fetch(`sesliID_${msg.guild.id}`);
-      let kanalle = client.channels.get(sdd);
-      if(!kanalle){
-        
-      }
-      kanalle.delete();
-      db.delete(`sesliID_${msg.guild.id}`);
-      let sys = await db.fetch(`panell_${msg.guild.id}`);
-      if(sys == "açık"){
-        try{
-          db.delete(`panell_${msg.guild.id}`)
-        } catch(e) {
-          
-        }
-      }
-    }
+exports.run = async(client, message, args) => {
+  let prefix = await require('quick.db').fetch(`prefix_${message.guild.id}`) || ayarlar.prefix
+  if(!message.member.hasPermission('MANAGE_CHANNEL')) return message.reply('Bu komutu kullanabilmek için `Kanalları Yönet` iznine sahip olmalısın!')
+  let panel = await db.fetch(`sunucupanel_${message.guild.id}`)
+  //CodAre
+  let rekoronline = await db.fetch(`panelrekor_${message.guild.id}`)
+  if(args[0] === "sil" || args[0] === "kapat") {
+    db.delete(`sunucupanel_${message.guild.id}`)
+    db.delete(`panelrekor_${message.guild.id}`)
+  try{
+    message.guild.channels.find(x =>(x .name).includes("• Sunucu Panel")).delete()
+    message.guild.channels.find(x =>(x .name).includes("Toplam Üye •")).delete()
+    message.guild.channels.find(x =>(x .name).includes("Aktif Üye •")).delete()
+    message.guild.channels.find(x =>(x .name).includes("Botlar •")).delete()
+    message.guild.channels.find(x =>(x .name).includes("Rekor Aktiflik •")).delete()
+  } catch(e) { }
+    message.channel.send(`Ayarlanan sunucu paneli başarıyla devre dışı bırakıldı!`)
+   return 
   }
-};
+//CodAre
+  if(panel) return message.channel.send(`Bu sunucuda panel zaten ayarlanmış! Devredışı bırakmak için;  \`${prefix}sunucupanel sil\``)
+  
+      message.channel.send(new Discord.RichEmbed().setColor('RANDOM').setTitle('Sunucu Panel').setDescription('Gerekli dosaylar kurulsun mu?.').setFooter('Onaylıyorsan 15 saniye içerisinde "evet" yazmalısın.'))
+.then(() => {
+message.channel.awaitMessages(response => response.content === 'evet', {
+max: 1,
+time: 15000,
+errors: ['time'],
+}) 
+.then((collected) => { 
+  
+  db.set(`sunucupanel_${message.guild.id}`, message.guild.id)
+  try{
+  let role = message.guild.roles.find("name", "@everyone");
+  message.guild.createChannel(`${client.user.username} • Sunucu Panel`, 'category', [{id: message.guild.id, deny: ['CONNECT']}]);
+        message.guild.createChannel(`Toplam Üye • ${message.guild.members.size}`, 'voice').then(channel => channel.setParent(message.guild.channels.find(channel => channel.name === `${client.user.username} • Sunucu Panel`))).then(c => {
+      c.overwritePermissions(role, {
+          CONNECT: false,
+      });
+  })
+  
+        message.guild.createChannel(`Aktif Üye • ${message.guild.members.filter(off => off.presence.status !== 'offline').size}`, 'voice').then(channel => channel.setParent(message.guild.channels.find(channel => channel.name === `${client.user.username} • Sunucu Panel`))).then(c => {
+      c.overwritePermissions(role, {
+          CONNECT: false,
+      });
+  })
+  
+        message.guild.createChannel(`Botlar • ${message.guild.members.filter(m => m.user.bot).size}`, 'voice').then(channel => channel.setParent(message.guild.channels.find(channel => channel.name === `${client.user.username} • Sunucu Panel`))).then(c => {
+      c.overwritePermissions(role, {
+          CONNECT: false,
+      });
+  })
+  
+        message.guild.createChannel(`Rekor Aktiflik • ${message.guild.members.filter(off => off.presence.status !== 'offline').size}`, 'voice').then(channel => channel.setParent(message.guild.channels.find(channel => channel.name === `${client.user.username} • Sunucu Panel`))).then(c => {
+      c.overwritePermissions(role, {
+          CONNECT: false,
+      });
+  })
+  db.set(`panelrekor_${message.guild.id}`, message.guild.members.filter(off => off.presence.status !== 'offline').size)
+  
+  message.channel.send(`Sunucu panel için gerekli kanallar oluşturulup, ayarlamalar yapıldı!  \`(Oda isimlerini değiştirmeyin, çalışmaz!)\``)
+    
+}catch(e){
+      console.log(e.stack);
+    }
+  
+    });
+});
 
+};
+//CodAre
 exports.conf = {
   enabled: true,
-  guildOnly: false, 
-  aliases: [], 
-  permLevel: 2
+  guildOnly: true,
+  aliases: ["sunucu-panel"],
+  permLevel: 3
 };
 
 exports.help = {
-  name: 'panel',
-  description: 'Tüm komutları gösterir.',
-  kategori:'moderasyon',
-  usage: 'panel'
+  name: 'sunucupanel',
+  description: 'Sunucu İstatistiklerini Gösteren Panel Kurar Ve Sürekli Olarak Günceller.',
+  usage: 'sunucupanel',
+  kategori: 'moderasyon'
 };
+
+//CodAre
