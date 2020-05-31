@@ -421,3 +421,64 @@ oldMsg.reply('Reklamları engelliyorum!').then(msg => msg.delete(7000))
 });
 
 //////////////////////////////////////////////
+
+client.on("message", async message => {
+    let uyarisayisi = await db.fetch(`reklamuyari_${message.author.id}_${message.guild.id}`);
+    let reklamkick = await db.fetch(`reklamkick_${message.guild.id}`)
+    let kullanici = message.member;
+    if (reklamkick == 'kapali') return;
+    if (reklamkick == 'acik') {
+        const reklam = ["discord.app", "discord.gg", "invite", "discordapp", "discordgg", ".com", ".net", ".xyz", ".tk", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ".org", ".com.tr", ".biz", ".party", ".rf.gd", ".az",];
+        if (reklam.some(word => message.content.toLowerCase().includes(word))) {
+            if (!message.member.hasPermission("ADMINISTRATOR")) {
+                message.delete();
+                db.add(`reklamuyari_${message.author.id}_${message.guild.id}`, 1)
+                if (uyarisayisi === null) {
+             
+                  message.channel.send(`<@${message.author.id}>  Reklam Kick Sistemine Yakalandın! Reklam Yapmaya Devam Edersen \`Atılma ve Banlanma\` İhtimalin Var! (1/5)`)
+              .then(msg => msg.delete(5000)) 
+}
+                if (uyarisayisi === 1) {
+           
+                      message.channel.send(`<@${message.author.id}>  Reklam Kick Sistemine Yakalandın! Reklam Yapmaya Devam Edersen \`Atılma ve Banlanma\` İhtimalin Var! (2/5)`)
+                 .then(msg => msg.delete(5000)) 
+                }
+              
+              if (uyarisayisi === 2) {
+           
+                      message.channel.send(`<@${message.author.id}>  Reklam Kick Sistemine Yakalandın! Reklam Yapmaya Devam Edersen \`Atılma ve Banlanma\` İhtimalin Var! (3/5)`)
+               .then(msg => msg.delete(5000))   
+              }
+              
+              if (uyarisayisi === 3) {
+           
+                      message.channel.send(`<@${message.author.id}> Reklam Kick Sistemine Yakalandın! Reklam Yapmaya Devam Edersen \`Atılma ve Banlanma\` İhtimalin Var! (4/5)`)
+               .then(msg => msg.delete(5000))   
+              }
+              
+                if (uyarisayisi === 4) {
+                    message.delete();
+                    await kullanici.kick({
+                        reason: `REKLAM`,
+                    })
+           
+                       message.channel.send(`<@${message.author.id}> 5 Defa Reklam Yaptığı İçin Sunucudan Attım! Bir Daha Yaprsa **Banlıcam.**`)
+         .then(msg => msg.delete(60000))     
+                }
+                if (uyarisayisi === 5) {
+                    message.delete();
+                    await kullanici.ban({
+                        reason: `REKLAM`,
+                    })
+                    db.delete(`reklamuyari_${message.author.id}_${message.guild.id}`)
+                
+                       message.channel.send(`<@${message.author.id}> Reklam Yaptığı İçin Önce **Atıldı.** Fakat Tekrardan Gelip Reklam Yaptığı İçin **Banladım.**`)
+                .then(msg => msg.delete(60000)) 
+                  
+}
+}
+}
+}
+});
+
+/////////////////////////////////////////////////////////
