@@ -491,3 +491,24 @@ member.addRole(frenzy_ibrahim)
 client.channels.get(frenzykanal).send(`Otomatik rol verildi. Hoşgeldin ${member.user.username}!`)
 });
 //Frenzy Code
+
+///////////////////////////////////////////////////////////////
+
+client.on("guildMemberAdd", async member => {
+let frenzysayı = await db.fetch(`FrenzyCode+SayaçSayı_${member.guild.id}`)  
+let frenzykanal = await db.fetch(`FrenzyCode+SayaçKanal_${member.guild.id}`)  
+if(!frenzysayı || !frenzykanal) return
+let sonuç = frenzysayı - member.guild.memberCount
+client.channels.get(frenzykanal).send(`${member}, katıldı! **${frenzysayı}** kişiye ulaşmak için **${sonuç}** kişi kaldı.`)
+})
+client.on("guildMemberRemove", async member => {
+let frenzysayı = await db.fetch(`FrenzyCode+SayaçSayı_${member.guild.id}`)  
+let frenzykanal = await db.fetch(`FrenzyCode+SayaçKanal_${member.guild.id}`)  
+if(!frenzysayı || !frenzykanal) return
+let sonuç = frenzysayı - member.guild.memberCount
+  
+client.channels.get(frenzykanal).send(`${member}, ayrıldı! **${frenzysayı}** kişiye ulaşmak için **${sonuç}** kişi kaldı.`)
+return
+})
+
+////////////////////////////////////////

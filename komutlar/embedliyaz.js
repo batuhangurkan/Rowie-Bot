@@ -21,6 +21,7 @@ exports.conf = {
 
 exports.help = {
   name: 'embedliyaz',
+  kategori:'moderasyon',
   description: '',
   usage: ''
 };
