@@ -462,7 +462,7 @@ client.on("message", async message => {
                         reason: `REKLAM`,
                     })
            
-                       message.channel.send(`<@${message.author.id}> 5 Defa Reklam Yaptığı İçin Sunucudan Attım! Bir Daha Yaprsa **Banlıcam.**`)
+                       message.channel.send(`<@${message.author.id}> 5 Defa Reklam Yaptığı İçin Sunucudan Attım! Bir Daha Yaparsa **Banlanıcak.**`)
          .then(msg => msg.delete(60000))     
                 }
                 if (uyarisayisi === 5) {
@@ -482,3 +482,12 @@ client.on("message", async message => {
 });
 
 /////////////////////////////////////////////////////////
+
+client.on("guildMemberAdd", async member => {
+let frenzy_ibrahim = await db.fetch(`Frenzy?Code?OtorolRol_${member.guild.id}`) 
+let frenzykanal = await db.fetch(`Frenzy?Code?OtorolKanal_${member.guild.id}`)
+if(!frenzy_ibrahim || !frenzykanal) return
+member.addRole(frenzy_ibrahim)
+client.channels.get(frenzykanal).send(`Otomatik rol verildi. Hoşgeldin ${member.user.username}!`)
+});
+//Frenzy Code
