@@ -135,7 +135,7 @@ client.on('message', async message => {
   if (ke === "kapali" || ke === undefined || ke === null){
     return;
   } else if (ke === "acik") {
-    let küfür = ["amk", "aq", "sikerim", "AMK", "AQ", "Amk", "Aq", "orospu çocuğu", "OROSPU","Ananı Sikerim", "ananı sikerim","Amına koduğum", "Ananı sikiyim", "Amına koyim","Götünü sikiyim", "MK", "götünü sikiyim", "s2ş", "mk","S2Ş"]
+    let küfür = ["amk", "aq", "sikerim", "AMK", "AQ", "Amk", "Aq", "orospu çocuğu", "OROSPU","Ananı Sikerim", "ananı sikerim","Amına koduğum", "Ananı sikiyim", "Amına koyim","Götünü sikiyim", "MK", "götünü sikiyim", "s2ş", "Sikiş","S2Ş"]
     if (küfür.some(word => message.content.includes(word))){
         if (!message.member.hasPermission("BAN_MEMBERS")) {
         message.delete();
