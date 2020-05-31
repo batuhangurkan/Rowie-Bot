@@ -553,3 +553,17 @@ client.on("message", async message => {
         message.author.send(`Hey Dostum, Lütfen Sürekli Etiket Atma`)
       }
 })
+
+/////////////////////////////////////////////////////
+
+client.on('guildMemberAdd', member => {
+  let codes = client.channels.get('716800915763363841')
+  if(!codes) return
+  let kullanıcı = client.users.get(member.id)
+  const kurulus = new Date().getTime()- kullanıcı.createdAt.getTime();
+  let frenzy;
+  if (kurulus < 1296000000) frenzy = 'Güvenilir Değil!'
+  if (kurulus > 1296000000) frenzy = 'Güvenilir!'
+  codes.send(`${member} Kullanıcısı Katıldı!
+**Güvenirlik Durumu** : *${frenzy}*`)
+})
