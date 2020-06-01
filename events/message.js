@@ -30,6 +30,8 @@ module.exports = message => {
                     .setColor("RED")
                 message.channel.send({embed})
                 return
+        const kl =  kl.fetch(`kara_${message.author.id}`); // \\
+    if (kl == 'kara') return message.reply("Malesef Sen Karalistedesin Ve Komutları Kullanamassın ")
       }
     }
     

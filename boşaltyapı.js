@@ -384,7 +384,7 @@ db.delete(`muteli_${member.guild.id + member.id}`)
 
 
 setInterval(() => {
-client.channels.get("712797474686894152").send('Bu Sunucuda Küfür Etmek Yasaktır!')
+client.channels.get("712797474686894152").send('Bu Sunucuda Küfür Etmek ve Reklam Paylaşımı Yapmak Yasaktır!')
 }, 5000000) // BURAYA SÜREYİ YAZINIZ 1 SANİYE 1000 MİLİSANİYEDİR!
 
 //////////////////////////////////////////////////
@@ -567,3 +567,6 @@ client.on('guildMemberAdd', member => {
   codes.send(`${member} Kullanıcısı Katıldı!
 **Güvenirlik Durumu** : *${frenzy}*`)
 })
+
+///////////////////////////////////////////////
+

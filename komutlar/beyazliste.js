@@ -16,7 +16,7 @@ exports.run = async (bot, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: [],
+  aliases: ['beyazliste', 'whitelist'],
   permLevel: 4
 };
 exports.help = {

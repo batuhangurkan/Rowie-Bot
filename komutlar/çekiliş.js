@@ -1,7 +1,22 @@
 const Discord = require('discord.js');
 const moment = require('moment');
 const ms = require('ms')
+const talkedRecently = new Set();
 exports.run = async (client, message) => {
+      if (talkedRecently.has(message.author.id)) {
+           return message.channel.send("Bu Komutu `10`Saniyede Bir Kullanabilirsin   " + message.author);
+    } else {
+
+           // the user can type the command ... your command code goes here :)
+
+        // Adds the user to the set so that they can't talk for a minute
+        talkedRecently.add(message.author.id);
+        setTimeout(() => {
+        message.delete();
+          // Removes the user from the set after a minute
+          talkedRecently.delete(message.author.id);
+        }, 10000);// Şuan 5 Saniyedir Değiştirebilirsiniz.
+    }
 var time = moment().format('Do MMMM YYYY , hh:mm');
 var room;
 var title;
