@@ -1,30 +1,49 @@
+const Discord = require ("discord.js");
 
-const Discord = require('discord.js')
-const data = require('quick.db')
-const db = require("quick.db");
-exports.run = async (client, message, args) => {if(db.fetch(`bakim`)) return message.channel.send('Şuanda Bakım Modu Açık. Komutlar Bakım Modunda Çalışmaz')
-let prefix = '!'// botunuzun prefixi
-  
- let kategoriler = ['genel', 'moderasyon', 'eğlence', 'bilgi', 'nsfw', 'yapımcı',]
- if(!args[0]) return message.channel.send(`Komutlara Ulaşmak İçin Kategorilerden Birini Yazmalısın. Örnek: !yardım moderasyon \n${kategoriler.join(', ')}`)
- if(!kategoriler.includes(args[0])) return message.channel.send(`**${args[0]}**, isminde bir kategorim yok.`)
- 
-  const embed = new Discord.RichEmbed()
-  .setAuthor(message.author.username, message.author.avatarURL)
-  .setTimestamp()
-  .setColor('GOLD')
-  .setFooter(`${client.user.username}: ${client.commands.filter(c => c.help.kategori === args[0]).size} komut bulunuyor.`)
-  .setDescription(`**${args[0]}** komutları:\n\n${prefix}${client.commands.filter(c => c.help.kategori === args[0]).map(c => c.help.name).join(', '+ prefix).replace(`${prefix}yardım`, '')}`)
-message.channel.send({embed})
+exports.run = (client, message) => {
+const lembed = new Discord.RichEmbed()
+.setColor("#5ab1bb")
+.setTitle(" Seviye Sistemi Komutları ")
+.addField("!seviye","Seviyeni Görebilirsin!")
+.addField(" !seviye (random kişi) " , "Sunucu İçinde Etiketlediğin Kişinin Seviyesini Görürsün.")
+.addField(" !seviyeyardım " , "Seviye Yardım Komutlarını Gösterir.")
+message.channel.sendEmbed(lembed)
+.then; 
+const mhelp = new Discord.RichEmbed()
+.setColor("#5ab1bb")
+.setTitle("Moderasyon Komutları")
+.setThumbnail("https://i.imgur.com/JsgxK3Y.png")
+.addField("!afk (sebep)", "Sunucuda Afk Olursunuz Ve Biri Sizi Etiketlerse Bot Otomatik Olarak Girdiğiniz Sebebi Gösterir.")
+.addField("!anket (konu,mesaj)", "Bulunduğunuz Kanalda Anket Oluşturursunuz.")
+.addField("!anti-spam [aç/kapat]" , "Bulunduğunuz Kanalda Anti-Spam Özelliğini Aktif Eder.")
+.addField("!bot-izin [botid]", "Anti-Raid Özelliği Aktif Edilmiş İse Botu Sunucuya Yeniden Almak İçin Kullanılır.")
+.addField("!ban [kullanıcı] (sebep)", "Kullanıcıyı Sunucudan Banlar.")
+.addField("!banlananlar" , "Sunucudan Banlananları Gösterir.")
+.addField("!başvuru", "Başvuru Yapmak İçin Kullanılır.")
+.addField("!bot-isim [botetiket] [yenisim]", "Sunucunuzda Bot İsimlerini Değiştirir.")
+.addField("!capslock-engelleme (aç/kapat)", "Kanalda Büyük Harf Kullanımını Engeller.")
+.addField("!davet-sıralaması", "Sunucuda En Çok Davet Yapan Kişileri Gösterir.")
+.addField("!üyemesaj [kullanıcı]" , "Kullanıcıya Bot Tarafından Mesaj Gönderilir.")
+.addField("!dmduyuru" , "Özel Mesajdan Duyuru Yapar.")
+.addField("!duyuru (duyuru mesajı)" , "Bulunduğunuz Kanalda Duyuru Yapar.")
+.addField("!embedliyaz [mesaj]" , "Kanala Embedli Yazı Yazar.")
+.addField("!emojiekle [link]" , "Sunucuya Link İle Emoji Ekler.")
+.addField("!forceban [id]" , "Id İle Ban Atar.")
+.addField("!güvenlik-ayarla [#kanalismi]" , "Güvenlik Kanalı Ayarlar.")
+.addField("!güvenlik-kaldır [#kanalismi]" , "Güvenlik Kanalını Siler.")
+message.channel.sendEmbed(mhelp)
 
-} 
+
+};
 exports.conf = {
-enabled: true,
-guildOnly: false,
-aliases: ['help'],
-permLevel: 0,
-}
-
-exports.help = {
-name: 'yardım'
-};// codare
+    enabled: true, 
+    guildOnly: false, 
+    aliases: [], 
+    permLevel: 0 
+  };
+  
+  exports.help = {
+    name: 'yardım', 
+    description: 'The Help Command',
+    usage: 'yardım'
+  };
