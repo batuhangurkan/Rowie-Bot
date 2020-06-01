@@ -1,17 +1,9 @@
 const Discord = require ("discord.js");
 
-exports.run = (client, message) => {
-const lembed = new Discord.RichEmbed()
-.setColor("#5ab1bb")
-.setTitle(" Seviye Sistemi Komutları ")
-.addField("!seviye","Seviyeni Görebilirsin!")
-.addField(" !seviye (random kişi) " , "Sunucu İçinde Etiketlediğin Kişinin Seviyesini Görürsün.")
-.addField(" !seviyeyardım " , "Seviye Yardım Komutlarını Gösterir.")
-message.channel.sendEmbed(lembed)
-.then; 
+exports.run = (client, message) => { 
 const mhelp = new Discord.RichEmbed()
 .setColor("#5ab1bb")
-.setTitle("Moderasyon Komutları")
+.setTitle("Moderasyon Komutları Sayfa 1")
 .setThumbnail("https://i.imgur.com/JsgxK3Y.png")
 .addField("!afk (sebep)", "Sunucuda Afk Olursunuz Ve Biri Sizi Etiketlerse Bot Otomatik Olarak Girdiğiniz Sebebi Gösterir.")
 .addField("!anket (konu,mesaj)", "Bulunduğunuz Kanalda Anket Oluşturursunuz.")
@@ -43,7 +35,7 @@ exports.conf = {
   };
   
   exports.help = {
-    name: 'yardım', 
+    name: 'yardım-moderasyon-1', 
     description: 'The Help Command',
-    usage: 'yardım'
+    usage: 'yardım-moderasyon-1'
   };
