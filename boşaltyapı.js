@@ -568,7 +568,19 @@ client.on('guildMemberAdd', member => {
 **Güvenirlik Durumu** : *${frenzy}*`)
 })
 
-///////////////////////////////////////////////
+/////////////////// kanal yaratıldı silindi.////////////////////////////
+client.on('channelCreate', channel => {
+  const knl = client.channels.get('699220477608198174')
+          
+  knl.send(`Yeni bir kanal oluşturuldu! \n\n***Kanal adı:***${channel.name}`)
+          
+          })
 
+client.on('channelDelete', channel => {
+  const knl = client.channels.get('699220477608198174')
+          
+  knl.send(`Bir kanal silindi \n\n***Kanal adı:***${channel.name}`)
+          
+          })
 
 /////////////////////////////////////////
