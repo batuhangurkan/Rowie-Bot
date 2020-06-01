@@ -19,6 +19,7 @@ dependencies:
   get-youtube-id: 1.0.1
   google-tts-api: 0.0.4
   humanize-duration: 3.23.0
+  index.js: 0.0.3
   jimp: 0.12.1
   kitsu.js: 2.0.0
   math-expression-evaluator: 1.2.22
@@ -1796,6 +1797,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha1-25m8xYPrarux5I3LsZmamGBBy2s=
+  /index.js/0.0.3:
+    dev: false
+    resolution:
+      integrity: sha1-JzOx9IbciQ7QJpiQJPWC2DXFI6w=
   /infinity-agent/2.0.3:
     dev: false
     resolution:
@@ -3772,6 +3777,7 @@ specifiers:
   get-youtube-id: ^1.0.1
   google-tts-api: ^0.0.4
   humanize-duration: ^3.23.0
+  index.js: ^0.0.3
   jimp: ^0.12.0
   kitsu.js: ^2.0.0
   math-expression-evaluator: ^1.2.22
