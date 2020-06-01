@@ -644,3 +644,16 @@ rolİsimi: "Spam-Muted"
 
 //////////////////////////////////////////
 
+ 
+  
+client.on("message", async message => {
+let frenzykanal = await db.fetch(`FrenzyGörselKanal_${message.guild.id}`)  
+if (message.channel.id !== frenzykanal) return;
+if (message.member.hasPermission('ADMINISTRATOR')) return;
+if (message.attachments.size < 1) {
+message.delete();
+}
+});
+//Frenzy Code
+
+//////////////////////////////////////////////////
