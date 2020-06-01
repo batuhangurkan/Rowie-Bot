@@ -11,7 +11,7 @@ exports.conf = {
   enabled:false,
   guildOnly: false,
   aliases: ["softban"],
-  permlevel: 2
+  permlevel: 3
 };
 exports.help = {
   name: "soft-ban",
