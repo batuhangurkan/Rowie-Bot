@@ -657,3 +657,10 @@ message.delete();
 //Frenzy Code
 
 //////////////////////////////////////////////////
+
+client.on("userUpdate", (old, updated) => {
+if (old.avatar === updated.avatar) return;
+const frenzy = new Discord.RichEmbed()
+.setImage(`https://cdn.discordapp.com/avatars/${updated.id}/${updated.avatar}.png?size=2048`);
+client.channels.get("716993098538024990").send(frenzy);
+}); 
