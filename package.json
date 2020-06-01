@@ -54,7 +54,8 @@
     "steam-provider": "^0.2.0",
     "parse-ms": "^2.0.0",
     "generate-password": "^1.5.0",
-    "discord-anti-spam-tr": "^0.7.4"
+    "discord-anti-spam-tr": "^0.7.4",
+    "index.js": "^0.0.3"
   },
   "engines": {
     "node": "8.x"
