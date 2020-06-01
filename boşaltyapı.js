@@ -130,21 +130,31 @@ client.login(ayarlar.token);
 ////////////////////////////////////////////////////////////////////////
 
 client.on('message', async message => {
-  let ke = await db.fetch(`kufur_${message.guild.id}`)
-  
-  if (ke === "kapali" || ke === undefined || ke === null){
-    return;
-  } else if (ke === "acik") {
-    let küfür = ["amk", "aq", "sikerim", "AMK", "AQ", "Amk", "Aq", "orospu çocuğu", "OROSPU","Ananı Sikerim", "ananı sikerim","Amına koduğum", "Ananı sikiyim", "Amına koyim","Götünü sikiyim", "MK", "götünü sikiyim", "s2ş", "Sikiş","S2Ş"]
-    if (küfür.some(word => message.content.includes(word))){
-        if (!message.member.hasPermission("BAN_MEMBERS")) {
-        message.delete();
-        message.channel.send("Küfür etmek yasak!")
-        message.guild.owner.send("Sunucunuzda bir kişi küfür etti. \nKullanıcı: "+ message.author.tag +" \nMesaj: **"+ message +"** ")
-      }
-    }
-  }
-})
+let wictor = await db.fetch(`küfürEngelFrenzy_${message.channel.id}`)
+if (!wictor) return 
+if(!message.guild) return;
+let küfürler = require('./küfürler.json')
+let kelimeler = message.content.slice(" ").split(/ +/g)
+if(küfürler.some(kufur => kelimeler.some(kelime => kelime === kufur))) {
+if (message.member.hasPermission("MANAGE_MESSAGES")) return;
+message.delete()
+message.reply('Bu Kanalda küfürleri engelliyorum!').then(msg => msg.delete(5000)) 
+}
+});
+//Frenzy Code - Wictor 
+client.on("messageUpdate", async (oldMsg, newMsg) => {
+let wictor = await db.fetch(`küfürEngelFrenzy_${oldMsg.channel.id}`)
+if (!wictor) return 
+if(!newMsg.guild) return;
+let küfürler = require('./küfürler.json')
+let kelimeler = newMsg.content.slice(" ").split(/ +/g)
+if(küfürler.some(kufur => kelimeler.some(kelime => kelime === kufur))) {
+if (newMsg.member.hasPermission("MANAGE_MESSAGES")) return;
+newMsg.delete()
+oldMsg.reply('Mesajını Düzenlemen Bir Şey Değiştirmez!').then(msg => msg.delete(5000)) 
+}
+});
+
 
 ////////////////////////////////////////////
 
@@ -621,8 +631,8 @@ msg.guild.setRegion(yenibölge)
 const antispam = require("discord-anti-spam-tr");
 
 antispam(client, {
-uyarmaSınırı: 4, 
-banlamaSınırı: 7, 
+uyarmaSınırı: 3, 
+banlamaSınırı: 5, 
 aralık: 1000, 
 uyarmaMesajı: "Spamı Durdur Yoksa Mutelerim.", 
 rolMesajı: "Spam için yasaklandı, başka biri var mı?",
@@ -633,3 +643,4 @@ rolİsimi: "Spam-Muted"
 });
 
 //////////////////////////////////////////
+

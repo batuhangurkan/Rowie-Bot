@@ -1,31 +1,35 @@
 const Discord = require('discord.js');
 const db = require('quick.db');
-
-exports.run = async (client, message, args) => {if(db.fetch(`bakim`)) return message.channel.send('Şuanda Bakım Modu Açık. Komutlar Bakım Modunda Çalışmaz')
+exports.run = async (client, message, args) => {
+const code = message.mentions.channels.first() || message.channel
+const frenzy = args[0]
+if (!frenzy) return message.reply(`Küfür engel sistemini açmak için küfürengel aç #kanal veya küfürengel aç yazmalsın!`)
+ 
+  if (frenzy == 'aç') { 
+  let açıkkapalı = await db.fetch(`küfürEngelFrenzy_${code.id}`)
+  if(açıkkapalı) return message.reply(`Zaten küfür engel bu kanalda/belirttiğiniz kanalda aktif!`)
+    
+db.set(`küfürEngelFrenzy_${code.id}`,'açık')
+message.reply(`Küfür engel sistemi başarıyla bu kanalda/belirttiğiniz kanalda aktif edildi!`)
+  }
   
-  if (!args[0]){
-    message.channel.send("Küfür Engel için Doğru Kullanım: !küfür-engel aç / !küfür-engel kapat")
-  }
-  if (args[0] === 'aç'){
-    message.channel.send("Küfür Engel başarıyla açıldı! Artık küfürler silinecek.")
+  if (frenzy == 'kapat') {
+  let açıkkapalı = await db.fetch(`küfürEngelFrenzy_${code.id}`)
+  if(!açıkkapalı) return message.reply(`Zaten küfür engel bu kanalda/belirttiğiniz kanalda deaktif!`)
     
-    db.set(`kufur_${message.guild.id}`, "acik")
-  }
-  if (args[0] === 'kapat'){
-    message.channel.send("Küfür engel kapatıldı! Bundan sonra küfür serbest.")
-    
-    db.set(`kufur_${message.guild.id}`, "kapali")
-  }
+db.delete(`küfürEngelFrenzy_${code.id}`)
+message.reply(`Küfür engel sistemi başarıyla bu kanalda/belirttiğiniz kanalda deaktif edildi!`)
 }
+};
 exports.conf = {
-  enabled: true,
+  enabled: false,
   guildOnly: false,
-  aliases: ["küfür"],
+  aliases: [],
   permLevel: 3
-}
+};
 exports.help = {
-  name: "küfür-engel",
-  description: "Küfür engel açar yada kapatır.",
+  name: 'küfürengel',
   kategori:'moderasyon',
-  usage: "küfür-engel"
+  description: 'Frenzy Code',
+  usage: 'Frenzy Code!'
 }
