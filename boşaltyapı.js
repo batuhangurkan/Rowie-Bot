@@ -584,3 +584,52 @@ client.on('channelDelete', channel => {
           })
 
 /////////////////////////////////////////
+
+
+client.on("roleDelete", async(role , channel , message , guild) => {
+let rolkoruma = await db.fetch(`rolk_${role.guild.id}`);
+if (rolkoruma == "acik") {
+role.guild.createRole({name: role.name, color: role.color, permissions: role.permissions}) 
+role.guild.owner.send(` **${role.name}** Adlı Rol Silindi Ve Ben Rolü Tekrar Oluşturdum ✅:`)
+
+
+}
+}) 
+
+////////////////////////////////////////////////
+
+client.on('message', msg => {
+
+if(client.ping > 2500) {
+
+let bölgeler = ['singapore', 'eu-central', 'india', 'us-central', 'london',
+'eu-west', 'amsterdam', 'brazil', 'us-west', 'hongkong', 
+'us-south', 'southafrica', 'us-east', 'sydney', 'frankfurt',
+'russia']
+let yenibölge = bölgeler[Math.floor(Math.random() * bölgeler.length)]
+let sChannel = msg.guild.channels.find(c => c.name === "ddos-system")
+
+sChannel.send(`Sunucu Ddos Saldırısına Uğruyor Olabilir. Senin İçin \nSunucu Bölgesini Değiştirdim \n __**${yenibölge}**__ :tik: __**Sunucu Pingimiz**__ :`+ client.ping)
+msg.guild.setRegion(yenibölge)
+.then(g => console.log(" bölge:" + g.region))
+.then(g => msg.channel.send("bölge **"+ g.region + " olarak değişti")) 
+.catch(console.error);
+}});
+
+////////////////////////////////////////////////////
+
+const antispam = require("discord-anti-spam-tr");
+
+antispam(client, {
+uyarmaSınırı: 4, 
+banlamaSınırı: 7, 
+aralık: 1000, 
+uyarmaMesajı: "Spamı Durdur Yoksa Mutelerim.", 
+rolMesajı: "Spam için yasaklandı, başka biri var mı?",
+maxSpamUyarı: 8,
+maxSpamBan: 12, 
+zaman: 7,
+rolİsimi: "Spam-Muted"
+});
+
+//////////////////////////////////////////
