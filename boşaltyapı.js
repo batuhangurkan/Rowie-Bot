@@ -399,10 +399,12 @@ client.channels.get("712797474686894152").send('Bu Sunucuda Küfür Etmek ve Rek
 
 //////////////////////////////////////////////////
 
-client.on("guildMemberAdd", async member => {
-let frenzy_c = client.channels.get("716667825451958284"); 
-frenzy_c.setName(`Son Üye : ${member.user.username}`)
-})
+client.on('guildMemberAdd', async(member) => {
+if(member.guild.id != '699209223854358598') return
+const kanal = `Son Üye • ${member.user.username}`
+let channel = client.channels.get("716667825451958284") 
+channel.setName(kanal);
+});
 
 //////////////////////////////
 
