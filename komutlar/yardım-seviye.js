@@ -21,7 +21,7 @@ exports.conf = {
   };
   
   exports.help = {
-    name: 'yardım-seviye-3', 
+    name: 'yardım-seviye', 
     description: 'The Help Command',
-    usage: 'yardım-moderasyon-3'
+    usage: 'yardım-seviye'
   };
