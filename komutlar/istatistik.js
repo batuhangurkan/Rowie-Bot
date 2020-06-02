@@ -11,7 +11,7 @@ exports.run = async (bot, message, args) => {if(db.fetch(`bakim`)) return messag
    const bune = moment.duration(bot.uptime).format(" D [gün], H [saat], m [dakika], s [saniye]");
    const annencilermaldır = new Discord.RichEmbed()
   .setColor('RANDOM')
-  .setFooter('Rowie  \'Buyur benim istatistiklerim', bot.user.avatarURL)
+  .setFooter('Gults  \'Buyur Benim Hakkımda Bilgiler', bot.user.avatarURL)
   .addField("»**Botun Sahibi**", `<@267604752764764160>`)
   .addField("»**Bellek kullanımı**", (process.memoryUsage().heapUsed / 512 / 512).toFixed(2) + ' MB', true)  
   .addField("»**Çalışma süresi**", bune)
@@ -36,8 +36,8 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "istatistik",
+  name: "botbilgi",
   description: "Bot i",
   kategori:'bilgi',
-  usage: "istatistik"
+  usage: "botbilgi"
 };
