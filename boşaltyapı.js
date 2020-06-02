@@ -278,7 +278,7 @@ client.on("message", async msg => {
   
   if (msg.content.length > 1) {
     
-    db.add(`puancik_${msg.author.id + msg.guild.id}`, 150)//mesaj yazınca xp veriyor
+    db.add(`puancik_${msg.author.id + msg.guild.id}`, 1)//mesaj yazınca xp veriyor
     db.add(`xpsira_${msg.author.id + msg.guild.id}`, 2)//doğru bir sıralama sistemi için var
 
 };

@@ -4,7 +4,7 @@ exports.run = (client, message) => {
 const mhelp = new Discord.RichEmbed()
 .setColor("#5ab1bb")
 .setTitle("Seviye Sistemi Komutları")
-.setThumbnail("https://i.imgur.com/JsgxK3Y.png")
+.setThumbnail("https://imgur.com/2dsdkrQ.png")
 .setTitle(" Seviye Sistemi Komutları ")
 .addField("!seviye","Seviyeni Görebilirsin!")
 .addField(" !seviye (random kişi) " , "Sunucu İçinde Etiketlediğin Kişinin Seviyesini Görürsün.")

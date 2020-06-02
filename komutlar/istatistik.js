@@ -31,7 +31,7 @@ exports.run = async (bot, message, args) => {if(db.fetch(`bakim`)) return messag
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: [ 'i'],
+  aliases: [ 'botbilgi'],
   permLevel: 0
 };
 
