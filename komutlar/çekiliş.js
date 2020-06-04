@@ -1,108 +1,181 @@
 const Discord = require('discord.js');
-const moment = require('moment');
+const data = require('quick.db')
 const ms = require('ms')
-exports.run = async (client, message) => {
-var time = moment().format('Do MMMM YYYY , hh:mm');
-var room;
-var title;
-var duration;
-var currentTime = new Date(),
-hours = currentTime.getHours() + 3 ,
-minutes = currentTime.getMinutes(),
-done = currentTime.getMinutes() + duration,
-seconds = currentTime.getSeconds();
-if (minutes < 10) {
-minutes = "0" + minutes;
-}
-var suffix = "AM";
-if (hours >= 12) {
-suffix = "PM";
-hours = hours - 12;
-}
-if (hours == 0) {
-hours = 12;
-}
-var filter = m => m.author.id === message.author.id;
- 
+
+exports.run = async (client, message, args) => {// chimp#0110
   
+  function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+    function destructMS(milli) {
+        if (isNaN(milli) || milli < 0) {
+          return null;
+        }
+      
+        var d, h, m, s;
+        s = Math.floor(milli / 1000);
+        m = Math.floor(s / 60);
+        s = s % 60;
+        h = Math.floor(m / 60);
+        m = m % 60;
+        d = Math.floor(h / 24);
+        h = h % 24;
+        var yazi;
+        if (d !== 0) yazi = `${d} gün`;
+        if (h !== 0 && yazi) yazi = yazi + `, ${h} saat`;
+        if (h !== 0 && !yazi) yazi = `${h} saat`;
+        if (m !== 0 && yazi) yazi = yazi + `, ${m} dakika`;
+        if (m !== 0 && !yazi) yazi = `${m} dakika`;
+        if (s !== 0 && yazi) yazi = yazi + `, ${s} saniye`;
+        if (s !== 0 && !yazi) yazi = `${s} saniye`;
+        if (yazi) return yazi;
+        if (!yazi) return `1 saniye`;
+      };
   
-      message.channel.send(`:eight_pointed_black_star:| **Çekilişin yapılacağı kanalın adını yaz**`).then(msg => {
-      message.channel.awaitMessages(filter, {
-        max: 1,
-        time: 20000,
-        errors: ['time']
-      }).then(collected => {
-        let room = message.guild.channels.find('name' , collected.first().content);
-        if(!room) return message.channel.send(':heavy_multiplication_x:| **Böyle bir kanal bulamadım**');
-        room = collected.first().content;
-        collected.first().delete();
-        msg.edit(':eight_pointed_black_star:| **Çekilişin süresini belirle (1s, 1m, 1h, 1d, 1w)**').then(msg => {
-          message.channel.awaitMessages(filter, {
-            max: 1,
-            time: 20000,
-            errors: ['time']
-          }).then(collected => {
-            if(!collected.first().content.match(/[1-60][s,m,h,d,w]/g)) return message.channel.send(':heavy_multiplication_x:| **Böyle bir süre bilmiyorum :(**');
-            duration = collected.first().content
-            collected.first().delete();
-            msg.edit(':eight_pointed_black_star:| **Şimdi de ödülü yaz bakalım**').then(msg => {
-              message.channel.awaitMessages(filter, {
-                max: 1,
-                time: 20000,
-                errors: ['time']
-              }).then(collected => {
-                title = collected.first().content;
-                collected.first().delete();
-                msg.delete();
-                message.delete();
-                try {
-                  let giveEmbed = new Discord.RichEmbed()
-                  .setColor("#f558c9")
-                  .setDescription(`**Ödül: ${title}** \n🎉'a Basarak Katıl \nKalan Süre : ${duration} \n **Başlama Zamanı :** ${hours}:${minutes}:${seconds} ${suffix}`)
-                  .setFooter(message.author.username + " (Gults çekiliş sistemi)", message.author.avatarURL);
-                  message.guild.channels.find("name" , room).send(' :heavy_check_mark: **ÇEKİLİŞ BAŞLADI** :heavy_check_mark:' , {embed: giveEmbed}).then(m => {
-                     let re = m.react('🎉');
-                     setTimeout(() => {
-                       let users = m.reactions.get("🎉").users
-                       let list = users.array().filter(u => u.id !== m.author.id !== client.user.id);
-                       let gFilter = list[Math.floor(Math.random() * list.length) + 0]
-                       let endEmbed = new Discord.RichEmbed()
-                       .setAuthor(message.author.username, message.author.avatarURL)
-                       .setTitle(title)
-                       .setColor("#f558c9")
-            .setFooter("(Gults çekiliş sistemi)")
-                       .addField('Çekiliş Bitti !🎉',`Kazanan : ${gFilter} \nBitiş zamanı :`)
-                       .setTimestamp()
-                     m.edit('** 🎉 ÇEKİLİŞ BİTTİ 🎉**' , {embed: endEmbed});
-                       
-                       var embedLel = new Discord.RichEmbed()
-                        .setColor("#f558c9")
-                        .setDescription("Ödülünü Moderatörleri Etiketleyerek Alabilirsin!").setFooter("(Gults çekiliş sistemi)")
-                    message.guild.channels.find("name" , room).send(`**Tebrikler ${gFilter}! \`${title}\` kazandın!**` , embedLel)
-                }, ms(duration));
-            });
-                } catch(e) {
-                message.channel.send(`:heavy_multiplication_x:| **Maalesef gerekli yetkilerim bulunmamakta**`);
-                  console.log(e);
+  let ödül = []
+  let kanal = []
+  let zaman = []
+  
+if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(`Gerekli yetkiye sahip değilsin.`)
+if(!args[0]) return message.channel.send(`Bir argüman girmelisin: !çekiliş başlat/tekrar`)
+let arg = ['başlat', 'tekrar']
+if(!arg.includes(args[0])) return message.channel.send(`Sadece !çekiliş başlat/tekrar kullanabilirsin.`)
+  
+if(args[0] === 'başlat') {
+try {
+  
+const filter = m => m.author.id == message.author.id;
+     
+message.channel.send(`Önce bir ödül yazmalısın.`).then(() => {
+  
+message.channel.awaitMessages(filter, { maxMatches: 1, time: 60000, errors: ['time'] }).then(collected => {
+message.channel.send(`Ödül: ${collected.first().content}`).then(() => ödül.push(collected.first().content))
+message.delete()
+
+message.channel.send(`Çekiliş hangi kanalda yapılacak?`).then(() => {
+message.channel.awaitMessages(filter, { maxMatches: 1, time: 60000, errors: ['time'] }).then(collected => {
+let as = collected.first().content.replace('<#', '').replace('>', '')
+let ch = message.guild.channels.get(as)
+if(!ch) return message.channel.send(`Etiketlediğin kanalı bulamadım, işlem iptal edildi.`)
+message.delete()
+message.channel.send(`Kanal: ${ch}`).then(() => kanal.push(ch.id))
+  
+message.channel.send(`Çekiliş süresi ne kadar? (1 dakika/1 saat)`).then(() => {
+message.channel.awaitMessages(filter, { maxMatches: 1, time: 60000, errors: ['time'] }).then(collected => {
+let az = collected.first().content;
+
+message.channel.send(`Süre: ${az}`).then(() => zaman.push(collected.first().content)).then(()=> {
+  const sure = zaman.slice(0).join(' ')
+    const bitecegizamanms = Date.now() + ms(sure.replace(' dakika', 'm').replace(' saat', 'h').replace(' saniye', 's').replace(' gün', 'd'))
+
+  
+    const embed = new Discord.RichEmbed()
+  .setAuthor(client.user.username, client.user.avatarURL)
+  .setTimestamp()
+  .setFooter(`Çekiliş Sistemi`)
+  .setDescription(`**Ödül**: ${ödül.slice(0).join(' ')}
+
+Başlatan: ${message.author.username}
+Zaman: ${sure}
+
+Katılmak için 🎉 tepkisine tıklayın.`)
+  .setTitle(`Bir çekiliş başladı!`)
+message.guild.channels.get(kanal[0]).send(embed).then(async c => {
+message.delete()
+data.delete(`çk.${c.id}`)
+data.delete(`ödü.${c.id}`)
+data.delete(`ma.${c.id}`)
+c.react('🎉').then(async reaction => {
+const interval = setInterval(async function(){
+const kalanzaman = bitecegizamanms - Date.now()   
+
+if (kalanzaman <= 0) {
+clearInterval(interval)
+const kişiler = reaction.users
+await sleep(50)
+const embed = new Discord.RichEmbed()
+  .setAuthor(client.user.username, client.user.avatarURL)
+  .setTimestamp()
+  .setFooter(`Çekiliş Sistemi`)
+  .setDescription(`**Ödül**: ${ödül.slice(0).join(' ')}
+
+Başlatan: ${message.author.username}`)
+.setTimestamp(bitecegizamanms)
+  .setTitle(`Çekiliş bitti!`)
+c.edit(embed)
+
+let asd = c.reactions.get(`🎉`).users.random()
+message.guild.channels.get(kanal[0]).send(`Tebrikler, ${asd}! Bizden ${ödül[0]} kazandın.
+Ödülünü alabilmek için: ${message.author.tag} kişisine ulaş.`)
+data.set(`çk.${c.id}`, 'codare')
+data.set(`ma.${c.id}`, message.author)
+data.set(`ödü.${c.id}`, ödül.slice(0).join(' '))
+} else {
+const kalanzamanyazi = destructMS(kalanzaman)
+embed.setDescription(`**Ödül**: ${ödül.slice(0).join(' ')}
+
+Başlatan: ${message.author.username}
+Kalan zaman: ${kalanzamanyazi}
+
+Katılmak için 🎉 tepkisine tıklayın.`)
+c.edit(embed)
                 }
-              });
-            });
-          });
-        });
-      });
-    });
+}, 5000)
+  
+})
+
+})
+
+
+
+
+
+
+
+
+})
+}).catch(collected => { message.channel.send(`Çekiliş süresi girmediğin için iptal edildi.`); });
+})
+}).catch(collected => { message.channel.send(`Çekiliş kanalı girmediğin için iptal edildi.`); });
+})
+}).catch(collected => { message.channel.send(`Çekiliş ödülü girmediğin için iptal edildi.`); });
+})
+
+  
+} catch(err) { return; }    
+}
+  
+if(args[0] === 'tekrar') {
+let channel = message.mentions.channels.first()
+if(!args[1]) return message.channel.send(`Çekilişin yapıldığı kanalı etiketle.`)
+if(!channel) return message.channel.send(`Etiktlediğin kanalı bulamıyorum.`)
+
+let mesaj = args[2]
+if(!mesaj) return message.channel.send(`Bir mesaj ID'si girmeyi unuttun.`)
+if(isNaN(mesaj)) return message.channel.send(`Bir mesaj ID'si girmelisin.`)
+
+let asd = channel.fetchMessage(mesaj).then(async msg => {
+const ads = await data.fetch(`çk.${msg.id}`)
+const ödü = await data.fetch(`ödü.${msg.id}`)
+const ma = await data.fetch(`ma.${msg.id}`)
+if(!ads) return message.channel.send(`Hala bitmemiş olan veya çekiliş mesajı olmayan bir mesajın ID'sini girdin.`)
+let asdd = msg.reactions.get(`🎉`).users.random()
+let arc = msg.reactions.get(`🎉`);
+if(!arc) return message.channel.send(`Bu mesaja kimse tepki vermemiş.`)
+channel.send(`Tebrikler, ${asdd}! Bizden ${ödü} kazandın.
+Ödülünü alabilmek için: ${client.users.get(ma)} kişisine ulaş.`)
+})}
   
   
 };
 exports.conf = {
   enabled: true,
-  guildOnly: false,
+  guildOnly: true,
   aliases: [],
-  permLevel: 2
-};
+  permLevel: 0
+}
+
 exports.help = {
-  name: 'çekiliş',
-  kategori:'moderasyon',
-  description: 'Çekiliş mi? Sunucunda güzel şeyler olacak :3',
-  usage: 'çekiliş'
-};
+  name: 'çekiliş'
+};// codare
