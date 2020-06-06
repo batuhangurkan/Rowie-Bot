@@ -18,6 +18,7 @@ const queue = new Map();
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const ms = require("ms");
+process.setMaxListeners(0);
 
 const app = express();
 app.get("/", (request, response) => {
