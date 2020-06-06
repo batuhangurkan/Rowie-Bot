@@ -56,7 +56,8 @@
     "generate-password": "^1.5.0",
     "discord-anti-spam-tr": "^0.7.4",
     "index.js": "^0.0.3",
-    "pornhub": "^0.0.5"
+    "pornhub": "^0.0.5",
+    "ffmpeg": "^0.0.4"
   },
   "engines": {
     "node": "8.x"

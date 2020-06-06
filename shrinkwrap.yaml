@@ -13,6 +13,7 @@ dependencies:
   discord-economy: 1.2.2
   discord.js: 11.6.4
   express: 4.17.1
+  ffmpeg: 0.0.4
   fortnitetracker-7days-stats: 3.3.1
   generate-password: 1.5.1
   get-ipinfo: 1.0.0
@@ -1427,6 +1428,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-JcfInLH5B3+IkbvmHY85Dq4lbx4=
+  /ffmpeg/0.0.4:
+    dependencies:
+      when: 3.7.8
+    dev: false
+    resolution:
+      integrity: sha1-HEYN+OfaUSf2LO70v6BsWciWMMs=
   /file-type/9.0.0:
     dev: false
     engines:
@@ -3714,6 +3721,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-9GSJUgz1D4MfyKU7KRqwOjXCXTqWdFNvEr7eUBYchQiVc744mqK/MzXPNR2WsPkmkOa4ywfg8C2n8h+13Bey1Q==
+  /when/3.7.8:
+    dev: false
+    resolution:
+      integrity: sha1-xxMLan6gRpPoQs3J56Hyqjmjn4I=
   /which-pm-runs/1.0.0:
     dev: false
     resolution:
@@ -3863,6 +3874,7 @@ specifiers:
   discord-economy: ^1.2.2
   discord.js: ^11.6.0
   express: ^4.17.1
+  ffmpeg: ^0.0.4
   fortnitetracker-7days-stats: ^3.3.0
   generate-password: ^1.5.0
   get-ipinfo: ^1.0.0
