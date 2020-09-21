@@ -12,7 +12,7 @@ exports.run = async (bot, message, args) => {if(db.fetch(`bakim`)) return messag
    const annencilermaldır = new Discord.RichEmbed()
   .setColor('RANDOM')
   .setFooter('Gults  \'Buyur Benim Hakkımda Bilgiler', bot.user.avatarURL)
-  .addField("»**Botun Sahibi**", `<@267604752764764160>`)
+  .addField("»**Botun Sahibi**", `<@267604752764764160>,<@377545218913992704>`)
   .addField("»**Bellek kullanımı**", (process.memoryUsage().heapUsed / 512 / 512).toFixed(2) + ' MB', true)  
   .addField("»**Çalışma süresi**", bune)
   .addField('»**Müzik Çalınan Sunucu Sayısı**;', bot.voiceConnections.size)
