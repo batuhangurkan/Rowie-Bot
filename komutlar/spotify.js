@@ -1,50 +1,69 @@
-const db = require("quick.db");
-const Discord = require ('discord.js');
-module.exports.run = async (bot, message, args) => {if(db.fetch(`bakim`)) return message.channel.send('Şuanda Bakım Modu Açık. Komutlar Bakım Modunda Çalışmaz')
-    var user = message.mentions.users.first() || message.author;
-    if (!args[0]) return message.channel.send("**Şarkı bilgisini bulmam için Spotify'dan şarkı dinleyen birisini etiketlemen lazım.**")
-  
-    if (user.presence.game.name === 'Spotify' && user.presence.game.type === 2) {
-        try {
-            var trackImg = user.presence.game.assets.largeImageURL;
-            var trackUrl = `https://open.spotify.com/track/${user.presence.game.syncID}`;
-            var trackName = user.presence.game.details;
-            var trackAlbum = user.presence.game.assets.largeText;
-            var trackAuthor = user.presence.game.state;
+const Discord = require("discord.js");
+const ayarlar = require("../ayarlar.json")
 
-            const embed = new Discord.RichEmbed()
-                .setAuthor('Spotify Şarkı Bilgisi', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2000px-Spotify_logo_without_text.svg.png')
-                .setColor(0xdb954)
-                .setThumbnail(trackImg)
-                .setFooter(`Cabbar BOT Spotify Sistemi ${message.author.username} tarafından istendi.`, "https://cdn.discordapp.com/emojis/515260605347659777.png?v=1")
-                .setDescription(`
-\ **Spotify**'da dinlediği şarkı;  \**${trackName}**\n
-\ **Spotify**'da dinlediği albüm;  \**${trackAlbum}**\n
-\ **Spotify**'da dinlediği sanatçı;  \**${trackAuthor}**\n
-`)
-                .addField('Spotify\'da Dinlediği Şarkı Linki;', `**[${trackUrl}](${trackUrl})**`, false);
-                
-            return message.channel.send(embed);
+exports.run = async (client, message, args) => {
+ let user = message.mentions.users.first() || message.author;
 
-        } catch (error) {
-            return message.channel.send(` **${user.tag}** kullanıcısı şuanda **Spotify**<:spotify:515260605347659777>'dan şarkı dinlemiyor.`);
-        }
+  if (
+    user.presence.game !== null &&
+    user.presence.game.type == "2" &&
+    user.presence.game.name === "Spotify" &&
+    user.presence.game.assets !== null
+  ) {
+    let Title = user.presence.game.details;
+    let Author = user.presence.game.state;
+    let Album = user.presence.game.assets.largeText;
+    let Link = `https://open.spotify.com/track/${user.presence.game.syncID}`;
+    let Image = `https://i.scdn.co/image/${user.presence.game.assets.largeImage.slice(
+      8
+    )}`;
 
-    } else {
-        return message.channel.send(`**${user.tag}** kullanıcısı şuanda Discord'una **Spotify**<:spotify:515260605347659777>'ı eklememiş`);
-    }
-};
+    const embed = new Discord.RichEmbed()
+      .setAuthor(
+        "Spotify Durum",
+        "https://i.ibb.co/3Cq3PVH/2JDJX8SQ.png"
+      )
+      .setColor("#1DB954")
+      .setThumbnail(Image)
+      .addField("Kullanıcı", `**[${user.tag}](https://spotify.com/)**`)
+      .addField("Şarkı Adı", `**[${Title}](${Link})**`)
+      .addField("Şarkı Albümü", `**[${Album}](${Link})**`)
+      .addField("Şarkıcı", `**[${Author}](${Link})**`)
+      .addField(
+        "Spotify Dinliyor",
+        `**[${Title} - ${Album} - ${Author}](${Link})**`
+      )
+      .setFooter(
+        `Kullanıcı: ${message.author.tag}`,
+        message.author.displayAvatarURL
+      )
+      .setTimestamp();
+    return message.channel.send(embed);
+  } else {
+    const em = new Discord.RichEmbed();
+    return message.channel.send(
+      em
+        .setDescription("Kullanıcı Spotify dinlemiyor!")
+        .setAuthor(
+          "Spotify Hata)",
+          "https://i.ibb.co/3Cq3PVH/2JDJX8SQ.png"
+        )
+        .setColor("#1DB954")
+    );
+  }
+  }
+
 
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['spo', 'spoti', 'soti', 'spotif', 'spotifyy'],
+  aliases: ["spoti"],
   permLevel: 0
 };
 
 exports.help = {
   name: 'spotify',
-  description: '',
-  kategori:'bilgi',
-  usage: 'spotify'
+  description: 'Spotify şarkı bilgisini gönderir',
+  usage: 'spotify <kullanıcı>'
 };
+//XiR

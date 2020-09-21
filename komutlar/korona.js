@@ -1,66 +1,34 @@
-const Discord = require("discord.js");
-const ayarlar = require("../ayarlar.json")
-const axios = require('axios');
-const db = require("quick.db");
-exports.run = async (client, message, args) => {if(db.fetch(`bakim`)) return message.channel.send('Şuanda Bakım Modu Açık. Komutlar Bakım Modunda Çalışmaz')
+const {Discord,MessageEmbed} = require('discord.js')
+const corona = require('wio-covid-19-tr')
 
-if (!args.length) {
-			axios.get('https://corona.lmao.ninja/v2/all')
-				.then((response) => {
-					const exampleEmbed = new Discord.RichEmbed()
-						.setColor("BLUE")
-						.setTitle('Dünya Geneli COVID-19 Bilgileri')
-						.setDescription('Tanı konulan vakalar, ölümler ve dünya çapında gelişmeler \n Ülkeler hakkında bilgi almak için ' + ` \`${ayarlar.prefix}covid turkey\` `)
-						.addField(`Tanı Konulan Hasta Sayısı`,response.data.cases)
-            .addField(`Toplam Ölüm`,response.data.deaths)
-            .addField(`Toplam İyileşen`,response.data.recovered)
-						.setTimestamp();
 
-					message.channel.send(exampleEmbed);
-				})
-				.catch((error) => {
-					console.log(error);
-				});
-		}
-		else {
-			axios.get(`https://corona.lmao.ninja/v2/countries/${args[0]}`)
-				.then((response) => {
-					const exampleEmbed = new Discord.RichEmbed()
-						.setColor('RED')
-						.setTitle(`${args[0]} - COVID19 Bilgileri`)
-						.addField(`Ülke`,response.data.country)
-            .addField(`Tanı Konulan Hasta`,response.data.cases ,true)
-            .addField(`Bugünkü Vaka`,response.data.todayCases,true)
-            .addField(`Toplam Ölüm`,response.data.deaths ,true)
-            .addField(`Bugünkü Ölüm`,response.data.todayDeaths ,true)
-            .addField(`Toplam İyileşen Hasta`,response.data.recovered ,true)
-            .addField(`Aktif Vaka`,response.data.active ,true)
-            .addField(`Toplam Kritik Vaka`,response.data.critical ,true)
-            .addField(`Toplam Test`,response.data.tests ,true)
-						.setTimestamp()
-            .setThumbnail(response.data.countryInfo.flag)
-          console.log(response)
-					message.channel.send(exampleEmbed);
-				})
-				.catch((error) => {
-          message.channel.send(':x: Hata \n Lütfen ülke girerken global olarak giriniz. Örnek: Turkey veya turkey şeklinde girebilirsiniz.')
-					console.log(error);
-				});
-		}
-}
+exports.run = function(client, message, args) {
+  corona().then(a=>{
+     const embed = new MessageEmbed()
+     .setColor('#0AFF00')
+     .addField('Toplam ölüm:',a.toplamOlum,true)
+     .addField('Toplam test:',a.toplamTest,true)
+     .addField('Toplam vaka:',a.toplamVaka,true)
+     .addField('Toplam kurtarılan:',a.toplamKurtarilan,true)
+     .addField('Toplam yoğun bakım:',a.toplamYogunBakim,true)
+     .addField('Bugünkü test:',a.bugunkuTest,true)
+     .addField('Bugünkü vaka:',a.bugunkuVaka,true)
+     .addField('Bugünkü kurtarılma:',a.bugunkuKurtarilan,true)
+     .setFooter(`${client.user.username} Covid 19 türkiye sistemi.`,message.guild.iconURL({dynamic:true}))
+     .setTimestamp()
+     .setThumbnail('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQrQeC2cDl87WkEmQI6mkgX5Xhtl6tuTcedVQ&usqp=CAU')
+     message.channel.send(embed)
     
+  })
+  
+  
+}
 
-exports.conf = {
-  enabled: true,
-  guildOnly: false,
-  aliases: ["corona", "covid", "covid19", "covıd", "virüs", "coronavirüs"],
-  permLevel: 0
-};
 
-exports.help = {
-  name: 'korona',
-  description: 'Ülkelerdeki COVID-19 vakalarını inceyelebilirsiniz',
-  kategori:'bilgi',
-  usage: 'korona <ülke>'
-};
-//XiR Dev. Team
+
+exports.yardim = {
+    isim: "corona",
+    kullanimlar: ['corona-türkiye'],
+    aciklamalar:'Türkiyenin covid 19 istatistiklerini gösterir.'
+
+}
