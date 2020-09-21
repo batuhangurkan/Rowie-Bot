@@ -2,16 +2,11 @@ const request = require("request");
 
 module.exports = async client => {
   const statusList = [
-    { msg: "use !help commands list", type: "PLAYING" },
     {
-      msg: "!yardım komutu ile tüm komutlara ulaşabilirsiniz.",
       type: "PLAYING"
     },
-    { msg: "BETA! 0.1 Version!", type: "PLAYING" },
-    { msg: "#EvDeKal!", type: "WATCHING" },
-    { msg: "!corona ülkeler hakkında bilgi", type: "WATCHING" },
-    { msg: `with over ${client.users.size} users`, type: "PLAYING" },
-    { msg: `over ${client.guilds.size} servers`, type: "WATCHING" }
+    { msg: "Batuş''u", type: "WATCHING" },
+    { msg: "Sudiş'i", type: "WATCHING" },
   ];
 
   setInterval(async () => {
