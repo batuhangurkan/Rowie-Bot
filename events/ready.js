@@ -5,8 +5,10 @@ module.exports = async client => {
     {
       type: "PLAYING"
     },
-    { msg: "Batuş''u", type: "WATCHING" },
-    { msg: "Sudiş'i", type: "WATCHING" },
+    { msg: "V0.1", type: "PLAYING" },
+    { msg: "Rowie Bot Yeniden Aktif!", type: "PLAYING" },
+    { msg: "!yardım ile tüm komutlara ulaşabilirsiniz.", type: "PLAYING" },
+    { msg: "!help access all commands", type: "PLAYING" },
   ];
 
   setInterval(async () => {
