@@ -631,3 +631,29 @@ antispam(client, {
     }
 )
 //////////////////////////////////////////
+
+// eklendim
+client.on('guildCreate', async guild => { client.channels.get('769553709193101322').send(`${guild}, isimli sunucuya eklendim!`)})
+// atıldım
+client.on('guildRemove', async guild => { client.channels.get('769553709193101322').send(`${guild}, isimli sunucudan atıldım.. :(`)})
+//////////////////////////////////////////////////
+
+client.login(`NTkxMjUwNDcyNjUyODk4MzE1.XQuC6Q.0kdXMQcHM0UZmvk_x3maRs4JAkQ`)
+  .then(function() {
+    console.log('[Token-Log] Token doğru bir şekilde çalışıyor.')
+  }, function(err) {
+    console.log("[ERROR] Token'de bir hata oluştu: " + err)
+        setInterval(function() {
+       process.exit(0)
+        }, 20000);
+        })
+
+////////////////////////////////////////////////
+
+client.on("guildMemberAdd", member => {
+const embed = new Discord.RichEmbed()
+.setColor('RANDOM')
+.setTitle('Hoşgeldin!')
+.setDescription('')
+member.send(embed)
+})
