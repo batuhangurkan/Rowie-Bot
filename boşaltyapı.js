@@ -260,7 +260,7 @@ client.on("guildCreate", guild => {
     const eklendim = new Discord.RichEmbed()
         .setColor('YELLOW')
         .setThumbnail(client.user.avatarURL)
-        .setTitle("Gults Bot Bir Moderasyon Botudur.!")
+        .setTitle("Rowie Bot Bir Moderasyon Botudur.!")
         .setImage("")
         .setDescription(`**Gults** sunucunuza başarıyla eklendi. :white_check_mark: Botumuzun\n özelliklerini öğrenmek için !yardım yazabilirsiniz.\n`)
         .addField(`:busts_in_silhouette: ${client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} kullanıcıya hizmet vermekteyim`)
@@ -319,7 +319,7 @@ client.on("message", async m => {
     const rembed = new Discord.RichEmbed()
     .setTitle(`Botun Prefixi: ** ${ayarlar.prefix} **`)
     .setColor("RANDOM")
-    .setFooter('Gults Bot Yapımı Batuhan Gürkana Aittir. !yardım İle Tüm Komutlara Ulaşabilirsiniz.! ', client.user.avatarURL)
+    .setFooter('Rowie Bot Yapımı Batuhan Gürkana Aittir. !yardım İle Tüm Komutlara Ulaşabilirsiniz.! ', client.user.avatarURL)
 m.channel.send(rembed).then(msg => msg.delete(180000))
 
 }
@@ -395,15 +395,15 @@ db.delete(`muteli_${member.guild.id + member.id}`)
 
 
 setInterval(() => {
-client.channels.get("712797474686894152").send('Bu Sunucuda Küfür Etmek ve Reklam Paylaşımı Yapmak Yasaktır!')
+client.channels.get("").send('Bu Sunucuda Küfür Etmek ve Reklam Paylaşımı Yapmak Yasaktır!')
 }, 27720000) // BURAYA SÜREYİ YAZINIZ 1 SANİYE 1000 MİLİSANİYEDİR!
 
 //////////////////////////////////////////////////
 
 client.on('guildMemberAdd', async(member) => {
-if(member.guild.id != '699209223854358598') return
+if(member.guild.id != '') return
 const kanal = `Son Üye • ${member.user.username}`
-let channel = client.channels.get("716667825451958284") 
+let channel = client.channels.get("") 
 channel.setName(kanal);
 });
 
@@ -601,14 +601,14 @@ client.on('guildMemberAdd',async member => {
 
 /////////////////// kanal yaratıldı silindi.////////////////////////////
 client.on('channelCreate', channel => {
-  const knl = client.channels.get('699220477608198174')
+  const knl = client.channels.get('')
           
   knl.send(`Yeni bir kanal oluşturuldu! \n\n***Kanal adı:***${channel.name}`)
           
           })
 
 client.on('channelDelete', channel => {
-  const knl = client.channels.get('699220477608198174')
+  const knl = client.channels.get('')
           
   knl.send(`Bir kanal silindi \n\n***Kanal adı:***${channel.name}`)
           
@@ -673,16 +673,5 @@ antispam(client, {
 )
 //////////////////////////////////////////
 
- 
-  
-client.on("message", async message => {
-let frenzykanal = await db.fetch(`FrenzyGörselKanal_${message.guild.id}`)  
-if (message.channel.id !== frenzykanal) return;
-if (message.member.hasPermission('ADMINISTRATOR')) return;
-if (message.attachments.size < 1) {
-message.delete();
-}
-});
-//Frenzy Code
 
 
