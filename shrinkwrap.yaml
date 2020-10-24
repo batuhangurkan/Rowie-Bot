@@ -28,6 +28,7 @@ dependencies:
   moment-duration-format: 2.3.2
   node-opus: 0.3.3
   node-superfetch: 0.1.10
+  novelcovid: 3.0.0
   opgg-scrape: 1.0.3
   parse-ms: 2.1.0
   pornhub: 0.0.5
@@ -48,6 +49,10 @@ dependencies:
   youtube-info: 1.3.2
   ytdl-core: 3.4.2
 packages:
+  /@aero/centra/1.0.6:
+    dev: false
+    resolution:
+      integrity: sha512-e7sUh/VjugT8LsHb4/hcbmhaVVi9deWWPQnlMnU0RAnF8+iCdGdCcKvoHnDNl/ELykwjpbKpBYbWPx0yKZaDpw==
   /@babel/runtime/7.11.2:
     dependencies:
       regenerator-runtime: 0.13.7
@@ -2431,6 +2436,12 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-CvaGwVMztSMJLOeXPrez7fyfObdZqNUK1cPAEzLHrTybIua9pMdmmPR5YwtfNftIOMv3DPUhFaxsZMNTQO20Kg==
+  /novelcovid/3.0.0:
+    dependencies:
+      '@aero/centra': 1.0.6
+    dev: false
+    resolution:
+      integrity: sha512-70LZiuOY52f3uIrcZ5dP1F0LFkbz8GuGRuiC/e+YjGv/jYrbq8WXll67GaCafWCvznFmgSEgDJcztDoXz4m+kg==
   /npm-bundled/1.1.1:
     dependencies:
       npm-normalize-package-bin: 1.0.1
@@ -3955,6 +3966,7 @@ specifiers:
   moment-duration-format: ^2.3.2
   node-opus: ^0.3.3
   node-superfetch: ^0.1.10
+  novelcovid: ^3.0.0
   opgg-scrape: ^1.0.0
   parse-ms: ^2.1.0
   pornhub: ^0.0.5

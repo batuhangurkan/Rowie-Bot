@@ -657,3 +657,13 @@ const embed = new Discord.RichEmbed()
 .setDescription('')
 member.send(embed)
 })
+
+/////////////////////////////////////////////////
+client.on('ready', () => {
+ client.user.setActivity(`${client.guilds.size} Sunucu + ${client.users.size} Kullanıcı!`);
+})
+
+////////////////////////////////////////////////
+client.on('guildMemberAdd', async member => {// chimp ♡'d#0110
+require('quick.db').set(`giriş.${member.guild.id}.${member.id}`, member.guild.memberCount)  
+})// codare
