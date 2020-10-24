@@ -4,7 +4,6 @@ module.exports = async client => {
   const statusList = [
     {
       type: "PLAYING"
-  [`BOT: Şu an ` + client.channels.size + ` adet kanala, ` + client.guilds.size + ` adet sunucuya ve ` + client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString() + ` kullanıcıya hizmet veriyor!`]
     },
     { msg: "V0.1", type: "PLAYING" },
     { msg: "Rowie Bot Yeniden Aktif!", type: "PLAYING" },
