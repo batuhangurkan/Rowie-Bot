@@ -9,7 +9,7 @@ exports.run = (client, message, args) => {if(db.fetch(`bakim`)) return message.c
     const embed = new Discord.RichEmbed()
         
         .setTitle(`${client.user.username} DAVET SİSTEMİ `)
-        .setDescription(`📥**Botun Davet Linki İçin** [TIKLA](https://discord.com/api/oauth2/authorize?client_id=713779975496532058&permissions=8&scope=bot) \n🔶**Destek Sunucusu İçin** [Bakım...]()`)
+        .setDescription(`📥**Botun Davet Linki İçin** [TIKLA](https://discord.com/api/oauth2/authorize?client_id=591250472652898315&permissions=8&scope=bot) \n🔶**Destek Sunucusu İçin** [Bakım...]()`)
         .setThumbnail(client.user.avatarURL)
         .setFooter(`${message.author.username} Başarıyla ${ayarlar.prefix}davet Sistemi Kullandı!`, message.author.avatarURL)
     .setColor(`RANDOM`)
