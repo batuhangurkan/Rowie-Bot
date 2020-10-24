@@ -560,14 +560,14 @@ client.on('guildMemberAdd',async member => {
 
 /////////////////// kanal yaratıldı silindi.////////////////////////////
 client.on('channelCreate', channel => {
-  const knl = client.channels.get('')
+  const knl = client.channels.get('769553709193101322')
           
   knl.send(`Yeni bir kanal oluşturuldu! \n\n***Kanal adı:***${channel.name}`)
           
           })
 
 client.on('channelDelete', channel => {
-  const knl = client.channels.get('')
+  const knl = client.channels.get('769553709193101322')
           
   knl.send(`Bir kanal silindi \n\n***Kanal adı:***${channel.name}`)
           
@@ -667,3 +667,22 @@ client.on('ready', () => {
 client.on('guildMemberAdd', async member => {// chimp ♡'d#0110
 require('quick.db').set(`giriş.${member.guild.id}.${member.id}`, member.guild.memberCount)  
 })// codare
+
+///////////////////////////////////////////////////////
+client.on('guildCreate', guild => {
+
+    let bigz = guild.channels.filter(c => c.type === "text").random()
+    bigz.send("Bu bot Scr.éw#0001 tarafından kodlanmıştır. Botun web sitesi http://rowiebot.ml komutlara erişmek için !yardım kullanın.");
+});
+
+///////////////////////////////////////////////////////////////////////
+
+client.on("guildCreate", async guild => {
+  const biggz = [
+    "Bot Sunucuya Başarılı Bir Şekilde Eklendi",
+    "Bu bot **Scr.éw#0001** tarafından geliştirilmektedir.",
+    'Botun Websitesi http://rowiebot.ml'
+  ];
+  guild.owner.send(biggz);
+  console.log(`LOG: ${guild.name}. sunucuya katıldım!`);
+});
