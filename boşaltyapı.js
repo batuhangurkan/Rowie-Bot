@@ -686,3 +686,6 @@ client.on("guildCreate", async guild => {
   guild.owner.send(biggz);
   console.log(`LOG: ${guild.name}. sunucuya katıldım!`);
 });
+
+////////////////////////////////////////////
+
