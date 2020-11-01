@@ -9,6 +9,8 @@ module.exports = async client => {
     { msg: "Rowie Bot Yeniden Aktif!", type: "PLAYING" },
     { msg: "!yardım ile tüm komutlara ulaşabilirsiniz.", type: "PLAYING" },
     { msg: "!help access all commands", type: "PLAYING" },
+    { msg: "www.rowiebot.ml", type: "PLAYING" },
+    { msg: "www.batuhangrkn.ml", type: "PLAYING" },
   ];
 
   setInterval(async () => {
