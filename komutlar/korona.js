@@ -10,7 +10,7 @@ if (!args.length) {
 					const exampleEmbed = new Discord.RichEmbed()
 						.setColor("BLUE")
 						.setTitle('Dünya Geneli COVID-19 Bilgileri')
-						.setDescription('Tanı konulan vakalar, ölümler ve dünya çapında gelişmeler \n Ülkeler hakkında bilgi almak için ' + ` \`${ayarlar.prefix}covid turkey\` `)
+						.setDescription('Tanı konulan vakalar, ölümler ve dünya çapında gelişmeler \n Ülkeler hakkında bilgi almak için ' + ` \`${ayarlar.prefix}korona turkey\` `)
 						.addField(`Tanı Konulan Hasta Sayısı`,response.data.cases)
             .addField(`Toplam Ölüm`,response.data.deaths)
             .addField(`Toplam İyileşen`,response.data.recovered)
