@@ -7,7 +7,7 @@ db.set(`FrenzyResimsizHGBB_${message.guild.id}`,channelfc.id)
 message.reply('HG BB Ayarlandı!')
 }
 exports.conf = {
-  enabled: false,
+  enabled: true,
   guildOnly: false,
   aliases: [],
   permLevel: 0
