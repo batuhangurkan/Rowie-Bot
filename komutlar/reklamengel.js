@@ -3,7 +3,7 @@ const db = require('quick.db');
 exports.run = async (client, message, args) => {
 const code = message.mentions.channels.first() || message.channel
 const frenzy = args[0]
-if (!frenzy) return message.reply(`Reklam engel sistemini açmak için reklamengel aç #kanal veya reklamengel aç yazmalsın!`)
+if (!frenzy) return message.reply(`Reklam engel sistemini açmak için reklamengel aç #kanal veya reklam-engel aç yazmalsın!`)
  
   if (frenzy == 'aç') { 
   let açıkkapalı = await db.fetch(`reklamEngelFrenzy_${code.id}`)
@@ -28,7 +28,7 @@ exports.conf = {
   permLevel: 3
 };
 exports.help = {
-  name: 'reklamengel',
+  name: 'reklam-engel',
   kategori:'moderasyon',
   description: 'Frenzy Code',
   usage: 'Frenzy Code!'

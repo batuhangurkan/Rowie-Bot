@@ -1,7 +1,7 @@
 const db = require('quick.db')
 const Discord = require('discord.js')
 exports.run = async (bot, message, args) => {
-    if (!args[0]) return message.channel.send('Reklamkick açmak için aç yada kapat yaz')
+    if (!args[0]) return message.channel.send('Reklam kick açmak için aç yada kapat yaz')
     if (args[0] == 'aç') {
       let açıkkapalı = await db.fetch(`reklamkick_${message.guild.id}`)
       if(açıkkapalı) return message.reply(`Zaten ayarlı`)
@@ -24,8 +24,8 @@ exports.conf = {
     permLevel: 4
 };
 exports.help = {
-    name: 'reklamkick',
+    name: 'reklam-kick',
   kategori:'moderasyon',
     description: 'Reklam kick sistemini açıp kapatır',
-    usage: 'reklamkick aç/kapat'
+    usage: 'reklam-kick aç/kapat'
 };

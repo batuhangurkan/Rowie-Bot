@@ -26,10 +26,10 @@ exports.run = async (client, message, args) => {if(db.fetch(`bakim`)) return mes
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["pornhubyazı","ph"],
+  aliases: ["pornhubyazı","pyaz"],
   permLevel: 0
 };
 exports.help = {
   kategori:'eğlence',
-  name: "pornhub"
+  name: "pyaz"
 };

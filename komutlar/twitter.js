@@ -76,7 +76,7 @@ exports.run = async (client, message, args) => {if(db.fetch(`bakim`)) return mes
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["tw","twitterbilgi","twitterinfo","twitteruser"],
+  aliases: ["twitterbilgi","twitterinfo","twitteruser"],
   permLevel: 0
 };
 
