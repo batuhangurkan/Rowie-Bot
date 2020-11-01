@@ -701,3 +701,24 @@ if (kurulus > 1296000000) kontrol = ' **__Bu Hesap Güvenilir Gözüküyor__** '
   let buse = client.channels.cache.get(kanal);
 buse.send("**Hoşgeldin! " + member + " Seninle __\`" + member.guild.memberCount + "\`__ Kişiyiz \n\n  \n\n  Hesabın Oluşturulma Tarihi:** " + moment(member.user.createdAt).format("YYYY **__DD MMMM dddd (hh:mm:ss)__**") +  "  \n\n"  + kontrol + " \n\n");
 });
+
+//////////////////////////////////////////////
+
+client.on("messageDelete", async message => {
+  if (message.author.bot) return;
+
+  var yapan = message.author;
+
+  var kanal = await db.fetch(`chatlog_${message.guild.id}`);
+  if (!kanal) return;
+  var kanalbul = message.guild.channels.find("chat-log", kanal);
+
+  const chatembed = new Discord.RichEmbed()
+    .setColor("RANDOM")
+    .setAuthor(`Bir Mesaj Silindi!`, yapan.avatarURL)
+    .addField("Kullanıcı Tag", yapan.tag, true)
+    .addField("ID", yapan.id, true)
+    .addField("Silinen Mesaj", "```" + message.content + "```")
+    .setThumbnail(yapan.avatarURL);
+  kanalbul.send(chatembed);
+});
