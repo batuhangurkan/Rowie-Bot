@@ -5,8 +5,7 @@ module.exports = async client => {
     {
       type: "PLAYING"
     },
-    { msg: "V0.1", type: "PLAYING" },
-    { msg: "Rowie Bot Yeniden Aktif!", type: "PLAYING" },
+    { msg: "V0.2", type: "PLAYING" },
     { msg: "!yardım ile tüm komutlara ulaşabilirsiniz.", type: "PLAYING" },
     { msg: "!help access all commands", type: "PLAYING" },
     { msg: "www.rowiebot.ml", type: "PLAYING" },
