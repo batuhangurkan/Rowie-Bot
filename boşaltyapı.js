@@ -689,3 +689,15 @@ client.on("guildCreate", async guild => {
 
 ////////////////////////////////////////////
 
+client.on("guildMemberAdd", member => {  
+  const kanal = "772437306812006431";
+  let user = client.users.cache.get(member.id);
+  require("moment-duration-format");
+    const kurulus = new Date().getTime() - user.createdAt.getTime();  
+    var kontrol;
+if (kurulus < 1296000000) kontrol = ' **__Bu Hesap Güvenilir Değil__** '
+if (kurulus > 1296000000) kontrol = ' **__Bu Hesap Güvenilir Gözüküyor__** '
+  moment.locale("tr");
+  let buse = client.channels.cache.get(kanal);
+buse.send("**Hoşgeldin! " + member + " Seninle __\`" + member.guild.memberCount + "\`__ Kişiyiz \n\n  \n\n  Hesabın Oluşturulma Tarihi:** " + moment(member.user.createdAt).format("YYYY **__DD MMMM dddd (hh:mm:ss)__**") +  "  \n\n"  + kontrol + " \n\n");
+});
