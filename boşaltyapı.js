@@ -142,7 +142,7 @@ message.delete()
 message.reply('Bu Kanalda küfürleri engelliyorum!').then(msg => msg.delete(5000)) 
 }
 });
-//Frenzy Code - Wictor 
+
 client.on("messageUpdate", async (oldMsg, newMsg) => {
 let wictor = await db.fetch(`küfürEngelFrenzy_${oldMsg.channel.id}`)
 if (!wictor) return 
