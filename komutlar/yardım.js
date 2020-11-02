@@ -6,7 +6,7 @@ exports.run = (client, message, args) => {if(db.fetch(`bakim`)) return message.c
     const embedyardim = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setAuthor(`${client.user.username} `, client.user.avatarURL) 
-      .setDescription('**!yardım** ile yardım alabilirsiniz.\n örnek komut kullanımı: **!küfür-engel aç**.\nbotu davet etmek için **!davet**')
+      .setDescription('**!yardım** ile yardım alabilirsiniz.\n örnek komut kullanımı: **!küfür-engel aç**.\nbotu davet etmek için **!davet** \nDünya Genelinde Oluşan Son Depremleri Görmek İçin **!deprem**')
       .addField('** Komutlar (20)**', `Herkesin Kullanabileceği Standart Komutlar. \n` +  '`botbilgi`, `ping`, `başvuru`, `lyrics`, `döviz`, `roller`, `rrenk`, `sunucubilgi`, `yapımcım`, `yaz`, `yetkililer`,`davet`,`şifre`, `havadurumu`, `avatar`, `bitcoin`, `seslimesaj`, `ailemiz`, `yetkilerim`, `afk`')
       .addField('** Eğlence (23)**',   `Herkes İçin Kullanılabilecek Eğlence Komutları. \n` + '`animeavatar`, `aşkımı-ölç`, `ateşet`, `kedi`, `köpek`, `berserk`, `mcskin`, `öp`, `sarıl`, `efkarölçer`, `emojiyaz`, `hesapla`, `yazı-banner`, `clyde`, `csgokasa`, `bjkefekt`, `gsefekt`,  `kanna`, `8ball`, `muzum`, `pyaz`')
       .addField('** Bilgi (15)**',`Herkes İçin Kullanılıcak Bilgi Alma Komutları. \n` +  '`lolbilgi`, `instagram`, `steamfiyat`, `vikipedi`, `npm`, `discordbotlist`, `yılbaşı`, `diziara`, `woodie`, `google`, `twitter`, `gifara`, `korona`')

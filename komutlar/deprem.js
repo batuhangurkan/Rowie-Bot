@@ -9,13 +9,14 @@ exports.run = (client, msg, args) => {
     console.log(deprem);
     msg.channel.sendEmbed(new Discord.RichEmbed()
       .setColor("RANDOM")
-      .setTitle(`${deprem.result[0].title}`)
+      .setAuthor(`${client.user.username} `, client.user.avatarURL) 
+      .setTitle(`Deprem | ${deprem.result[0].title}`)
       .addField("Boylam(E):", `${deprem.result[0].lng}` , true)
       .addField("Enlem(N):", `${deprem.result[0].lat}` , true)
-      .addField("Mag:", `${deprem.result[0].mag}` , true)
+      .addField("Büyüklük:", `${deprem.result[0].mag}` , true)
       .addField("Lokasyon:", `${deprem.result[0].lokasyon}` , false)
       .addField("Derinlik:", `${deprem.result[0].depth}` , true)                    
-      .setFooter(`${deprem.result[0].date}`)
+      .setFooter(`Tarih/Saat: ${deprem.result[0].date}`)
                         
                          
     );
