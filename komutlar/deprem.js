@@ -1,6 +1,16 @@
 const Discord = require('discord.js');
+const request = require('request');
+
 exports.run = (client, msg, args) => {
-  msg.channel.send("Hello");
+  request(`https://api.orhanaydogdu.com.tr/deprem/live.php?limit=1`, function(error,response,body){
+    console.error('error:', error); // Print the error if one occurred
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+     		// console.log('body:', body); // Print the HTML for the Google homepage.
+  let deprem = JSON.parse(body);
+  console.log(deprem.result.title);
+  msg.channel.send("Hello"+deprem.result.title);
+  });
+  
 };
 
 exports.conf = {
@@ -11,8 +21,8 @@ exports.conf = {
 };
 
 exports.help = {
-  name: 'pussy',
-  kategori:'nsfw',
-  description: '+18 Komut',
-  usage: 'pussy'
+  name: 'deprem',
+  kategori:'',
+  description: '',
+  usage: 'deprem'
 };
