@@ -10,13 +10,8 @@ if (!args.length) {
 					const exampleEmbed = new Discord.RichEmbed()
 						.setColor("BLUE")
 						.setTitle('Türkiye Deprem Bilgileri')
-            .addField(`Results`,response.data.result)
-						.addField(`Lokasyon Bilgisi`,response.data.lokasyon)
-            .addField(`Koordinat`,response.data.coordinates)
-            .addField(`Açıklama`,response.data.title)
-            .addField(`mag`,response.data.mag)
-            .addField(`lng`,response.data.lng)
-            .addField(`lat`,response.data.lat)
+            .addField(`Status`,response.data.status)
+            .addField(`Result`,response.data.result)
 						.setTimestamp();
 
 					message.channel.send(exampleEmbed);
@@ -26,18 +21,20 @@ if (!args.length) {
 				});
 		}
 		else {
-			axios.get(`https://api.orhanaydogdu.com.tr/deprem/live.php?limit=1${args[0]}`)
+			axios.get(`https://api.orhanaydogdu.com.tr/deprem/live.php?limit=1`)
 				.then((response) => {
 					const exampleEmbed = new Discord.RichEmbed()
 						.setColor('RED')
 						.setTitle(`${args[0]} - Deprem Bilgileri`)
-						.addField(`Results`,response.data.result, true)
-						.addField(`Lokasyon Bilgisi`,response.data.lokasyon, true)
-            .addField(`Koordinat`,response.data.coordinates, true)
-            .addField(`Açıklama`,response.data.title, true)
-            .addField(`mag`,response.data.mag, true)
-            .addField(`lng`,response.data.lng, true)
-            .addField(`lat`,response.data.lat, true)
+						.addField(`Status`,response.data.status)
+            .addField(`Result`,response.data.result)
+            .addField(`mag`,response.data.mag)
+            .addField(`lng`,response.data.lng)
+            .addField(`lat`,response.data.lat)
+          	.addField(`Lokasyon Bilgisi`,response.data.lokasyon)
+            .addField(`Büyüklük`,response.data.depth)
+            .addField(`Koordinat`,response.data.coordinates)
+            .addField(`Açıklama`,response.data.title)
 						.setTimestamp();
           console.log(response)
 					message.channel.send(exampleEmbed);
@@ -53,13 +50,13 @@ if (!args.length) {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["corona", "covid", "covid19", "covıd", "virüs", "coronavirüs"],
+  aliases: ["deprem"],
   permLevel: 0
 };
 
 exports.help = {
-  name: 'korona',
+  name: 'deprem',
   description: 'Ülkelerdeki COVID-19 vakalarını inceyelebilirsiniz',
-  usage: 'korona <ülke>'
+  usage: 'deprem'
 };
 //XiR Dev. Team
