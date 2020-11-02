@@ -8,13 +8,13 @@ exports.run = (client, msg, args) => {
     let deprem = JSON.parse(body);
     console.log(deprem);
     msg.channel.sendEmbed(new Discord.RichEmbed()
-      .setColor("BLUE")
+      .setColor("RANDOM")
       .setTitle(`${deprem.result[0].title}`)
-      .addField("Lng:", `${deprem.result[0].lng}` , true)
-      .addField("Lat:", `${deprem.result[0].lat}` , true)
+      .addField("Boylam(E):", `${deprem.result[0].lng}` , true)
+      .addField("Enlem(N):", `${deprem.result[0].lat}` , true)
       .addField("Mag:", `${deprem.result[0].mag}` , true)
-      .addField("Location:", `${deprem.result[0].lokasyon}` , false)
-      .addField("Depth:", `${deprem.result[0].depth}` , true)                    
+      .addField("Lokasyon:", `${deprem.result[0].lokasyon}` , false)
+      .addField("Derinlik:", `${deprem.result[0].depth}` , true)                    
       .setFooter(`${deprem.result[0].date}`)
                         
                          
