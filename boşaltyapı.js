@@ -820,3 +820,9 @@ client.login(ayarlar.token);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+client.on('ready', () =>{
+  const  = client.channel.find(channel => channel.id === '772436613263130655')
+  setInterval(() =>{
+    .send("agla")
+  }, 6000)
+ });
