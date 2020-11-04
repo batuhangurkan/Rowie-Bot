@@ -804,8 +804,15 @@ client.login(ayarlar.token);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+let lastEarthQuake = { 
+    "timestamp": 1604510249
+};
+
+//lastEarthQuake.json
 
 client.on('ready', () =>{
+  let data = JSON.stringify(lastEarthQuake);
+  fs.writeFileSync('lastEarthQuake.json', data);
   let voiceChannel = client.channels.get('772436613263130655');
   setInterval(() =>{
     //voiceChannel.send("")
