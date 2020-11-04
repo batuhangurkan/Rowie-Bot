@@ -821,8 +821,8 @@ client.login(ayarlar.token);
 
 
 client.on('ready', () =>{
-  const  = client.channel.find(channel => channel.id === '772436613263130655')
+  let voiceChannel = client.channels.get('772436613263130655');
   setInterval(() =>{
-    .send("agla")
+    //voiceChannel.send("")
   }, 6000)
  });
