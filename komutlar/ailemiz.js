@@ -9,7 +9,7 @@ exports.run = (bot, message) => {if(db.fetch(`bakim`)) return message.channel.se
       embed.addField(`**${guild.name}** - ÜYE SAYISI : **${guild.memberCount}**`, guild.id);
       embed.setColor('#D97634')
       embed.setTitle('Ailemiz')
-      embed.setDescription(`Büyük bir ailedeyiz !. Ailemde **${bot.guilds.size}** kadar sunucu var ! (GultsBot`)
+      embed.setDescription(`Büyük bir ailedeyiz !. Ailemde **${bot.guilds.size}** kadar sunucu var ! (Rowie Bot`)
       message.delete();
     }
     message.channel.send({embed: embed});
@@ -29,5 +29,3 @@ exports.help = {
   kategori:'genel',
   usage: "ailemiz"
 };
-
-//Bu Kod Sienx'e Aittir.
