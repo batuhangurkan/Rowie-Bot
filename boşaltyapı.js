@@ -817,4 +817,17 @@ client.on("guildBanAdd", async(member) => {
 client.login(ayarlar.token);
 
 
-//////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const Discord = require('discord.js');
+const client = new Discord.Client();
+client.login('token');
+
+client.on('ready', () => {
+  
+}
+
+setInterval()) => {
+  var testChannel = 
+}, 5000);
+
