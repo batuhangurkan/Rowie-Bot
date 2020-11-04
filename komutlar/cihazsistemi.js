@@ -26,7 +26,7 @@ message.channel.send(`${member.user.tag} kullanıcısının durumu: ${durum}${uy
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: [],
+  aliases: ['cihazlar'],
   permLevel: 0
 }
 
