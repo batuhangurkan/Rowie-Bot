@@ -816,10 +816,9 @@ client.on('ready', () =>{
   setInterval(() =>{
     request(`https://api.orhanaydogdu.com.tr/deprem/live.php?limit=1`, function(error,response,body){
       let deprem = JSON.parse(body);
-      console.log(deprem);
-      if(deprem.result[0].timestamp !== db.get('eqtimestamp'))
-        
-        msg.channel.sendEmbed(new Discord.RichEmbed()
+      if(deprem.result[0].timestamp !== db.get('eqtimestamp')){
+        db.set('eqtimestamp', deprem.result[0].timestamp);
+        voiceChannel.sendEmbed(new Discord.RichEmbed()
         .setColor("RANDOM")
         .setAuthor(`${client.user.username} `, client.user.avatarURL) 
         .setTitle(`Deprem | ${deprem.result[0].title}`)
@@ -830,7 +829,9 @@ client.on('ready', () =>{
         .addField("Derinlik:", `${deprem.result[0].depth}` , true)                    
         .setFooter(`Tarih/Saat: ${deprem.result[0].date}`));
         
-      }
+        
+    }
+      
   
     });
     
