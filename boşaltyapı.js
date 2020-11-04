@@ -817,10 +817,4 @@ client.on("guildBanAdd", async(member) => {
 client.login(ayarlar.token);
 
 
-/////////////////////////////////
-
-client.on('ready', () => {
-  console.log(`DevTR.org`);
-  setInterval(function() {
-let channel = client.channels.get("772436613263130655") //MESAJIN GİDECEĞİ KANAL ID
-     if(channel){
+//////////////////////
