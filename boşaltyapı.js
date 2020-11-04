@@ -811,12 +811,28 @@ let lastEarthQuake = {
 //lastEarthQuake.json
 
 client.on('ready', () =>{
-  let data = JSON.stringify(lastEarthQuake);
-  fs.writeFileSync('./lastEarthQuake.json', data, (err) => {
-    if (err) throw err; } );
-  console.log(data)
+
   let voiceChannel = client.channels.get('772436613263130655');
   setInterval(() =>{
-    //voiceChannel.send("")
+    request(`https://api.orhanaydogdu.com.tr/deprem/live.php?limit=1`, function(error,response,body){
+      let deprem = JSON.parse(body);
+      console.log(deprem);
+      if(deprem.result[0].timestamp !== db.get('eqtimestamp'))
+        
+        msg.channel.sendEmbed(new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setAuthor(`${client.user.username} `, client.user.avatarURL) 
+        .setTitle(`Deprem | ${deprem.result[0].title}`)
+        .addField("Boylam(E):", `${deprem.result[0].lng}` , true)
+        .addField("Enlem(N):", `${deprem.result[0].lat}` , true)
+        .addField("Büyüklük:", `${deprem.result[0].mag}` , true)
+        .addField("Lokasyon:", `${deprem.result[0].lokasyon}` , false)
+        .addField("Derinlik:", `${deprem.result[0].depth}` , true)                    
+        .setFooter(`Tarih/Saat: ${deprem.result[0].date}`));
+        
+      }
+  
+    });
+    
   }, 6000)
  });
