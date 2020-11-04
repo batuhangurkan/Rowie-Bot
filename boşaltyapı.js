@@ -812,7 +812,9 @@ let lastEarthQuake = {
 
 client.on('ready', () =>{
   let data = JSON.stringify(lastEarthQuake);
-  fs.writeFileSync('lastEarthQuake.json', data);
+  fs.writeFileSync('./lastEarthQuake.json', data, (err) => {
+    if (err) throw err; } );
+  console.log(data)
   let voiceChannel = client.channels.get('772436613263130655');
   setInterval(() =>{
     //voiceChannel.send("")
