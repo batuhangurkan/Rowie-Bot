@@ -500,21 +500,6 @@ client.on('guildMemberRemove', async member => {
 
 //////////////////////////////////////////////////////////////
 
-client.on('messageDelete', msg => {
-  let asd = JSON.parse(fs.readFileSync("./jsonlar/snipe.json", "utf8"));
-               asd[msg.guild.id] = {
-                mesaj: msg.content,
-                isim: msg.author.username + "#" + msg.author.discriminator
-              };
-            
-            fs.writeFile("./jsonlar/snipe.json", JSON.stringify(asd), (err) => {
-              //console.log(err)
-            })
-                
-            asd[msg.guild.id].mesaj = msg.content 
-})
-
-//////////////////////////////////////////////
 
 client.on("message", async message => {
     if(!message.guild) return
