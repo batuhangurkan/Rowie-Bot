@@ -256,20 +256,6 @@ client.on("message", async msg => {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-client.on("guildCreate", guild => {
-    const eklendim = new Discord.RichEmbed()
-        .setColor('YELLOW')
-        .setThumbnail(client.user.avatarURL)
-        .setTitle("Rowie Bot Bir Moderasyon Botudur.!")
-        .setImage("")
-        .setDescription(`**Rowie** sunucunuza başarıyla eklendi. :white_check_mark: Botumuzun\n özelliklerini öğrenmek için !yardım yazabilirsiniz.\n`)
-        .addField(`:busts_in_silhouette: ${client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} kullanıcıya hizmet vermekteyim`)
-    .addField(`:dizzy: ${client.guilds.size} Sunucuda Bulunmaktayım`)
-        .setTimestamp()
-    guild.owner.send(eklendim)
-});
-
-////////////////////////////////////////////////////////
 
 client.on("message", async m => {  
   
