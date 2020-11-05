@@ -543,23 +543,7 @@ client.on('guildMemberAdd',async member => {
     chan.send(attachment)
 });
 
-/////////////////// kanal yaratıldı silindi.////////////////////////////
-client.on('channelCreate', channel => {
-  const knl = client.channels.get('769553709193101322')
-          
-  knl.send(`Yeni bir kanal oluşturuldu! \n\n***Kanal adı:***${channel.name}`)
-          
-          })
-
-client.on('channelDelete', channel => {
-  const knl = client.channels.get('769553709193101322')
-          
-  knl.send(`Bir kanal silindi \n\n***Kanal adı:***${channel.name}`)
-          
-          })
-
 /////////////////////////////////////////
-
 
 client.on("roleDelete", async(role , channel , message , guild) => {
 let rolkoruma = await db.fetch(`rolk_${role.guild.id}`);
@@ -662,53 +646,7 @@ client.on('guildCreate', guild => {
 
 ///////////////////////////////////////////////////////////////////////
 
-client.on("guildCreate", async guild => {
-  const biggz = [
-    "Bot Sunucuya Başarılı Bir Şekilde Eklendi",
-    "Bu bot **Scr.éw#0001** tarafından geliştirilmektedir.",
-    'Botun Websitesi http://rowiebot.ml'
-  ];
-  guild.owner.send(biggz);
-  console.log(`LOG: ${guild.name}. sunucuya katıldım!`);
-});
 
-////////////////////////////////////////////
-
-client.on("guildMemberAdd", member => {  
-  const kanal = "772437306812006431";
-  let user = client.users.cache.get(member.id);
-  require("moment-duration-format");
-    const kurulus = new Date().getTime() - user.createdAt.getTime();  
-    var kontrol;
-if (kurulus < 1296000000) kontrol = ' **__Bu Hesap Güvenilir Değil__** '
-if (kurulus > 1296000000) kontrol = ' **__Bu Hesap Güvenilir Gözüküyor__** '
-  moment.locale("tr");
-  let buse = client.channels.cache.get(kanal);
-buse.send("**Hoşgeldin! " + member + " Seninle __\`" + member.guild.memberCount + "\`__ Kişiyiz \n\n  \n\n  Hesabın Oluşturulma Tarihi:** " + moment(member.user.createdAt).format("YYYY **__DD MMMM dddd (hh:mm:ss)__**") +  "  \n\n"  + kontrol + " \n\n");
-});
-
-//////////////////////////////////////////////
-
-client.on("messageDelete", async message => {
-  if (message.author.bot) return;
-
-  var yapan = message.author;
-
-  var kanal = await db.fetch(`chatlog_${message.guild.id}`);
-  if (!kanal) return;
-  var kanalbul = message.guild.channels.find("chat-log", kanal);
-
-  const chatembed = new Discord.RichEmbed()
-    .setColor("RANDOM")
-    .setAuthor(`Bir Mesaj Silindi!`, yapan.avatarURL)
-    .addField("Kullanıcı Tag", yapan.tag, true)
-    .addField("ID", yapan.id, true)
-    .addField("Silinen Mesaj", "```" + message.content + "```")
-    .setThumbnail(yapan.avatarURL);
-  kanalbul.send(chatembed);
-});
-
-/////////////////////////////////
 
 client.on("guildMemberAdd", async(member) => {
   let sunucupaneli = await db.fetch(`sunucupanel_${member.guild.id}`)
