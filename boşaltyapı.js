@@ -597,8 +597,8 @@ client.login(`NTkxMjUwNDcyNjUyODk4MzE1.XQuC6Q.0kdXMQcHM0UZmvk_x3maRs4JAkQ`)
 client.on("guildMemberAdd", member => {
 const embed = new Discord.RichEmbed()
 .setColor('RANDOM')
-.setTitle('Hoşgeldin!')
-.setDescription('')
+.setTitle('Sunucumuza Hoş Geldin!')
+.setDescription('Sunucumuzda bulunduğun için mutluluk duyuyoruz. !yardım ile tüm komutlarıma ulaşabilirsin. https://rowiebot.ml Web Sitemi Ziyaret Edebilir. Rowie Botun Destek Sunucusuna Katılıp Hatalarımı Geliştiricilerimize Bildirebilirsin. https://discord.gg/kvrcqcR6qy')
 member.send(embed)
 })
 
