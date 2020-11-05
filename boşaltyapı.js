@@ -28,7 +28,7 @@ app.get("/", (request, response) => {
 app.listen(process.env.PORT);
 setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 280000);
+}, 28000);
 
 var prefix = ayarlar.prefix;
 
@@ -555,26 +555,6 @@ role.guild.owner.send(` **${role.name}** Adlı Rol Silindi Ve Ben Rolü Tekrar O
 }
 }) 
 
-////////////////////////////////////////////////
-
-client.on('message', msg => {
-
-if(client.ping > 2500) {
-
-let bölgeler = ['singapore', 'eu-central', 'india', 'us-central', 'london',
-'eu-west', 'amsterdam', 'brazil', 'us-west', 'hongkong', 
-'us-south', 'southafrica', 'us-east', 'sydney', 'frankfurt',
-'russia']
-let yenibölge = bölgeler[Math.floor(Math.random() * bölgeler.length)]
-let sChannel = msg.guild.channels.find(c => c.name === "ddos-system")
-
-sChannel.send(`Sunucu Ddos Saldırısına Uğruyor Olabilir. Senin İçin \nSunucu Bölgesini Değiştirdim \n __**${yenibölge}**__ :tik: __**Sunucu Pingimiz**__ :`+ client.ping)
-msg.guild.setRegion(yenibölge)
-.then(g => console.log(" bölge:" + g.region))
-.then(g => msg.channel.send("bölge **"+ g.region + " olarak değişti")) 
-.catch(console.error);
-}});
-
 ////////////////////////////////////////////////////
 const antispam = require("discord-anti-spam-tr");
 client.on("message", msg => {
@@ -599,12 +579,7 @@ antispam(client, {
 };
     }
 )
-//////////////////////////////////////////
 
-// eklendim
-client.on('guildCreate', async guild => { client.channels.get('769553709193101322').send(`${guild}, isimli sunucuya eklendim!`)})
-// atıldım
-client.on('guildRemove', async guild => { client.channels.get('769553709193101322').send(`${guild}, isimli sunucudan atıldım.. :(`)})
 //////////////////////////////////////////////////
 
 client.login(`NTkxMjUwNDcyNjUyODk4MzE1.XQuC6Q.0kdXMQcHM0UZmvk_x3maRs4JAkQ`)
