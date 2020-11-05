@@ -557,10 +557,6 @@ const embed = new Discord.RichEmbed()
 member.send(embed)
 })
 
-/////////////////////////////////////////////////
-client.on('ready', () => {
- client.user.setActivity(`${client.guilds.size} Sunucu + ${client.users.size} Kullanıcı!`);
-})
 
 ////////////////////////////////////////////////
 client.on('guildMemberAdd', async member => {// chimp ♡'d#0110

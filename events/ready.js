@@ -1,32 +1,21 @@
-const request = require("request");
+const chalk = require('chalk');
+const moment = require('moment');
+const Discord = require('discord.js');
+const ayarlar = require('../ayarlar.json');
 
-module.exports = async client => {
-  const statusList = [
-    {
-      type: "PLAYING"
-    },
-    { msg: "!yardım 🔥 + !davet 🔥", type: "PLAYING" },
-    { msg: "BETA V0.2", type: "PLAYING" },
-    { msg: "Dünya Geneli Covid Bilgileri İçin !korona Türkiye İçin !korona turkey", type: "PLAYING" },
-  ];
+var prefix = ayarlar.prefix;
 
-  setInterval(async () => {
-    const index = Math.floor(Math.random() * statusList.length + 1) - 1;
-    await client.user.setActivity(statusList[index].msg, {
-      type: statusList[index].type
-    });
-  }, 5000);
-
-  /* setInterval(async () => {
-    request('https://web.tsuyobot.ga', (err, res, html) => {
-      if (err) client.logger.error(err);
-    });
-}, 28000); */
-
+module.exports = client => {
+  console.log(`${client.user.username} ismi ile giriş yapıldı!`);
   client.user.setStatus("online");
-  console.log("Finished setting up the bot.");
-  client.user.setStatus("online");
-
-  // Starts the web server/API
-  // require('../modules/web')(client);
+  //idle = boşta
+  //dnd = rahatsız etmeyin
+  //online = çevrimiçi
+  console.log(`${client.user.id}                                                                                                                                                                     `)
+  //client.user.setActivity(`${prefix}yardım | ${client.guilds.size} sunucu | ${client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} Kullanıcıyı`, { type: "LISTENING"});
+client.user.setActivity(`!yardım !davet | ${client.guilds.size} sunucu | ${client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} Kullanıcı | Beta V0.0.2`, { type: "WATCHING"});   //her güncellemede V yi arttır. 10 tanede bir sola geç!
+//LISTENING = DİNLİYOR
+  //WATCHING = İZLİYOR
+  //PLAYING = OYNUYOR 
+  console.log(`${client.user.username}: Şu an ` + client.channels.size + ` adet kanala, ` + client.guilds.size + ` adet sunucuya ve ` + client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString() + ` kullanıcıya hizmet veriliyor!`);
 };
