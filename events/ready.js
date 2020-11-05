@@ -8,9 +8,9 @@ module.exports = async client => {
     { msg: "BETA V0.2", type: "PLAYING" },
     { msg: "!yardım ile tüm komutlara ulaşabilirsiniz.", type: "PLAYING" },
     { msg: "!help access all commands", type: "PLAYING" },
-    { msg: "www.rowiebot.ml", type: "PLAYING" },
-    { msg: "www.batuhangrkn.ml", type: "PLAYING" },
-     { msg: "Dünya Geneli Covid Bilgileri İçin !korona Türkiye İçin !korona turkey", type: "PLAYING" },
+    { msg: "rowiebot.ml", type: "PLAYING" },
+    { msg: "batuhangrkn.ml", type: "PLAYING" },
+     { msg: "Dünya Geneli Covid Bilgileri İçin !korona Türkiye İçin !korona turkey", type: "WATCHING" },
   ];
 
   setInterval(async () => {
