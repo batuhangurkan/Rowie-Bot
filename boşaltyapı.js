@@ -469,23 +469,6 @@ client.channels.get(frenzykanal).send(`${member}, ayrıldı! **${frenzysayı}** 
 return
 })
 
-////////////////////////////////////////
-
-client.on('guildMemberAdd', async member => {
-  let fc = await db.fetch(`FrenzyResimsizHGBB_${member.guild.id}`)
-  let frenzychannel = client.channels.get(fc)
-  if(!frenzychannel) return
-  frenzychannel.send(`${member} Kullanıcısı Sunucuya Katıldı! **HOŞGELDİN**!`)
-})
-client.on('guildMemberRemove', async member => {
-  let fc = await db.fetch(`FrenzyResimsizHGBB_${member.guild.id}`)
-  let frenzychannel = client.channels.get(fc)
-  if(!frenzychannel) return
-  frenzychannel.send(`${member.user.username} Kullanıcısı Sunucudan Ayrıldı! **GÖRÜŞMEK ÜZERE**!`)
-})
-
-
-
 /////////////////////////////////////////////////////
 
 
@@ -961,11 +944,13 @@ botdurum.send(botistatistik);
 ////////////////////////////////////////////////////////////////////////////
 
 client.on("guildMemberAdd", async member => {
-  const channel = member.guild.channels.find('name', 'giriş-çıkış');//log ismini ayarlıyacaksınız log adında kanal açın
-  if (!channel) return;
+const fs = require('fs');
+let gc = JSON.parse(fs.readFileSync("./jsonlar/gc.json", "utf8"));
+  
+  const hgK = member.guild.channels.get(gc[member.guild.id].gkanal)
+    if (!hgK) return;
         let username = member.user.username;
-        if (channel === undefined || channel === null) return;
-        if (channel.type === "text") {
+   
             const bg = await Jimp.read("https://cdn.discordapp.com/attachments/321646765180715008/520209658204651520/guildAdd.png");
             const userimg = await Jimp.read(member.user.avatarURL);
             var font;
@@ -976,21 +961,26 @@ client.on("guildMemberAdd", async member => {
             await userimg.resize(362, 362);
             await bg.composite(userimg, 43, 26).write("./img/"+ member.id + ".png");
               setTimeout(function () {
-                    channel.send(new Discord.Attachment("./img/" + member.id + ".png"));
+                    hgK.send(new Discord.Attachment("./img/" + member.id + ".png"));
               }, 1000);
               setTimeout(function () {
                 fs.unlink("./img/" + member.id + ".png");
               }, 10000);
-        }
+        let hgm = JSON.parse(fs.readFileSync("./jsonlar/hgm.json", "utf8"));
+    const hgmK = member.guild.channels.get(hgm[member.guild.id].gkanal)
+    var kullanici = member.tag
+    var sunucu = member.guild.name
+    hgmK.send(`${gc[member.guild.id].mesaj}`)
     })
 client.on("guildMemberRemove", async member => {
-  const channel = member.guild.channels.find('name', 'giriş-çıkış');
-  if (!channel) return;
+const fs = require('fs');
+let gc = JSON.parse(fs.readFileSync("./jsonlar/gc.json", "utf8"));
+    const hgK = member.guild.channels.get(gc[member.guild.id].gkanal)
+    if (!hgK) return;
         let username = member.user.username;
-        if (channel === undefined || channel === null) return;
-        if (channel.type === "text") {            
-          const bg = await Jimp.read("https://cdn.discordapp.com/attachments/321646765180715008/520209659785773056/guildRemove.png");
- const userimg = await Jimp.read(member.user.avatarURL);
+         
+                        const bg = await Jimp.read("https://cdn.discordapp.com/attachments/321646765180715008/520209659785773056/guildRemove.png");
+            const userimg = await Jimp.read(member.user.avatarURL);
             var font;
             if (member.user.tag.length < 15) font = await Jimp.loadFont(Jimp.FONT_SANS_128_WHITE);
             else if (member.user.tag.length > 15) font = await Jimp.loadFont(Jimp.FONT_SANS_64_WHITE);
@@ -999,11 +989,36 @@ client.on("guildMemberRemove", async member => {
             await userimg.resize(362, 362);
             await bg.composite(userimg, 43, 26).write("./img/"+ member.id + ".png");
               setTimeout(function () {
-                    channel.send(new Discord.Attachment("./img/" + member.id + ".png"));
+                    hgK.send(new Discord.Attachment("./img/" + member.id + ".png"));
               }, 1000);
               setTimeout(function () {
                 fs.unlink("./img/" + member.id + ".png");
               }, 10000);
-        }
+        
     })
-//MeliL
+
+////////////////////////////////////////////////////////////////////////
+
+client.on('guildMemberAdd', member => {
+  const channel = member.guild.channels.find('name', 'giriş-çıkış');
+  if (!channel) return;
+  const embed = new Discord.RichEmbed()
+  .setColor('GREEN')
+  .setAuthor(member.user.username, member.user.avatarURL)
+  .setThumbnail(member.user.avatarURL)
+  .setTitle('?? | Sunucuya katıldı')
+  .setTimestamp()
+  channel.sendEmbed(embed);
+});
+
+client.on('guildMemberRemove', member => {
+    const channel = member.guild.channels.find('name', 'giriş-çıkış');
+    if (!channel) return;
+    const embed = new Discord.RichEmbed()
+        .setColor('RED')
+        .setAuthor(member.user.username, member.user.avatarURL)
+        .setThumbnail(member.user.avatarURL)
+        .setTitle('?? | Sunucudan ayrıldı')
+        .setTimestamp()
+    channel.sendEmbed(embed);
+});
