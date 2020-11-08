@@ -558,7 +558,7 @@ require('quick.db').set(`giriş.${member.guild.id}.${member.id}`, member.guild.m
 client.on('guildCreate', guild => {
 
     let bigz = guild.channels.filter(c => c.type === "text").random()
-    bigz.send("Bu bot Scr.éw#0001 tarafından kodlanmıştır. Botun web sitesi http://rowiebot.ml komutlara erişmek için !yardım kullanın.");
+    bigz.send("Bu bot Scr.éw#0001 tarafından kodlanmıştır. Botun web sitesi http://rowiebot.ml komutlara erişmek için !yardım kullanın. Herhangi bir hata durumunda destek sunucumuza gelip botun hatalarını bildirebilirsiniz. Destek Sunucumuz: https://discord.gg/kvrcqcR6qy");
 });
 
 ///////////////////////////////////////////////////////////////////////
@@ -694,9 +694,44 @@ client.on('ready', () =>{
  });
 
 
-/////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
-// eklendim
-client.on('guildCreate', async guild => { client.channels.get('775049033743728651').send(`${guild}, isimli sunucuya eklendim!`)})
-// atıldım
-client.on('guildRemove', async guild => { client.channels.get('775049033743728651').send(`${guild}, isimli sunucudan atıldım.. :(`)})
+client.on("guildCreate", guild => {
+  let log = client.channels.get("775049033743728651");
+  const embed = new Discord.RichEmbed()
+    .setAuthor("Yeni bir sunucuya eklendim!")
+    .setThumbnail(
+      guild.iconURL ||
+        "https://media.giphy.com/media/J20kKsn88hYAkpPtHB/giphy.gif"
+    )
+    .setColor("GREEN")
+         .addField("» Sunucu İsmi:", `**${guild.name}**`)
+    .addField("» Sunucu ID:", `\`\`\`${guild.id}\`\`\``)
+    .addField(
+      "Sunucu Bilgisi:",
+      `**Sunucu Sahibi: \`${guild.owner}\`\nSunucu Bölgesi: \`${guild.region}\`\nÜye Sayısı: \`${guild.members.size}\`\nKanal Sayısı: \`${guild.channels.size}\`**`
+    )
+    .setTimestamp()
+    .setFooter(client.user.username, client.user.avatarURL);
+  log.send(embed);
+});
+client.on("guildDelete", guild => {
+  let log = client.channels.get("775049033743728651");
+  const embed = new Discord.RichEmbed()
+    .setAuthor("Bir sunucudan atıldım -_-")
+    .setThumbnail(
+      guild.iconURL ||
+        "https://media.giphy.com/media/J20kKsn88hYAkpPtHB/giphy.gif"
+    )
+    .setColor("RED")
+       .addField("» Sunucu İsmi:", `**${guild.name}**`)
+    .addField("» Sunucu ID:", `\`\`\`${guild.id}\`\`\``)
+    .addField(
+      "Sunucu Bilgisi:",
+      `**Sunucu Sahibi: \`${guild.owner}\`\nSunucu Bölgesi: \`${guild.region}\`\nÜye Sayısı: \`${guild.members.size}\`\nKanal Sayısı: \`${guild.channels.size}\`**`
+    )
+    .setTimestamp()
+    .setFooter(client.user.username, client.user.avatarURL);
+  log.send(embed);
+});
+ 
