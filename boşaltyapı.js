@@ -1000,7 +1000,7 @@ let gc = JSON.parse(fs.readFileSync("./jsonlar/gc.json", "utf8"));
 ////////////////////////////////////////////////////////////////////////
 
 client.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find('name', 'giriş-çıkış');
+  const channel = member.guild.channels.find('name', 'sunucu');
   if (!channel) return;
   const embed = new Discord.RichEmbed()
   .setColor('GREEN')
@@ -1012,7 +1012,7 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('guildMemberRemove', member => {
-    const channel = member.guild.channels.find('name', 'giriş-çıkış');
+    const channel = member.guild.channels.find('name', 'sunucu');
     if (!channel) return;
     const embed = new Discord.RichEmbed()
         .setColor('RED')
@@ -1021,4 +1021,51 @@ client.on('guildMemberRemove', member => {
         .setTitle('?? | Sunucudan ayrıldı')
         .setTimestamp()
     channel.sendEmbed(embed);
+});
+
+///////////////////////////////////////////////////////////////
+
+client.on('guildMemberAdd', async member => {
+  const moment = require('moment');
+  var time = moment().format('hh:mm');
+var room;
+var title;
+var duration;
+var currentTime = new Date(),
+hours = currentTime.getHours() + 3 ,
+minutes = currentTime.getMinutes(),
+done = currentTime.getMinutes() + duration,
+seconds = currentTime.getSeconds();
+if (minutes < 10) {
+minutes = "0" + minutes;
+}
+var suffix = "AM";
+if (hours >= 12) {
+suffix = "PM";
+hours = hours - 12;
+}
+if (hours == 0) {
+hours = 12;
+}
+  const webhook = new Discord.WebhookClient('','');
+      let sonuc = [`<a:kalp26:682875333195595793>   **${member.user.username}** az önce kayarak sunucuya girdi.  \`${time}\``,
+                   `<a:kalp26:682875333195595793>    Hoş geldin **${member.user.username}**. Silahlarını kapının oraya bırak.  \`${time}\``,
+                   `<a:kalp26:682875333195595793>    Oyuncu **${member.user.username}** hazır.  \`${time}\``,
+                   `<a:kalp26:682875333195595793>    **${member.user.username}** geldi. Parti sona erdi.  \`${time}\``,
+                   `<a:kalp26:682875333195595793>    Aha! **${member.user.username}** burada.  \`${time}\``,
+                   `<a:kalp26:682875333195595793>    **${member.user.username}** az önce sunucuya katıldı! Bu süper etkili!  \`${time}\``,
+                   `<a:kalp26:682875333195595793>    Merhaba, **${member.user.username}**. Umarım pizza getirmişsindir.  \`${time}\``,
+                   `<a:kalp26:682875333195595793>    **${member.user.username}** az önce katıldı... yoksa katılmadı mı?  \`${time}\``,
+                   `<a:kalp26:682875333195595793>    Koca **${member.user.username}** çıkageldi!  \`${time}\``,
+                   `<a:kalp26:682875333195595793>    Bu bir kuş! Bu bir uçak! Boşver, o sadece **${member.user.username}**.  \`${time}\``,
+                   `<a:kalp26:682875333195595793>    **${member.user.username}** az önce sunucuya katıldı - glhf!  \`${time}\``,
+                   `<a:kalp26:682875333195595793>    Vahşi bir **${member.user.username}** belirdi.  \`${time}\``,
+                   `<a:kalp26:682875333195595793>    Vınnnnn. **${member.user.username}** az önce iniş yaptı.  \`${time}\``,                   
+                   `<a:kalp26:682875333195595793>    Tezahüratlar, aşk! **${member.user.username}** burada!  \`${time}\``,
+                   `<a:kalp26:682875333195595793>    Sıkı durun. **${member.user.username}** az önce sunucuya katıldı.  \`${time}\``,
+                   `<a:kalp26:682875333195595793>    Merhaba, **${member.user.username}**. Bir süre kal ve dinle.  \`${time}\``,
+                   `<a:kalp26:682875333195595793>    **${member.user.username}** adam pataklamak ve sakız çiğnemek için geldi. Ve tüm sakızlarını bitirmiş.  \`${time}\``];
+
+      let result = Math.floor((Math.random() * sonuc.length));
+  webhook.send(sonuc[result])
 });
