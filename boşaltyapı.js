@@ -692,3 +692,11 @@ client.on('ready', () =>{
     
   }, 6000)
  });
+
+
+/////////////////////////////////////////////////////////////////////////
+
+// eklendim
+client.on('guildCreate', async guild => { client.channels.get('775049033743728651').send(`${guild}, isimli sunucuya eklendim!`)})
+// atıldım
+client.on('guildRemove', async guild => { client.channels.get('775049033743728651').send(`${guild}, isimli sunucudan atıldım.. :(`)})
