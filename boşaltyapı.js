@@ -1006,7 +1006,7 @@ client.on('guildMemberAdd', member => {
   .setColor('GREEN')
   .setAuthor(member.user.username, member.user.avatarURL)
   .setThumbnail(member.user.avatarURL)
-  .setTitle('?? | Sunucuya katıldı')
+  .setTitle('Sunucuya Yeni Biri Katıldı!')
   .setTimestamp()
   channel.sendEmbed(embed);
 });
@@ -1018,7 +1018,7 @@ client.on('guildMemberRemove', member => {
         .setColor('RED')
         .setAuthor(member.user.username, member.user.avatarURL)
         .setThumbnail(member.user.avatarURL)
-        .setTitle('?? | Sunucudan ayrıldı')
+        .setTitle('Sunucumuzdan Biri Ayrıldı :/')
         .setTimestamp()
     channel.sendEmbed(embed);
 });
