@@ -484,18 +484,7 @@ client.on('guildMemberRemove', async member => {
   frenzychannel.send(`${member.user.username} Kullanıcısı Sunucudan Ayrıldı! **GÖRÜŞMEK ÜZERE**!`)
 })
 
-//////////////////////////////////////////////////////////////
 
-
-client.on("message", async message => {
-    if(!message.guild) return
-    if (message.member.hasPermission('MANAGE_GUILD')) return;
-    if (message.mentions.users.size >= 4) {
-      message.delete();
-      message.channel.send(`Hey ${message.author}, Lütfen Sürekli Etiket Atma`)
-        message.author.send(`Hey Dostum, Lütfen Sürekli Etiket Atma`)
-      }
-})
 
 /////////////////////////////////////////////////////
 
@@ -738,3 +727,209 @@ client.on("guildDelete", guild => {
 
 ////////////////////////////////////////////////////////////////////////////
 
+client.on('channelCreate', channel => {
+  const c = channel.guild.channels.find('name', 'mod-log');
+  if (!c) return;
+    let embed = new Discord.RichEmbed()
+                    .addField(`Kanal oluşturuldu`, `> İsmi: \`${channel.name}\`\n> Türü: **${channel.type}**\n> ID: ${channel.id}`)
+                    .setTimestamp()
+                    .setColor("RANDOM")
+                    .setFooter(`${channel.client.user.username}#${channel.client.user.discriminator}`, channel.client.user.avatarURL)
+
+    c.send(`Yeni bi kanal oluşturuldu`,{embed})
+});
+
+client.on('channelDelete', channel => {
+  const c = channel.guild.channels.find('name', 'mod-log');
+  if (!c) return;
+    let embed = new Discord.RichEmbed()
+                    .addField(`Kanal silindi`, `> İsmi: \`${channel.name}\`\n> Türü: **${channel.type}**\n> ID: ${channel.id}`)
+                    .setTimestamp()
+                    .setColor("RANDOM")
+                    .setFooter(`${channel.client.user.username}#${channel.client.user.discriminator}`, channel.client.user.avatarURL)
+
+    c.send(`Bir kanal silindi`,{embed})
+});
+
+client.on('channelUpdate', (oldChannel, newChannel) => { 
+  const c = newChannel.guild.channels.find('name', 'mod-log');
+  if (!c) return;
+
+    let str = '';
+
+    if(oldChannel.name != newChannel.name)
+        str+=`> İsim: \`${oldChannel.name}\` **->** \`${newChannel.name}\`\n`;
+
+    
+
+    let embed = new Discord.RichEmbed()
+                    .addField(`Kanal güncellendi`, `${str}> ID: ${oldChannel.id}`)
+                    .setTimestamp()
+                    .setColor("RANDOM")
+                    .setFooter(`${oldChannel.client.user.username}#${oldChannel.client.user.discriminator}`, oldChannel.client.user.avatarURL)
+
+    c.send(`${oldChannel.name} kanalı güncellendi`,{embed})
+});
+
+client.on('emojiCreate', emoji => {
+  const c = emoji.guild.channels.find('name', 'mod-log');
+  if (!c) return;
+
+    let embed = new Discord.RichEmbed()
+                    .addField(`Emoji oluşturuldu`, `> İsmi: \`${emoji.name}\`\n> GIF?: **${emoji.animated}**\n> ID: ${emoji.id}`)
+                    .setTimestamp()
+                    .setColor("RANDOM")
+                    .setFooter(`${emoji.client.user.username}#${emoji.client.user.discriminator}`, emoji.client.user.avatarURL)
+
+    c.send(`Bir emoji oluşturuldu`,{embed})
+    });
+client.on('emojiDelete', emoji => {
+  const c = emoji.guild.channels.find('name', 'mod-log');
+  if (!c) return;
+
+    let embed = new Discord.RichEmbed()
+                    .addField(`Emoji silindi`, `> İsmi: \`${emoji.name}\`\n> GIF? : **${emoji.animated}**\n> ID: ${emoji.id}`)
+                    .setTimestamp()
+                    .setColor("RANDOM")
+                    .setFooter(`${emoji.client.user.username}#${emoji.client.user.discriminator}`, emoji.client.user.avatarURL)
+
+    c.send(`Bir emoji silindi`,{embed})
+    });
+client.on('emojiUpdate', (oldEmoji, newEmoji) => {
+  const c = newEmoji.guild.channels.find('name', 'mod-log');
+  if (!c) return;
+
+    let embed = new Discord.RichEmbed()
+                    .addField(`Emoji güncellendi`, `> Eski ismi: \`${oldEmoji.name}\`\n> Yeni ismi: \`${newEmoji.name}\`\n> ID: ${oldEmoji.id}`)
+                    .setTimestamp()
+                    .setColor("RANDOM")
+                    .setFooter(`${newEmoji.client.user.username}#${newEmoji.client.user.discriminator}`, newEmoji.client.user.avatarURL)
+
+    c.send(`Bir emoji güncellendi`,{embed})
+    });
+
+client.on('guildBanAdd', async (guild, user) => {    
+    const channel = guild.channels.find('name', 'mod-log');
+  if (!channel) return;
+  
+  const entry = await guild.fetchAuditLogs({type: 'MEMBER_BAN_ADD'}).then(audit => audit.entries.first())
+
+    let embed = new Discord.RichEmbed()
+                    .setAuthor(`${user.username}#${user.discriminator}`, user.avatarURL)
+                    .addField(`Kullanıcı banlandı`, `> İsmi: \`${user.username}\`\n> ID: **${user.id}**\nSebep: **${entry.reason || 'Girilmedi'}**`)
+                    .setTimestamp()
+                    .setColor("RANDOM")
+                    .setFooter(`${entry.executor.username}#${entry.executor.discriminator} tarafından`, entry.executor.avatarURL)
+
+    channel.send(`**${user.username}#${user.discriminator}** kullanıcısı, **${entry.executor.username}#${entry.executor.discriminator}** tarafından banlandı`,{embed})
+});
+
+client.on('guildBanRemove', async (guild, user) => {    
+    const channel = guild.channels.find('name', 'mod-log');
+  if (!channel) return;
+  
+  const entry = await guild.fetchAuditLogs({type: 'MEMBER_BAN_ADD'}).then(audit => audit.entries.first())
+
+    let embed = new Discord.RichEmbed()
+                    .setAuthor(`${user.username}#${user.discriminator}`, user.avatarURL)
+                    .addField(`Kullanıcının banı açıldı`, `> İsmi: \`${user.username}\`\n> ID: **${user.id}**\n`)
+                    .setTimestamp()
+                    .setColor("RANDOM")
+                    .setFooter(`${entry.executor.username}#${entry.executor.discriminator} tarafından`, entry.executor.avatarURL)
+
+    channel.send(`**${user.username}#${user.discriminator}** kullanıcısının, **${entry.executor.username}#${entry.executor.discriminator}** tarafından kaldırıldı`,{embed})
+});
+client.on('messageDelete', async message => {    
+  if(message.author.bot) return
+
+    const channel = message.guild.channels.find('name', 'mod-log');
+  if (!channel) return;
+  
+    let embed = new Discord.RichEmbed()
+                    .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
+                    .addField(`Mesaj silindi`, `> Mesaj: \`${message.content}\`\n> Kanal: **${message.channel.name}**\n> ID: ${message.id}`)
+                    .setTimestamp()
+                    .setColor("RANDOM")
+                    .setFooter(`${message.client.user.username}#${message.client.user.discriminator}`, message.client.user.avatarURL)
+
+    channel.send(`**${message.author.username}#${message.author.discriminator}** tarafından gönderilen mesaj, ${message.channel} kanalından silindi`,{embed})
+});
+
+client.on('messageUpdate', async (oldMessage, newMessage) => {    
+      if(oldMessage.author.bot) return;
+    if(oldMessage.content == newMessage.content) return;
+
+    const channel = oldMessage.guild.channels.find('name', 'mod-log');
+  if (!channel) return;
+  
+    let embed = new Discord.RichEmbed()
+                    .setAuthor(`${oldMessage.author.username}#${oldMessage.author.discriminator}`, oldMessage.author.avatarURL)
+                    .addField(`Mesaj güncellendi`, `> Eski mesaj: \`${oldMessage.content}\`\n> Yeni mesaj: \`${newMessage.content}\`\n> Kanal: **${oldMessage.channel.name}**\n> ID: ${oldMessage.id}`)
+                    .setTimestamp()
+                    .setColor("RANDOM")
+                    .setFooter(`${oldMessage.client.user.username}#${oldMessage.client.user.discriminator}`, oldMessage.client.user.avatarURL)
+
+    channel.send(`**${oldMessage.author.username}#${oldMessage.author.discriminator}** tarafından gönderilen mesaj, ${oldMessage.channel} kanalında güncellendi`,{embed})
+});
+
+client.on('roleCreate', async (role) => {    
+
+    const channel = role.guild.channels.find('name', 'mod-log');
+  if (!channel) return;
+  
+    let embed = new Discord.RichEmbed()
+.addField(`Rol oluşturuldu`, `> ismi: \`${role.name}\`\n> ID: ${role.id}`)                    
+.setTimestamp()
+                    .setColor("RANDOM")
+                    .setFooter(`${role.client.user.username}#${role.client.user.discriminator}`, role.client.user.avatarURL)
+
+    channel.send(`yeni bir rol oluşturuldu`,{embed})
+});
+
+client.on('roleCreate', async (role) => {    
+
+    const channel = role.guild.channels.find('name', 'mod-log');
+  if (!channel) return;
+  
+    let embed = new Discord.RichEmbed()
+.addField(`Rol silindi`, `> ismi: \`${role.name}\`\n> ID: ${role.id}`)                    
+.setTimestamp()
+                    .setColor("RANDOM")
+                    .setFooter(`${role.client.user.username}#${role.client.user.discriminator}`, role.client.user.avatarURL)
+
+    channel.send(`bir rol silindi`,{embed})
+});
+
+client.on('voiceStateUpdate', async (oldMember, newMember) => {    
+
+    let oldVoice = oldMember.voiceChannel;
+    let newVoice = newMember.voiceChannel;
+
+  
+      if(!oldVoice) {
+          var c = newMember.guild.channels.find('name', 'mod-log');
+  if (!c) return;
+        let embed = new Discord.RichEmbed()
+
+        embed.setAuthor(`${newMember.user.username}#${newMember.user.discriminator}`, newMember.user.avatarURL)
+        .addField(`Sesli kanala katıldı`, `> İsmi: \`${newMember.user.username}\`\n> ID: **${newMember.user.id}**`)
+        .setTimestamp()
+        .setColor("RANDOM")
+        .setFooter(`${newMember.client.user.username}#${newMember.client.user.discriminator}`, newMember.client.user.avatarURL)
+
+        c.send(`**${oldMember.user.username}#${oldMember.user.discriminator}** sesli bir kanala katıldı`,{embed})
+    } else if (!newVoice) {
+              var c = oldMember.guild.channels.find('name', 'mod-log');
+  if (!c) return;
+        let embed = new Discord.RichEmbed()
+
+        embed.setAuthor(`${oldMember.user.username}#${oldMember.user.discriminator}`, oldMember.user.avatarURL)
+        .addField(`Sesli kanaldan ayrıldı`, `> İsmi: \`${oldMember.user.username}\`\n> ID: **${oldMember.user.id}**`)
+        .setTimestamp()
+        .setColor("RANDOM")
+        .setFooter(`${oldMember.client.user.username}#${oldMember.client.user.discriminator}`, oldMember.client.user.avatarURL)
+
+        c.send(`**${oldMember.user.username}#${oldMember.user.discriminator}** sesli bir kanaldan ayrıldı`,{embed})
+    }
+
+});
