@@ -61,7 +61,7 @@
     "novelcovid": "^3.0.0"
   },
   "engines": {
-    "node": "8.x"
+    "node": "12.x"
   },
   "repository": {
     "url": "https://angelbotweb2.glitch.me"
