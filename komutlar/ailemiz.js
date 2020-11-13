@@ -19,7 +19,7 @@ exports.run = (bot, message) => {if(db.fetch(`bakim`)) return message.channel.se
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['s', 'konuş', 'sohbet', 'ask'],
+  aliases: ['sq', 'konuş', 'sohbet', 'ask'],
   permLevel: 0
 };
 
