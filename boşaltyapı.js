@@ -1330,3 +1330,17 @@ client.on('emojiCreate', async emoji => {
 });
   }
 });
+
+//////////////////////////////////////////////////
+
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === '!semih') {  //BUNU YAZINCA ALTTAKİ MESAJ GİDİCEK
+    msg.reply('rolcü çakalın biri'); //YUKARIDAKİNİ YAZINCA BU CEVABI VERİCEK
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === '!batuhan') {  //BUNU YAZINCA ALTTAKİ MESAJ GİDİCEK
+    msg.reply('beni kodlayan artist'); //YUKARIDAKİNİ YAZINCA BU CEVABI VERİCEK
+  }
+});

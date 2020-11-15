@@ -24,8 +24,8 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "batuhan",
+  name: "qqq",
   description: "Shows all the servers the bot is in.",
   kategori:'genel',
-  usage: "batuhan"
+  usage: "qqq"
 };
